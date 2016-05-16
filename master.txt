@@ -1,7 +1,6 @@
 master
 master
-MASTER
-MASTER
+TMP@TMP@
 master
 master
 master
