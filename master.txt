@@ -1,7 +1,4 @@
 master
 master
-MASTER
-MASTER
-master
-master
-master
+gittmp1
+gittmp2
