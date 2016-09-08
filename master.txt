@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 tmp2
 TMP2
 tmp1
 TMP1
 artiste
 artiste
+=======
+1
+>>>>>>> feature/show
