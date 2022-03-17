@@ -1,0 +1,62 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:appdba="http://www.datical.net/xml/ns/appdba"
+                   xmlns:datical="http://www.datical.net/xml/ns/datical"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+                   http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+
+    <changeSet  id="10001" author="dave">
+        <createTable tableName="activity2">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="activity_pkey2"/>
+            </column>
+            <column name="activity_id" type="NVARCHAR(255)"/>
+            <column name="activity_list_id" type="NVARCHAR(255)"/>
+            <column name="activity_template_id" type="NVARCHAR(255)"/>
+            <column name="description" type="NVARCHAR(255)"/>
+            <column name="activity_status" type="INTEGER"/>
+            <column name="generated_from" type="INTEGER"/>
+            <column name="channel" type="INTEGER"/>
+            <column name="channel_type" type="INTEGER"/>
+            <column name="kpi_calculation_element" type="NVARCHAR(40)"/>
+            <column name="kpi_category" type="NVARCHAR(400)"/>
+            <column name="element_type" type="INTEGER"/>
+            <column name="activity_type" type="INTEGER"/>
+            <column name="answer_type" type="INTEGER"/>
+            <column name="creationuserid" type="BIGINT"/>
+            <column name="measure_type" type="INTEGER"/>
+            <column name="duration" type="INTEGER"/>
+            <column name="time_type" type="INTEGER"/>
+            <column name="mandatory" type="BOOLEAN"/>
+            <column name="importance" type="INTEGER"/>
+            <column name="priority" type="INTEGER"/>
+            <column name="no_answered" type="INTEGER"/>
+            <column name="preset_answer" type="INTEGER"/>
+            <column name="check_threshold" type="BOOLEAN"/>
+            <column name="attachment" type="NVARCHAR(400)"/>
+            <column name="creatorcode" type="BIGINT"/>
+            <column name="title" type="NVARCHAR(255)"/>
+
+            <column name="tenant_id" type="BIGINT"/>
+            <column name="internalcreationtime" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="internalupdatetime" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="status" type="INTEGER"/>
+            <column name="usersign2" type="BIGINT"/>
+            <column name="updatorcode" type="BIGINT"/>
+            <column name="version" type="BIGINT"/>
+            <column name="instance" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="10002" author="dave">
+        <addColumn tableName="activity2">
+            <column name="emergency_type" type="INTEGER"/>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>
