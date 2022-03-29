@@ -28,6 +28,7 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.liquibase:liquibase-core'
+	implementation 'cn.amorou.uid:uid-generator-spring-boot-starter:1.0.2'
 
 }
 
