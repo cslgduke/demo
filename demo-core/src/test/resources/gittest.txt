@@ -1,1 +1,4 @@
 commit in rebase_test,after the commit to develop
+a
+b
+c
