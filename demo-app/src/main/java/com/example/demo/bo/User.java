@@ -18,6 +18,9 @@ public class User {
     @Column(name="id")//数据库字段名
     private Integer id;
 
+    @Column(name="no",insertable=false,updatable = false)
+    private String no;
+
     @Column(name="name")
     private String name;
 

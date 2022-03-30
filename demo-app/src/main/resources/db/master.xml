@@ -11,4 +11,7 @@
     <include file="0.1.0/change-activity-column-type.xml" relativeToChangelogFile="true"/>
 
 
+    <include file="0.2.0/change-table-activity-list-template.xml" relativeToChangelogFile="true"/>
+
+
 </databaseChangeLog>
