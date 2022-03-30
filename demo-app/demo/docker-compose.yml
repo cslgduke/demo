@@ -5,7 +5,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=Initial0
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - mypg1:/var/lib/postgresql/data
     ports:
       - 5433:5432
 
@@ -14,7 +14,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=Initial0
     volumes:
-      - pgdata2:/var/lib/postgresql/data
+      - mypg2:/var/lib/postgresql/data
     ports:
       - 5434:5432
 
@@ -30,7 +30,7 @@ services:
       - postgres2:postgres2
 
 volumes:
-  pgdata:
-  pgdata2:
+  mypg1:
+  mypg2:
 
 
