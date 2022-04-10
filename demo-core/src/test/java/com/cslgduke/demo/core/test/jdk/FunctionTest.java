@@ -16,5 +16,6 @@ public class FunctionTest {
            return RandomUtil.randomString(5)+ "-" + t;
        };
        System.out.println(fa.apply(8));
+
     }
 }
