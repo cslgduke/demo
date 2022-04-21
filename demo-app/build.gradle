@@ -19,20 +19,17 @@ repositories {
 }
 
 dependencies {
-	implementation 'cn.hutool:hutool-all:5.3.6'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-	implementation 'org.projectlombok:lombok:1.18.20'
-	compileOnly 'org.projectlombok:lombok'
+
 	runtimeOnly 'org.postgresql:postgresql'
-	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.liquibase:liquibase-core'
 	implementation 'cn.amorou.uid:uid-generator-spring-boot-starter:1.0.2'
 //	implementation 'io.micrometer:micrometer-registry-prometheus:1.8.4'
 	implementation 'io.micrometer:micrometer-registry-prometheus'
-	implementation 'com.alibaba:fastjson:1.2.68'
+
 
 }
 

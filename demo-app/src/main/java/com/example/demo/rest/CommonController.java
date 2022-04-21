@@ -4,6 +4,7 @@ import cn.amorou.uid.UidGenerator;
 import cn.hutool.core.util.RandomUtil;
 import com.example.demo.bo.User;
 import com.example.demo.repo.UserRepository;
+import com.example.demo.service.Userservice;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,14 +28,17 @@ public class CommonController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private Userservice userservice;
+
     @PostMapping("/uuid")
-    public String generateUUid(){
+    public String generateUUid() {
         var uuid = uidGenerator.getUID();
         return String.valueOf(uuid);
     }
 
     @PostMapping("/userAdd")
-    public String userAdd(){
+    public String userAdd() {
         List<User> users = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
             User user = new User();
@@ -45,22 +49,31 @@ public class CommonController {
         return "success";
     }
 
+
+    @PostMapping("/userSave")
+    public String userSave() {
+        User user = new User();
+        user.setName(RandomUtil.randomString(10));
+        userservice.save(user);
+        return "success";
+    }
+
     @PostMapping("/userList")
-    public Object userList(){
+    public Object userList() {
         return userRepository.findAll();
     }
 
 
     @PostMapping("/userRefine")
-    public Object update(){
-       var toList =  userRepository.findAll().stream().filter(t -> t.getNo() == null).collect(Collectors.toList());
-        log.info("no is null entities:{}",toList);
+    public Object update() {
+        var toList = userRepository.findAll().stream().filter(t -> t.getNo() == null).collect(Collectors.toList());
+        log.info("no is null entities:{}", toList);
         userRepository.saveAll(toList);
         return "success";
     }
 
     @PostMapping("/userRefresh")
-    public Object userRefresh(){
+    public Object userRefresh() {
         userRepository.refreshUserNo();
         return "success";
     }
