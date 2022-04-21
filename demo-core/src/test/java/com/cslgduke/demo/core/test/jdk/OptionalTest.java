@@ -19,6 +19,9 @@ public class OptionalTest {
         Optional<Integer> optional2 = Optional.ofNullable(null);
         Optional<Integer> optional3 = Optional.ofNullable(null);
         Optional<Integer> optional4 = Optional.empty();
+        System.out.println("Optional.empty() isEmpty:" + optional4.isEmpty());
+
+        System.out.println("Optional.empty() get" + optional4.get());
 
 
         System.out.println(optional1 == optional2);

@@ -4,6 +4,7 @@ package com.example.demo.bo;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 /**
  * @author i565244
@@ -29,4 +30,7 @@ public class User {
 
     @Column(name="address")
     private String address;
+
+    @Column(name="createTime")
+    private LocalDateTime createTime;
 }
