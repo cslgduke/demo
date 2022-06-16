@@ -12,7 +12,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 @Configuration
 public class DemoTransactionManagerConfiguration {
 
-    @Bean
+//    @Bean
     PlatformTransactionManager transactionManager() {
         return new DemoTransactionManager(new DemoTransaction());
     }

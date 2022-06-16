@@ -10,8 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -32,17 +35,43 @@ public class JpaTest {
 
     private  final static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS");
 
+    private static final DateTimeFormatter DF = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+    @Test
+    public void test_dtf_localdate() {
+        var str1 = "2022-03-10 00:00:00";
+        var str2 = "2022-03-10 00:00:00.000000";
+        var ldt1 = LocalDateTime.parse(str1,DF);
+        var ldt2 = LocalDateTime.parse(str2,dtf);
+
+        log.info("ldt1:{}, ldt2:{}",ldt1,ldt2);
+        var ldt3 = LocalDateTime.parse(str1);
+        log.info("parse1:{},parse2:{}",LocalDateTime.parse(str1),LocalDateTime.parse(str2));
+    }
+
+
     @Test
     public void testBatchInsert() {
         List<User> users = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             User user = new User();
             user.setName(RandomUtil.randomString(10));
             user.setAge(RandomUtil.randomInt(20, 50));
             user.setCreateTime(LocalDateTime.now().minusMinutes(RandomUtil.randomInt(10,20)));
+            user.setUpdateTime(LocalDateTime.now().minusMinutes(RandomUtil.randomInt(10,20)).toString());
             users.add(user);
         }
         userRepository.saveAll(users);
+    }
+
+    @Test
+    @Transactional
+    @Rollback(value = false)
+    public void testBatchInsert_nativesql() {
+        var batchInsertSql = " insert into tl_user (address, age, create_time, name, update_time) values ('address1', 26, '2022-05-08 13:20:20', 'James', '2022-05-08 13:20:20');\n"
+                + "insert into tl_user (address, age, create_time, name, update_time) values ('address2', 26, '2022-05-08 13:20:20', 'James', '2022-05-08 13:20:20');";
+        var batchCount = entityManager.createNativeQuery(batchInsertSql).executeUpdate();
+        log.info("batch insert rst:{}",batchCount);
     }
 
     @Test
@@ -57,9 +86,14 @@ public class JpaTest {
     @Test
     public void testDynamicBoSql() {
         var ts = LocalDateTime.now().minusMinutes(15);
-        var rst10 = entityManager.createQuery("select t from User t where t.age > ?1 and t.createTime < ?2")
+        var rst10 = entityManager.createQuery("select t from User t where t.age > ?1 and t.createTime < ?2 order by t.updateTime desc")
                 .setParameter(1, 30)
                 .setParameter(2, ts)
+                .getResultList();
+
+        var rst10_null = entityManager.createQuery("select t from User t where t.age > ?1 and t.createTime < ?2 order by t.updateTime desc")
+                .setParameter(1, 30)
+                .setParameter(2,null)
                 .getResultList();
         var rst11 = entityManager.createQuery("select t from User t where t.age > 30 and t.createTime < '" + dtf.format(ts) + "'")
 //                .setParameter(1, 30)
@@ -86,7 +120,15 @@ public class JpaTest {
             pageRst = userRepository.findAll(pageable);
             System.out.println("***result******：" + JSON.toJSONString(pageRst));
         }
+    }
 
+
+    @Test
+    public void test_localDateTime() {
+        var rst =  (Object[])entityManager.createNativeQuery("select min(t.create_Time) as createTime,min(t.update_Time) as updateTime from tl_user t ")
+                .getSingleResult();
+        log.info("rst:{}",rst);
+        var ctTime = (Timestamp)rst[0];
     }
 
 }

@@ -33,4 +33,7 @@ public class User {
 
     @Column(name="createTime")
     private LocalDateTime createTime;
+
+    @Column(name="updateTime")
+    private String updateTime;
 }
