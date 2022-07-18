@@ -1,0 +1,18 @@
+version: '3.6'
+services:
+  mysql_test_01:
+    image: mysql:5.7.32
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/r_pwd
+      MYSQL_DATABASE: mysql
+      MYSQL_USER: test
+      MYSQL_PASSWORD_FILE: /run/secrets/t_pwd
+    secrets:
+      - r_pwd
+      - t_pwd
+secrets:
+  r_pwd:
+    file: ./password_test
+  t_pwd:
+    file: ./password_test
+

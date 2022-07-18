@@ -4,6 +4,7 @@ import cn.amorou.uid.UidGenerator;
 import cn.hutool.core.util.RandomUtil;
 import com.alibaba.fastjson.JSON;
 import com.example.demo.bo.User;
+import com.example.demo.cache.CacheService;
 import com.example.demo.msg.KafkaProducer;
 import com.example.demo.repo.UserRepository;
 import com.example.demo.service.Userservice;
@@ -19,6 +20,7 @@ import vo.Request;
 import vo.Response;
 
 import javax.annotation.Resource;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.net.http.HttpRequest;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -50,6 +52,9 @@ public class CommonController {
     @Autowired
     private RedisTemplate redisTemplate;
 
+    @Autowired
+    private CacheService cacheService;
+
     @PostMapping("/uuid")
     public String generateUUid() {
         var uuid = uidGenerator.getUID();
@@ -78,6 +83,26 @@ public class CommonController {
         user.setName(RandomUtil.randomString(10));
         userservice.save(user);
         return "success";
+    }
+
+    @PostMapping("/userDel/{id}")
+    public String userDel(@PathVariable Long id) {
+        userRepository.deleteById(id);
+        cacheService.batchDeleteCache("userCache",Arrays.asList(String.valueOf(id)));
+        return "success";
+    }
+
+    @PostMapping("/userUpdate/{id}")
+    public String userUpdate(@PathVariable Long id) {
+        var user = userRepository.findById(id).get();
+        user.setName(RandomUtil.randomString(10));
+        userservice.update(user);
+        return "success";
+    }
+
+    @PostMapping("/userDetail/{id}")
+    public User userDetail(@PathVariable Long id) {
+        return userservice.findById(id);
     }
 
     @PostMapping("/userList")

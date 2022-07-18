@@ -17,7 +17,7 @@ public class User {
     @Id	//主键id
     @GeneratedValue(strategy=GenerationType.IDENTITY)//主键生成策略
     @Column(name="id")//数据库字段名
-    private Integer id;
+    private Long id;
 
     @Column(name="no",insertable=false,updatable = false)
     private String no;

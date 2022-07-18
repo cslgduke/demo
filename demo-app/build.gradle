@@ -33,6 +33,12 @@ dependencies {
 	api 'org.springframework.boot:spring-boot-starter-cache:2.6.7'
 	api 'com.github.ben-manes.caffeine:caffeine:2.9.0'
 
+	implementation 'com.azure:azure-storage-blob:12.10.2'
+	implementation 'com.azure:azure-core-http-okhttp:1.7.1'
+
+	implementation 'com.azure:azure-security-keyvault-keys:4.2.3'
+	implementation 'com.azure:azure-identity:1.2.0'
+
 }
 
 tasks.named('test') {

@@ -1,79 +1,9 @@
-2022-06-06 16:02:10.067[Test worker] INFO  [com.example.demo.http.HttpTest] Starting HttpTest using Java 11.0.14 on C02G65QMMD6M with PID 42058 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
-2022-06-06 16:02:10.070[Test worker] DEBUG [com.example.demo.http.HttpTest] Running with Spring Boot v2.6.6, Spring v5.3.18
-2022-06-06 16:02:10.070[Test worker] INFO  [com.example.demo.http.HttpTest] No active profile set, falling back to 1 default profile: "default"
-2022-06-06 16:02:17.963[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
-2022-06-06 16:02:17.972[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
-2022-06-06 16:02:17.979[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
-2022-06-06 16:02:18.752[Test worker] INFO  [com.example.demo.http.HttpTest] Started HttpTest in 9.039 seconds (JVM running for 11.404)
-2022-06-06 16:02:19.711[Test worker] INFO  [com.example.demo.http.HttpTest] Http call endpoint: http://www.baidu.com ,request body: {}.
-2022-06-06 16:02:20.225[Test worker] INFO  [com.example.demo.http.HttpTest] Http call response status: 200, response body: <!DOCTYPE html>
-<!--STATUS OK--><html> <head><meta http-equiv=content-type content=text/html;charset=utf-8><meta http-equiv=X-UA-Compatible content=IE=Edge><meta content=always name=referrer><link rel=stylesheet type=text/css href=http://s1.bdstatic.com/r/www/cache/bdorz/baidu.min.css><title>ç¾åº¦ä¸ä¸ï¼ä½ å°±ç¥é</title></head> <body link=#0000cc> <div id=wrapper> <div id=head> <div class=head_wrapper> <div class=s_form> <div class=s_form_wrapper> <div id=lg> <img hidefocus=true src=//www.baidu.com/img/bd_logo1.png width=270 height=129> </div> <form id=form name=f action=//www.baidu.com/s class=fm> <input type=hidden name=bdorz_come value=1> <input type=hidden name=ie value=utf-8> <input type=hidden name=f value=8> <input type=hidden name=rsv_bp value=1> <input type=hidden name=rsv_idx value=1> <input type=hidden name=tn value=baidu><span class="bg s_ipt_wr"><input id=kw name=wd class=s_ipt value maxlength=255 autocomplete=off autofocus></span><span class="bg s_btn_wr"><input type=submit id=su value=ç¾åº¦ä¸ä¸ class="bg s_btn"></span> </form> </div> </div> <div id=u1> <a href=http://news.baidu.com name=tj_trnews class=mnav>æ°é»</a> <a href=http://www.hao123.com name=tj_trhao123 class=mnav>hao123</a> <a href=http://map.baidu.com name=tj_trmap class=mnav>å°å¾</a> <a href=http://v.baidu.com name=tj_trvideo class=mnav>è§é¢</a> <a href=http://tieba.baidu.com name=tj_trtieba class=mnav>è´´å§</a> <noscript> <a href=http://www.baidu.com/bdorz/login.gif?login&amp;tpl=mn&amp;u=http%3A%2F%2Fwww.baidu.com%2f%3fbdorz_come%3d1 name=tj_login class=lb>ç»å½</a> </noscript> <script>document.write('<a href="http://www.baidu.com/bdorz/login.gif?login&tpl=mn&u='+ encodeURIComponent(window.location.href+ (window.location.search === "" ? "?" : "&")+ "bdorz_come=1")+ '" name="tj_login" class="lb">ç»å½</a>');</script> <a href=//www.baidu.com/more/ name=tj_briicon class=bri style="display: block;">æ´å¤äº§å</a> </div> </div> </div> <div id=ftCon> <div id=ftConw> <p id=lh> <a href=http://home.baidu.com>å³äºç¾åº¦</a> <a href=http://ir.baidu.com>About Baidu</a> </p> <p id=cp>&copy;2017&nbsp;Baidu&nbsp;<a href=http://www.baidu.com/duty/>ä½¿ç¨ç¾åº¦åå¿è¯»</a>&nbsp; <a href=http://jianyi.baidu.com/ class=cp-feedback>æè§åé¦</a>&nbsp;äº¬ICPè¯030173å·&nbsp; <img src=//www.baidu.com/img/gs.gif> </p> </div> </div> </div> </body> </html>
-.
-2022-06-06 16:10:32.290[Test worker] INFO  [com.example.demo.http.HttpTest] Starting HttpTest using Java 11.0.14 on C02G65QMMD6M with PID 42319 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
-2022-06-06 16:10:32.291[Test worker] DEBUG [com.example.demo.http.HttpTest] Running with Spring Boot v2.6.6, Spring v5.3.18
-2022-06-06 16:10:32.291[Test worker] INFO  [com.example.demo.http.HttpTest] No active profile set, falling back to 1 default profile: "default"
-2022-06-06 16:10:52.448[Test worker] INFO  [com.example.demo.http.HttpTest] Starting HttpTest using Java 11.0.14 on C02G65QMMD6M with PID 42333 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
-2022-06-06 16:10:52.448[Test worker] DEBUG [com.example.demo.http.HttpTest] Running with Spring Boot v2.6.6, Spring v5.3.18
-2022-06-06 16:10:52.449[Test worker] INFO  [com.example.demo.http.HttpTest] No active profile set, falling back to 1 default profile: "default"
-2022-06-06 16:10:59.618[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
-2022-06-06 16:10:59.627[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
-2022-06-06 16:10:59.635[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
-2022-06-06 16:11:00.300[Test worker] INFO  [com.example.demo.http.HttpTest] Started HttpTest in 8.211 seconds (JVM running for 10.349)
-2022-06-06 16:11:01.247[Test worker] INFO  [com.example.demo.http.HttpTest] Http call endpoint: http://localhost:18081/visit ,request body: {}.
-2022-06-06 16:12:32.436[Test worker] INFO  [com.example.demo.http.HttpTest] Starting HttpTest using Java 11.0.14 on C02G65QMMD6M with PID 42363 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
-2022-06-06 16:12:32.437[Test worker] DEBUG [com.example.demo.http.HttpTest] Running with Spring Boot v2.6.6, Spring v5.3.18
-2022-06-06 16:12:32.438[Test worker] INFO  [com.example.demo.http.HttpTest] No active profile set, falling back to 1 default profile: "default"
-2022-06-06 16:12:39.716[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
-2022-06-06 16:12:39.725[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
-2022-06-06 16:12:39.732[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
-2022-06-06 16:12:40.374[Test worker] INFO  [com.example.demo.http.HttpTest] Started HttpTest in 8.332 seconds (JVM running for 10.848)
-2022-06-06 16:18:50.138[Test worker] INFO  [com.example.demo.http.HttpTest] Starting HttpTest using Java 11.0.14 on C02G65QMMD6M with PID 42567 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
-2022-06-06 16:18:50.139[Test worker] DEBUG [com.example.demo.http.HttpTest] Running with Spring Boot v2.6.6, Spring v5.3.18
-2022-06-06 16:18:50.140[Test worker] INFO  [com.example.demo.http.HttpTest] No active profile set, falling back to 1 default profile: "default"
-2022-06-06 16:18:58.029[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
-2022-06-06 16:18:58.040[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
-2022-06-06 16:18:58.050[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
-2022-06-06 16:18:58.832[Test worker] INFO  [com.example.demo.http.HttpTest] Started HttpTest in 9.148 seconds (JVM running for 11.571)
-2022-06-06 16:19:28.638[Test worker] INFO  [com.example.demo.http.HttpTest] Starting HttpTest using Java 11.0.14 on C02G65QMMD6M with PID 42612 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
-2022-06-06 16:19:28.639[Test worker] DEBUG [com.example.demo.http.HttpTest] Running with Spring Boot v2.6.6, Spring v5.3.18
-2022-06-06 16:19:28.640[Test worker] INFO  [com.example.demo.http.HttpTest] No active profile set, falling back to 1 default profile: "default"
-2022-06-06 16:19:35.615[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
-2022-06-06 16:19:35.622[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
-2022-06-06 16:19:35.628[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
-2022-06-06 16:19:36.293[Test worker] INFO  [com.example.demo.http.HttpTest] Started HttpTest in 7.976 seconds (JVM running for 15.083)
-2022-06-06 16:19:37.169[Test worker] INFO  [com.example.demo.http.HttpTest] Http call endpoint: http://localhost:18081/visit/100 ,request body: {}.
-2022-06-06 16:23:18.781[Test worker] INFO  [com.example.demo.http.HttpTest] Starting HttpTest using Java 11.0.14 on C02G65QMMD6M with PID 42750 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
-2022-06-06 16:23:18.782[Test worker] DEBUG [com.example.demo.http.HttpTest] Running with Spring Boot v2.6.6, Spring v5.3.18
-2022-06-06 16:23:18.783[Test worker] INFO  [com.example.demo.http.HttpTest] No active profile set, falling back to 1 default profile: "default"
-2022-06-06 16:23:26.654[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
-2022-06-06 16:23:26.663[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
-2022-06-06 16:23:26.670[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
-2022-06-06 16:23:27.339[Test worker] INFO  [com.example.demo.http.HttpTest] Started HttpTest in 9.075 seconds (JVM running for 11.663)
-2022-06-06 16:23:28.453[Test worker] INFO  [com.example.demo.http.HttpTest] Http call endpoint: http://localhost:18081/visit/100 ,request body: {}.
-2022-06-06 16:23:33.829[Test worker] ERROR [com.example.demo.http.HttpTest] Call http://localhost:18081/visit/100 failed, json body: {}, error: {}
-java.net.SocketTimeoutException: Read timed out
-	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
-	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
-	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
-	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
-	at org.apache.http.impl.io.SessionInputBufferImpl.streamRead(SessionInputBufferImpl.java:137)
-	at org.apache.http.impl.io.SessionInputBufferImpl.fillBuffer(SessionInputBufferImpl.java:153)
-	at org.apache.http.impl.io.SessionInputBufferImpl.readLine(SessionInputBufferImpl.java:280)
-	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:138)
-	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:56)
-	at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:259)
-	at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:163)
-	at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader(CPoolProxy.java:157)
-	at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:273)
-	at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:125)
-	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:272)
-	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186)
-	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89)
-	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
-	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185)
+2022-06-30 15:26:09.595[Test worker] ERROR [c.e.demo.azure.AzureRestApiTest] Call https://storagefdipoc.blob.core.windows.net/1003-data-cic-di-poc?restype=container failed, json body: null, error: {}
+java.lang.NullPointerException: null
+	at org.apache.http.impl.client.CloseableHttpClient.determineTarget(CloseableHttpClient.java:92)
 	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
 	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:108)
-	at com.example.demo.http.HttpTest.test_httpPost(HttpTest.java:46)
+	at com.example.demo.azure.AzureRestApiTest.test_blobContainerClient(AzureRestApiTest.java:27)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -164,27 +94,12 @@ java.net.SocketTimeoutException: Read timed out
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
 	at java.base/java.lang.Thread.run(Thread.java:834)
-2022-06-06 16:24:42.799[Test worker] INFO  [com.example.demo.http.HttpTest] Starting HttpTest using Java 11.0.14 on C02G65QMMD6M with PID 42817 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
-2022-06-06 16:24:42.800[Test worker] DEBUG [com.example.demo.http.HttpTest] Running with Spring Boot v2.6.6, Spring v5.3.18
-2022-06-06 16:24:42.801[Test worker] INFO  [com.example.demo.http.HttpTest] No active profile set, falling back to 1 default profile: "default"
-2022-06-06 16:24:51.835[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
-2022-06-06 16:24:51.843[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
-2022-06-06 16:24:51.849[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
-2022-06-06 16:24:52.508[Test worker] INFO  [com.example.demo.http.HttpTest] Started HttpTest in 10.233 seconds (JVM running for 12.989)
-2022-06-06 16:24:53.402[Test worker] INFO  [com.example.demo.http.HttpTest] Http call endpoint: http://localhost:18081/visit/100 ,request body: {}.
-2022-06-06 16:24:53.719[Test worker] ERROR [com.example.demo.http.HttpTest] Call http://localhost:18081/visit/100 failed, json body: {}, error: {}
-org.apache.http.conn.HttpHostConnectException: Connect to localhost:18081 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused (Connection refused)
-	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:156)
-	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:376)
-	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393)
-	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236)
-	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186)
-	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89)
-	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
-	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185)
+2022-06-30 15:27:10.644[Test worker] ERROR [c.e.demo.azure.AzureRestApiTest] Call https://storagefdipoc.blob.core.windows.net/1003-data-cic-di-poc?restype=container failed, json body: null, error: {}
+java.lang.NullPointerException: null
+	at org.apache.http.impl.client.CloseableHttpClient.determineTarget(CloseableHttpClient.java:92)
 	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
 	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:108)
-	at com.example.demo.http.HttpTest.test_httpPost(HttpTest.java:46)
+	at com.example.demo.azure.AzureRestApiTest.test_blobContainerClient(AzureRestApiTest.java:28)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -275,96 +190,12 @@ org.apache.http.conn.HttpHostConnectException: Connect to localhost:18081 [local
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
 	at java.base/java.lang.Thread.run(Thread.java:834)
-Caused by: java.net.ConnectException: Connection refused (Connection refused)
-	at java.base/java.net.PlainSocketImpl.socketConnect(Native Method)
-	at java.base/java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:412)
-	at java.base/java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:255)
-	at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:237)
-	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
-	at java.base/java.net.Socket.connect(Socket.java:608)
-	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:75)
-	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:142)
-	... 100 common frames omitted
-2022-06-06 16:25:16.979[Test worker] INFO  [com.example.demo.http.HttpTest] Starting HttpTest using Java 11.0.14 on C02G65QMMD6M with PID 42857 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
-2022-06-06 16:25:16.980[Test worker] DEBUG [com.example.demo.http.HttpTest] Running with Spring Boot v2.6.6, Spring v5.3.18
-2022-06-06 16:25:16.981[Test worker] INFO  [com.example.demo.http.HttpTest] No active profile set, falling back to 1 default profile: "default"
-2022-06-06 16:25:24.949[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
-2022-06-06 16:25:24.958[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
-2022-06-06 16:25:24.965[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
-2022-06-06 16:25:25.652[Test worker] INFO  [com.example.demo.http.HttpTest] Started HttpTest in 9.259 seconds (JVM running for 11.661)
-2022-06-06 16:25:26.589[Test worker] INFO  [com.example.demo.http.HttpTest] Http call endpoint: http://localhost:18081/visit/100 ,request body: {}.
-2022-06-06 16:31:20.802[Test worker] INFO  [com.example.demo.http.HttpTest] Starting HttpTest using Java 11.0.14 on C02G65QMMD6M with PID 43025 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
-2022-06-06 16:31:20.803[Test worker] DEBUG [com.example.demo.http.HttpTest] Running with Spring Boot v2.6.6, Spring v5.3.18
-2022-06-06 16:31:20.804[Test worker] INFO  [com.example.demo.http.HttpTest] No active profile set, falling back to 1 default profile: "default"
-2022-06-06 16:31:28.082[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
-2022-06-06 16:31:28.091[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
-2022-06-06 16:31:28.098[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
-2022-06-06 16:31:28.745[Test worker] INFO  [com.example.demo.http.HttpTest] Started HttpTest in 8.332 seconds (JVM running for 10.393)
-2022-06-06 16:32:39.177[Test worker] INFO  [com.example.demo.http.HttpTest] Starting HttpTest using Java 11.0.14 on C02G65QMMD6M with PID 43128 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
-2022-06-06 16:32:39.178[Test worker] DEBUG [com.example.demo.http.HttpTest] Running with Spring Boot v2.6.6, Spring v5.3.18
-2022-06-06 16:32:39.179[Test worker] INFO  [com.example.demo.http.HttpTest] No active profile set, falling back to 1 default profile: "default"
-2022-06-06 16:32:49.960[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
-2022-06-06 16:32:49.969[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
-2022-06-06 16:32:49.979[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
-2022-06-06 16:32:50.694[Test worker] INFO  [com.example.demo.http.HttpTest] Started HttpTest in 12.064 seconds (JVM running for 14.679)
-2022-06-06 16:32:51.598[Test worker] INFO  [com.example.demo.http.HttpTest] Http call endpoint: http://localhost:18081/visit/10086 ,request body: {}.
-2022-06-06 16:33:10.119[Test worker] INFO  [com.example.demo.http.HttpTest] Http call response status: 500, response body: {"timestamp":"2022-06-06T08:32:52.019+00:00","status":500,"error":"Internal Server Error","path":"/visit/10086"}.
-2022-06-06 17:12:43.197[Test worker] INFO  [com.example.demo.http.HttpTest] Starting HttpTest using Java 11.0.14 on C02G65QMMD6M with PID 44261 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
-2022-06-06 17:12:43.198[Test worker] DEBUG [com.example.demo.http.HttpTest] Running with Spring Boot v2.6.6, Spring v5.3.18
-2022-06-06 17:12:43.199[Test worker] INFO  [com.example.demo.http.HttpTest] No active profile set, falling back to 1 default profile: "default"
-2022-06-06 17:12:51.243[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
-2022-06-06 17:12:51.253[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
-2022-06-06 17:12:51.261[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
-2022-06-06 17:12:51.933[Test worker] INFO  [com.example.demo.http.HttpTest] Started HttpTest in 9.136 seconds (JVM running for 11.446)
-2022-06-06 17:12:52.880[Test worker] INFO  [com.example.demo.http.HttpTest] Http call endpoint: http://localhost:18081/visit ,request body: {}.
-2022-06-06 17:16:03.184[Test worker] INFO  [com.example.demo.http.HttpTest] Starting HttpTest using Java 11.0.14 on C02G65QMMD6M with PID 44389 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
-2022-06-06 17:16:03.185[Test worker] DEBUG [com.example.demo.http.HttpTest] Running with Spring Boot v2.6.6, Spring v5.3.18
-2022-06-06 17:16:03.186[Test worker] INFO  [com.example.demo.http.HttpTest] No active profile set, falling back to 1 default profile: "default"
-2022-06-06 17:16:10.628[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
-2022-06-06 17:16:10.638[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
-2022-06-06 17:16:10.646[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
-2022-06-06 17:16:11.351[Test worker] INFO  [com.example.demo.http.HttpTest] Started HttpTest in 8.54 seconds (JVM running for 11.248)
-2022-06-06 17:16:12.303[Test worker] INFO  [com.example.demo.http.HttpTest] Http call endpoint: http://localhost:18081/visit ,request body: {}.
-2022-06-06 17:17:05.407[Test worker] INFO  [com.example.demo.http.HttpTest] Starting HttpTest using Java 11.0.14 on C02G65QMMD6M with PID 44421 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
-2022-06-06 17:17:05.408[Test worker] DEBUG [com.example.demo.http.HttpTest] Running with Spring Boot v2.6.6, Spring v5.3.18
-2022-06-06 17:17:05.408[Test worker] INFO  [com.example.demo.http.HttpTest] No active profile set, falling back to 1 default profile: "default"
-2022-06-06 17:17:12.431[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
-2022-06-06 17:17:12.439[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
-2022-06-06 17:17:12.446[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
-2022-06-06 17:17:13.077[Test worker] INFO  [com.example.demo.http.HttpTest] Started HttpTest in 8.044 seconds (JVM running for 10.186)
-2022-06-06 17:17:13.944[Test worker] INFO  [com.example.demo.http.HttpTest] Http call endpoint: http://localhost:18081/visit ,request body: {"apId":"zhangsan"}.
-2022-06-06 17:19:03.526[Test worker] INFO  [com.example.demo.http.HttpTest] Starting HttpTest using Java 11.0.14 on C02G65QMMD6M with PID 44498 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
-2022-06-06 17:19:03.527[Test worker] DEBUG [com.example.demo.http.HttpTest] Running with Spring Boot v2.6.6, Spring v5.3.18
-2022-06-06 17:19:03.528[Test worker] INFO  [com.example.demo.http.HttpTest] No active profile set, falling back to 1 default profile: "default"
-2022-06-06 17:19:10.924[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
-2022-06-06 17:19:10.933[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
-2022-06-06 17:19:10.940[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
-2022-06-06 17:19:11.660[Test worker] INFO  [com.example.demo.http.HttpTest] Started HttpTest in 8.467 seconds (JVM running for 10.514)
-2022-06-06 17:19:12.570[Test worker] INFO  [com.example.demo.http.HttpTest] Http call endpoint: http://localhost:18081/visit ,request body: {"apId":"zhangsan"}.
-2022-06-06 17:19:17.861[Test worker] ERROR [com.example.demo.http.HttpTest] Call http://localhost:18081/visit failed, json body: {"apId":"zhangsan"}, error: {}
-java.net.SocketTimeoutException: Read timed out
-	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
-	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
-	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
-	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
-	at org.apache.http.impl.io.SessionInputBufferImpl.streamRead(SessionInputBufferImpl.java:137)
-	at org.apache.http.impl.io.SessionInputBufferImpl.fillBuffer(SessionInputBufferImpl.java:153)
-	at org.apache.http.impl.io.SessionInputBufferImpl.readLine(SessionInputBufferImpl.java:280)
-	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:138)
-	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:56)
-	at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:259)
-	at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:163)
-	at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader(CPoolProxy.java:157)
-	at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:273)
-	at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:125)
-	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:272)
-	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186)
-	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89)
-	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
-	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185)
+2022-06-30 17:17:59.538[Test worker] ERROR [c.e.demo.azure.AzureRestApiTest] Call https://storagefdipoc.blob.core.windows.net/1003-data-cic-di-poc?restype=container failed, json body: null, error: {}
+java.lang.NullPointerException: null
+	at org.apache.http.impl.client.CloseableHttpClient.determineTarget(CloseableHttpClient.java:92)
 	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
 	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:108)
-	at com.example.demo.http.HttpTest.test_httpPost(HttpTest.java:47)
+	at com.example.demo.azure.AzureRestApiTest.test_blobContainerClient(AzureRestApiTest.java:28)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -455,192 +286,3 @@ java.net.SocketTimeoutException: Read timed out
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
 	at java.base/java.lang.Thread.run(Thread.java:834)
-2022-06-06 17:25:08.423[Test worker] INFO  [com.example.demo.http.HttpTest] Starting HttpTest using Java 11.0.14 on C02G65QMMD6M with PID 44644 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
-2022-06-06 17:25:08.424[Test worker] DEBUG [com.example.demo.http.HttpTest] Running with Spring Boot v2.6.6, Spring v5.3.18
-2022-06-06 17:25:08.425[Test worker] INFO  [com.example.demo.http.HttpTest] No active profile set, falling back to 1 default profile: "default"
-2022-06-06 17:25:16.250[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
-2022-06-06 17:25:16.259[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
-2022-06-06 17:25:16.267[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
-2022-06-06 17:25:17.008[Test worker] INFO  [com.example.demo.http.HttpTest] Started HttpTest in 8.999 seconds (JVM running for 11.431)
-2022-06-06 17:25:17.920[Test worker] INFO  [com.example.demo.http.HttpTest] Http call endpoint: http://localhost:18081/visit ,request body: {"apId":"zhangsan"}.
-2022-06-06 17:25:18.238[Test worker] ERROR [com.example.demo.http.HttpTest] Call http://localhost:18081/visit failed, json body: {"apId":"zhangsan"}, error: {}
-org.apache.http.conn.HttpHostConnectException: Connect to localhost:18081 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused (Connection refused)
-	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:156)
-	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:376)
-	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393)
-	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236)
-	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186)
-	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89)
-	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
-	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:108)
-	at com.example.demo.http.HttpTest.test_httpPost(HttpTest.java:47)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:725)
-	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
-	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:149)
-	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:140)
-	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:84)
-	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
-	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
-	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
-	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:214)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:210)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:135)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:66)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:96)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:75)
-	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:99)
-	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:79)
-	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:75)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:61)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
-	at com.sun.proxy.$Proxy5.stop(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.stop(TestWorker.java:135)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:182)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:164)
-	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:414)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
-	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-Caused by: java.net.ConnectException: Connection refused (Connection refused)
-	at java.base/java.net.PlainSocketImpl.socketConnect(Native Method)
-	at java.base/java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:412)
-	at java.base/java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:255)
-	at java.base/java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:237)
-	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
-	at java.base/java.net.Socket.connect(Socket.java:608)
-	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:75)
-	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:142)
-	... 100 common frames omitted
-2022-06-06 17:25:58.852[Test worker] INFO  [com.example.demo.http.HttpTest] Starting HttpTest using Java 11.0.14 on C02G65QMMD6M with PID 44685 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
-2022-06-06 17:25:58.853[Test worker] DEBUG [com.example.demo.http.HttpTest] Running with Spring Boot v2.6.6, Spring v5.3.18
-2022-06-06 17:25:58.854[Test worker] INFO  [com.example.demo.http.HttpTest] No active profile set, falling back to 1 default profile: "default"
-2022-06-06 17:26:06.231[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
-2022-06-06 17:26:06.240[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
-2022-06-06 17:26:06.246[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
-2022-06-06 17:26:06.913[Test worker] INFO  [com.example.demo.http.HttpTest] Started HttpTest in 8.487 seconds (JVM running for 10.761)
-2022-06-06 17:26:07.837[Test worker] INFO  [com.example.demo.http.HttpTest] Http call endpoint: http://localhost:18081/visit ,request body: {"apId":"zhangsan"}.
-2022-06-06 17:30:49.567[Test worker] INFO  [com.example.demo.http.HttpTest] Starting HttpTest using Java 11.0.14 on C02G65QMMD6M with PID 44784 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
-2022-06-06 17:30:49.568[Test worker] DEBUG [com.example.demo.http.HttpTest] Running with Spring Boot v2.6.6, Spring v5.3.18
-2022-06-06 17:30:49.569[Test worker] INFO  [com.example.demo.http.HttpTest] No active profile set, falling back to 1 default profile: "default"
-2022-06-06 17:30:57.359[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
-2022-06-06 17:30:57.370[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
-2022-06-06 17:30:57.378[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
-2022-06-06 17:30:58.172[Test worker] INFO  [com.example.demo.http.HttpTest] Started HttpTest in 8.925 seconds (JVM running for 11.106)
-2022-06-06 17:30:59.137[Test worker] INFO  [com.example.demo.http.HttpTest] Http call endpoint: http://localhost:18081/visit ,request body: {"apId":"zhangsan"}.
-2022-06-06 17:50:42.100[Test worker] INFO  [com.example.demo.http.HttpTest] Starting HttpTest using Java 11.0.14 on C02G65QMMD6M with PID 45429 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
-2022-06-06 17:50:42.101[Test worker] DEBUG [com.example.demo.http.HttpTest] Running with Spring Boot v2.6.6, Spring v5.3.18
-2022-06-06 17:50:42.101[Test worker] INFO  [com.example.demo.http.HttpTest] No active profile set, falling back to 1 default profile: "default"
-2022-06-06 17:50:49.522[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
-2022-06-06 17:50:49.531[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
-2022-06-06 17:50:49.538[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
-2022-06-06 17:50:50.187[Test worker] INFO  [com.example.demo.http.HttpTest] Started HttpTest in 8.419 seconds (JVM running for 11.124)
-2022-06-06 17:50:51.407[Test worker] INFO  [com.example.demo.http.HttpTest] Http call response status: 404, response body: {"timestamp":"2022-06-06T09:50:51.330+00:00","status":404,"error":"Not Found","path":"/visit"}.
-2022-06-06 17:52:13.681[Test worker] INFO  [com.example.demo.http.HttpTest] Starting HttpTest using Java 11.0.14 on C02G65QMMD6M with PID 45484 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
-2022-06-06 17:52:13.681[Test worker] DEBUG [com.example.demo.http.HttpTest] Running with Spring Boot v2.6.6, Spring v5.3.18
-2022-06-06 17:52:13.682[Test worker] INFO  [com.example.demo.http.HttpTest] No active profile set, falling back to 1 default profile: "default"
-2022-06-06 17:52:21.591[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
-2022-06-06 17:52:21.603[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
-2022-06-06 17:52:21.613[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
-2022-06-06 17:52:22.424[Test worker] INFO  [com.example.demo.http.HttpTest] Started HttpTest in 9.155 seconds (JVM running for 11.93)
-2022-06-06 17:52:56.537[Test worker] INFO  [com.example.demo.http.HttpTest] Starting HttpTest using Java 11.0.14 on C02G65QMMD6M with PID 45556 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
-2022-06-06 17:52:56.538[Test worker] DEBUG [com.example.demo.http.HttpTest] Running with Spring Boot v2.6.6, Spring v5.3.18
-2022-06-06 17:52:56.539[Test worker] INFO  [com.example.demo.http.HttpTest] No active profile set, falling back to 1 default profile: "default"
-2022-06-06 17:53:04.821[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
-2022-06-06 17:53:04.830[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
-2022-06-06 17:53:04.837[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
-2022-06-06 17:53:05.591[Test worker] INFO  [com.example.demo.http.HttpTest] Started HttpTest in 9.528 seconds (JVM running for 12.076)
-2022-06-06 17:53:06.668[Test worker] INFO  [com.example.demo.http.HttpTest] Http call response status: 404, response body: {"timestamp":"2022-06-06T09:53:06.647+00:00","status":404,"error":"Not Found","path":"/visit"}.
-2022-06-06 18:11:39.326[Test worker] INFO  [com.example.demo.http.HttpTest] Starting HttpTest using Java 11.0.14 on C02G65QMMD6M with PID 46060 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
-2022-06-06 18:11:39.327[Test worker] DEBUG [com.example.demo.http.HttpTest] Running with Spring Boot v2.6.6, Spring v5.3.18
-2022-06-06 18:11:39.328[Test worker] INFO  [com.example.demo.http.HttpTest] No active profile set, falling back to 1 default profile: "default"
-2022-06-06 18:11:46.835[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
-2022-06-06 18:11:46.844[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
-2022-06-06 18:11:46.852[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
-2022-06-06 18:11:47.504[Test worker] INFO  [com.example.demo.http.HttpTest] Started HttpTest in 8.56 seconds (JVM running for 10.953)
-2022-06-06 18:16:49.793[Test worker] INFO  [com.example.demo.http.HttpTest] Starting HttpTest using Java 11.0.14 on C02G65QMMD6M with PID 46239 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
-2022-06-06 18:16:49.795[Test worker] DEBUG [com.example.demo.http.HttpTest] Running with Spring Boot v2.6.6, Spring v5.3.18
-2022-06-06 18:16:49.796[Test worker] INFO  [com.example.demo.http.HttpTest] No active profile set, falling back to 1 default profile: "default"
-2022-06-06 18:16:57.833[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
-2022-06-06 18:16:57.843[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
-2022-06-06 18:16:57.850[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
-2022-06-06 18:16:58.572[Test worker] INFO  [com.example.demo.http.HttpTest] Started HttpTest in 9.158 seconds (JVM running for 15.194)
-2022-06-06 18:17:52.341[Test worker] INFO  [com.example.demo.http.HttpTest] Starting HttpTest using Java 11.0.14 on C02G65QMMD6M with PID 46304 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
-2022-06-06 18:17:52.342[Test worker] DEBUG [com.example.demo.http.HttpTest] Running with Spring Boot v2.6.6, Spring v5.3.18
-2022-06-06 18:17:52.343[Test worker] INFO  [com.example.demo.http.HttpTest] No active profile set, falling back to 1 default profile: "default"
-2022-06-06 18:17:58.756[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
-2022-06-06 18:17:58.765[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
-2022-06-06 18:17:58.772[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
-2022-06-06 18:17:59.368[Test worker] INFO  [com.example.demo.http.HttpTest] Started HttpTest in 7.373 seconds (JVM running for 14.994)
-2022-06-06 18:18:35.543[Test worker] INFO  [com.example.demo.http.HttpTest] Starting HttpTest using Java 11.0.14 on C02G65QMMD6M with PID 46390 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
-2022-06-06 18:18:35.544[Test worker] DEBUG [com.example.demo.http.HttpTest] Running with Spring Boot v2.6.6, Spring v5.3.18
-2022-06-06 18:18:35.545[Test worker] INFO  [com.example.demo.http.HttpTest] No active profile set, falling back to 1 default profile: "default"
-2022-06-06 18:18:44.443[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
-2022-06-06 18:18:44.452[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
-2022-06-06 18:18:44.460[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
-2022-06-06 18:18:45.290[Test worker] INFO  [com.example.demo.http.HttpTest] Started HttpTest in 10.147 seconds (JVM running for 13.114)
-2022-06-06 18:19:25.182[Test worker] INFO  [com.example.demo.http.HttpTest] Http call response status: 200, response body: {"code":"10086","data":true}.
