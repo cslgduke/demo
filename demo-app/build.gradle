@@ -39,6 +39,7 @@ dependencies {
 	implementation 'com.azure:azure-security-keyvault-keys:4.2.3'
 	implementation 'com.azure:azure-identity:1.2.0'
 
+	implementation 'com.alibaba.compileflow:compileflow:1.0.0-RC2'
 }
 
 tasks.named('test') {
