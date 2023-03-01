@@ -23,6 +23,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	implementation 'org.springframework.boot:spring-boot-starter-jersey'
 
 	runtimeOnly 'org.postgresql:postgresql'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -40,6 +41,15 @@ dependencies {
 	implementation 'com.azure:azure-identity:1.2.0'
 
 	implementation 'com.alibaba.compileflow:compileflow:1.0.0-RC2'
+	api 'io.fabric8:kubernetes-client:5.11.2'
+	api 'org.eclipse.persistence:eclipselink:2.7.5'
+
+
+
+	implementation 'org.apache.olingo:olingo-odata2-core:2.0.12'
+	implementation 'org.apache.olingo:olingo-odata2-jpa-processor-core:2.0.12'
+	implementation 'org.apache.olingo:olingo-odata2-jpa-processor-ref:2.0.12'
+
 }
 
 tasks.named('test') {

@@ -1,0 +1,31 @@
+{
+  "xsappname": "RGP",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.view",
+      "description": "View data"
+    },
+    {
+      "name": "$XSAPPNAME.create",
+      "description": "Create data",
+      "granted-apps": ["$XSAPPNAME(application,RGM)"]
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "rgpView",
+      "description": "Role for viewing data",
+      "scope-references": [
+        "$XSAPPNAME.view"
+      ]
+    },
+    {
+      "name": "rgpCreate",
+      "description": "Role for creating data",
+      "scope-references": [
+        "$XSAPPNAME.create",
+        "$XSAPPNAME.view"
+      ]
+    }
+  ]
+}

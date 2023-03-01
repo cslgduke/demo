@@ -1,17 +1,13 @@
 package com.cslgduke.demo.core.test.jackson;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.annotation.JSONField;
-import com.alibaba.fastjson.parser.ParserConfig;
 import com.alibaba.fastjson.serializer.PropertyFilter;
-import com.alibaba.fastjson.support.spring.PropertyPreFilters;
 import com.fasterxml.jackson.annotation.JsonFilter;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.json.JsonReadFeature;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import lombok.AllArgsConstructor;
@@ -21,11 +17,19 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * @author i565244
  */
 @Slf4j
 public class JacksonTest {
+
+    ObjectMapper mapper = new ObjectMapper();
+
     @Test
     public void test_serialize() throws JsonProcessingException {
         var user = User.builder().username("James").password("******").age(18).gender("Meal").blog("James@Weibo").build();
@@ -60,10 +64,17 @@ public class JacksonTest {
     }
 
     @Test
-    public void test_re_serialize_filter_fastjson(){
-        var user = User.builder().username("James").password("******").age(18).gender("Meal").blog("James@Weibo").build();
-        var str = JSON.toJSONString(user);
-        log.info("Fastjson jsonStr:{}", JSON.toJSONString(user,new MyFilter()));
+    public void test_re_serialize_filter_fastjson() throws JsonProcessingException {
+        var user1 = User.builder().username("James").password("******").age(18).gender("Meal").blog("James@Weibo").build();
+        var user2 = User.builder().username("James").password("******").age(18).gender("Meal").blog("James@Weibo").build();
+
+        log.info("Fastjson jsonStr:{}", JSON.toJSONString(user1,new MyFilter()));
+
+        var jsonStr = JSON.toJSONString(Arrays.asList(user1,user2));
+        log.info("list user:{}",jsonStr);
+        ObjectMapper mapper = new ObjectMapper();
+        var userList = mapper.readValue(jsonStr, new TypeReference<List<User>>() {});
+        log.info("new user list:{}",JSON.toJSONString(userList));
     }
 
     @Data
@@ -90,5 +101,25 @@ public class JacksonTest {
             return true;
         }
     }
+
+
+    @Test
+    public void test_nested_obj_jackson() throws JsonProcessingException {
+        OutterDto outter = OutterDto.builder().name("JacksonTest").build();
+        outter.setInner(InnerDto.builder().index(0).desc("Summary").build());
+
+        outter.setInners(Arrays.asList(
+                InnerDto.builder().index(1).desc("inner-1").build(),
+                InnerDto.builder().index(2).desc("inner-2").build()));
+
+        var jsonStr = mapper.writeValueAsString(outter);
+        log.info("outter info:{}",jsonStr);
+
+
+
+        var deSerialObj = mapper.readValue(jsonStr,OutterDto.class);
+        log.info("deserial outter obj:{}",jsonStr);
+    }
+
 
 }

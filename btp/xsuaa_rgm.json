@@ -1,0 +1,51 @@
+{
+  "xsappname": "RGM",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.view",
+      "description": "View data"
+    },
+    {
+      "name": "$XSAPPNAME.create",
+      "description": "Create data"
+    },
+    {
+      "name": "$XSAPPNAME.RGP.create",
+      "description": "Create data"
+    },
+    {
+      "name": "RGP.view",
+      "description": "View data"
+    },
+    {
+      "name": "$XSAPPNAME.rgp",
+      "description": "rgp test"
+    }
+  ],
+  "foreign-scope-references": ["$ACCEPT_GRANTED_SCOPES"],
+  "role-templates": [
+    {
+      "name": "rgmView",
+      "description": "Role for viewing data",
+      "scope-references": [
+        "$XSAPPNAME.view"
+      ]
+    },
+    {
+      "name": "rgmCreate",
+      "description": "Role for creating data",
+      "scope-references": [
+        "$XSAPPNAME.create",
+        "$XSAPPNAME.view"
+      ]
+    },{
+      "name": "rgpCreate",
+      "description": "Role for creating rgp data",
+      "scope-references": [
+        "$XSAPPNAME.RGP.create",
+        "RGP.view",
+        "$XSAPPNAME.rgp"
+      ]
+    }
+  ]
+}

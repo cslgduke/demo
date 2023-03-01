@@ -20,11 +20,15 @@ public class DurationTest {
     public void testApi() {
         var start = LocalDateTime.of(2021, 1, 1, 0, 0);
         var duration = Duration.between(start, LocalDateTime.now());
-//        System.out.println(duration.get(ChronoUnit.DAYS));
+        System.out.println(duration.get(ChronoUnit.DAYS));
         System.out.println("day of year :" + LocalDate.now().getDayOfYear());
 
         LocalDate startDate = LocalDate.of(2021, 1, 1);
         Period period = Period.between(startDate, LocalDate.now());
+
+
+        var seconds = ChronoUnit.SECONDS.between(start, LocalDateTime.now());
+        System.out.println("duration seconds:" + seconds);
 
         var minutes = ChronoUnit.MINUTES.between(start, LocalDateTime.now());
         System.out.println("duration minutes:" + minutes);

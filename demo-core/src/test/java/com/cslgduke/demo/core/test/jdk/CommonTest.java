@@ -140,4 +140,19 @@ public class CommonTest {
         }
 
     }
+
+
+
+    private static final String registerServiceBody = "{\n" +
+            "    \"cluster\":\"crp-dev\",\n" +
+            "    \"namespace\":\"crp-sit\",\n" +
+            "    \"mmpCluster\":\"crp-dev\",\n" +
+            "    \"mmpNamespace\":\"crp-sit\",\n" +
+            "    \"services\":[{\"serviceName\":\"%s\",\"endpoint\":\"https://api.crp-sit.crp-dev.eurekacloud.io/integration-config/system/v1/tenant-lcm-plus\",\"order\":50,\"group\":\"defaultGroup\"}]\n" +
+            "}";
+
+    public static void main(String[] args) {
+        System.out.println(registerServiceBody);
+    }
+
 }

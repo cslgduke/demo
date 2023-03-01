@@ -2,4 +2,5 @@ rootProject.name = 'demo'
 include 'demo-core'
 include 'demo-app'
 include 'demo-cucumber'
+include 'demo-k8s'
 

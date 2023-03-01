@@ -18,10 +18,33 @@ import java.util.stream.Collectors;
 public class ThreadTest {
 
     @Test
+    public void test_completable() {
+        log.info("start");
+        CompletableFuture.supplyAsync(()->{
+            log.info("**********");
+            return "";
+        }).join();
+        log.info("finish");
+
+    }
+
+    @Test
     public void test_parallel_stream(){
         List<String> list = Arrays.asList("Sto","Zto","YTO","EMS");
-        var prices = list.parallelStream().map(this::priceCalculate).collect(Collectors.toList());
-        log.info("prices:{}",prices);
+//        var prices = list.parallelStream().map(this::priceCalculate).collect(Collectors.toList());
+
+
+        var executor = Executors.newFixedThreadPool(2);
+        executor.execute( () -> {
+            list.parallelStream().map(this::priceCalculate).collect(Collectors.toList());
+        });
+
+
+        ForkJoinPool forkJoinPool = new ForkJoinPool();
+        forkJoinPool.execute(() ->{
+            list.parallelStream().map(this::priceCalculate).collect(Collectors.toList());
+        });
+
     }
 
     private String priceCalculate(String shop){
@@ -29,9 +52,13 @@ public class ThreadTest {
         return "shop:" + shop + ",price:"+ RandomUtil.randomDouble();
     }
 
+
+
     @Test
     public void test_completable_future() throws ExecutionException, InterruptedException {
         var executor = Executors.newFixedThreadPool(100);
+
+
         CompletableFuture<String>  future = CompletableFuture.supplyAsync(() -> {
             try {
                 Thread.sleep(3 * 1000);
@@ -40,7 +67,7 @@ public class ThreadTest {
             }
             //is daemon true
             log.info("CompletableFuture async isDaemon:{}",Thread.currentThread().isDaemon());
-//            int a = 1/0;
+            int a = 1/0;
             return "result";
         },executor);
         // use main thread
@@ -48,21 +75,21 @@ public class ThreadTest {
         future.whenComplete((s,e) -> {
             //s代表正常执行结果，e代表执行异常
             log.info("whenComplete async execute result:{}",s);
-            log.error("whenComplete async execute error ",e);
+//            log.error("whenComplete async execute error ",e);
         });
 
         //user sub thread,default:ForkJoinPool
-        future.whenCompleteAsync((s,e) -> {
+/*        future.whenCompleteAsync((s,e) -> {
             log.info("whenCompleteAsync async execute result:{}",s);
             log.error("whenCompleteAsync async execute error ",e);
-        });
+        });*/
 
         //user specific sub thread
-        future.whenCompleteAsync((s,e) -> {
+/*        future.whenCompleteAsync((s,e) -> {
             log.info("whenCompleteAsync async execute,use specific thread,result:{}",s);
             log.error("whenCompleteAsync async execute,use specific thread, error ",e);
-        },executor);
-        //如果任务没有执行就返回默认值
+        },executor);*/
+
         log.info("result:{}",future.getNow("now"));
         log.info("result:{}",future.get());
     }
@@ -118,7 +145,7 @@ public class ThreadTest {
         }
     }
 
-    public void asyncFunction(){
+    private void asyncFunction(){
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -176,5 +203,16 @@ public class ThreadTest {
         }
         log.info("executor info:{}",executor);
         System.exit(0);
+    }
+
+    private void aroundWithPlugins(Runnable runnable){
+        runnable.run();
+    }
+
+    @Test
+    public void test_thread(){
+        this.aroundWithPlugins(() ->{
+            log.info("********");
+        });
     }
 }

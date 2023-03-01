@@ -1,0 +1,9 @@
+{
+"xsappname":"xsuaa",
+"appUrls":{
+"getDependencies":"https://cis-abap-saas-app.cfapps.eu10.hana.ondemand.com/callback/v1.0/dependencies",
+"onSubscription":"https://cis-abap-saas-app.cfapps.eu10.hana.ondemand.com/callback/v1.0/tenants/{tenantId}"
+},
+"displayName":"A Saas Solution by Dave",
+"description":"A Saas Solution by Dave"
+}

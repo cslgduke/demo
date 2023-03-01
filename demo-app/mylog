@@ -1,288 +1,121 @@
-2022-06-30 15:26:09.595[Test worker] ERROR [c.e.demo.azure.AzureRestApiTest] Call https://storagefdipoc.blob.core.windows.net/1003-data-cic-di-poc?restype=container failed, json body: null, error: {}
-java.lang.NullPointerException: null
-	at org.apache.http.impl.client.CloseableHttpClient.determineTarget(CloseableHttpClient.java:92)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:108)
-	at com.example.demo.azure.AzureRestApiTest.test_blobContainerClient(AzureRestApiTest.java:27)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:725)
-	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
-	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:149)
-	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:140)
-	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:84)
-	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
-	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
-	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
-	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:214)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:210)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:135)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:66)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:96)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:75)
-	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:99)
-	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:79)
-	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:75)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:61)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
-	at com.sun.proxy.$Proxy5.stop(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.stop(TestWorker.java:135)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:182)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:164)
-	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:414)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
-	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-2022-06-30 15:27:10.644[Test worker] ERROR [c.e.demo.azure.AzureRestApiTest] Call https://storagefdipoc.blob.core.windows.net/1003-data-cic-di-poc?restype=container failed, json body: null, error: {}
-java.lang.NullPointerException: null
-	at org.apache.http.impl.client.CloseableHttpClient.determineTarget(CloseableHttpClient.java:92)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:108)
-	at com.example.demo.azure.AzureRestApiTest.test_blobContainerClient(AzureRestApiTest.java:28)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:725)
-	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
-	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:149)
-	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:140)
-	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:84)
-	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
-	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
-	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
-	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:214)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:210)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:135)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:66)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:96)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:75)
-	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:99)
-	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:79)
-	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:75)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:61)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
-	at com.sun.proxy.$Proxy5.stop(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.stop(TestWorker.java:135)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:182)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:164)
-	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:414)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
-	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
-	at java.base/java.lang.Thread.run(Thread.java:834)
-2022-06-30 17:17:59.538[Test worker] ERROR [c.e.demo.azure.AzureRestApiTest] Call https://storagefdipoc.blob.core.windows.net/1003-data-cic-di-poc?restype=container failed, json body: null, error: {}
-java.lang.NullPointerException: null
-	at org.apache.http.impl.client.CloseableHttpClient.determineTarget(CloseableHttpClient.java:92)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:108)
-	at com.example.demo.azure.AzureRestApiTest.test_blobContainerClient(AzureRestApiTest.java:28)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:725)
-	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
-	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:149)
-	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:140)
-	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:84)
-	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
-	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
-	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
-	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:214)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:210)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:135)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:66)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67)
-	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:96)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:75)
-	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:99)
-	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:79)
-	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:75)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:61)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
-	at com.sun.proxy.$Proxy5.stop(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.stop(TestWorker.java:135)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:182)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:164)
-	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:414)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
-	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
-	at java.base/java.lang.Thread.run(Thread.java:834)
+2023-01-03 11:10:51.148[Test worker] INFO  [com.example.demo.jpa.JpaTest] Starting JpaTest using Java 11.0.14 on C02G65QMMD6M with PID 7967 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
+2023-01-03 11:10:51.151[Test worker] DEBUG [com.example.demo.jpa.JpaTest] Running with Spring Boot v2.6.6, Spring v5.3.18
+2023-01-03 11:10:51.152[Test worker] INFO  [com.example.demo.jpa.JpaTest] No active profile set, falling back to 1 default profile: "default"
+2023-01-03 11:11:02.659[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
+2023-01-03 11:11:02.669[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
+2023-01-03 11:11:02.678[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
+2023-01-03 11:11:03.801[Test worker] INFO  [com.example.demo.jpa.JpaTest] Started JpaTest in 13.078 seconds (JVM running for 16.044)
+2023-01-03 11:11:15.794[Test worker] INFO  [com.example.demo.jpa.JpaTest] cnt:[]
+2023-01-03 15:02:05.299[Test worker] INFO  [com.example.demo.jpa.JpaTest] Starting JpaTest using Java 11.0.14 on C02G65QMMD6M with PID 18415 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
+2023-01-03 15:02:05.299[Test worker] DEBUG [com.example.demo.jpa.JpaTest] Running with Spring Boot v2.6.6, Spring v5.3.18
+2023-01-03 15:02:05.300[Test worker] INFO  [com.example.demo.jpa.JpaTest] No active profile set, falling back to 1 default profile: "default"
+2023-01-03 15:02:16.774[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
+2023-01-03 15:02:16.784[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
+2023-01-03 15:02:16.791[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
+2023-01-03 15:02:17.876[Test worker] INFO  [com.example.demo.jpa.JpaTest] Started JpaTest in 13.022 seconds (JVM running for 15.762)
+2023-01-03 15:02:31.916[Test worker] INFO  [com.example.demo.jpa.JpaTest] cnt:[]
+2023-01-03 15:04:22.146[Test worker] INFO  [com.example.demo.jpa.JpaTest] Starting JpaTest using Java 11.0.14 on C02G65QMMD6M with PID 18552 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
+2023-01-03 15:04:22.147[Test worker] DEBUG [com.example.demo.jpa.JpaTest] Running with Spring Boot v2.6.6, Spring v5.3.18
+2023-01-03 15:04:22.148[Test worker] INFO  [com.example.demo.jpa.JpaTest] No active profile set, falling back to 1 default profile: "default"
+2023-01-03 15:04:34.012[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
+2023-01-03 15:04:34.042[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
+2023-01-03 15:04:34.057[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
+2023-01-03 15:04:35.330[Test worker] INFO  [com.example.demo.jpa.JpaTest] Started JpaTest in 13.605 seconds (JVM running for 16.417)
+2023-01-03 15:04:39.355[Test worker] INFO  [com.example.demo.jpa.JpaTest] cnt:[]
+2023-01-03 15:06:59.453[Test worker] INFO  [com.example.demo.jpa.JpaTest] Starting JpaTest using Java 11.0.14 on C02G65QMMD6M with PID 18809 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
+2023-01-03 15:06:59.454[Test worker] DEBUG [com.example.demo.jpa.JpaTest] Running with Spring Boot v2.6.6, Spring v5.3.18
+2023-01-03 15:06:59.455[Test worker] INFO  [com.example.demo.jpa.JpaTest] No active profile set, falling back to 1 default profile: "default"
+2023-01-03 15:07:22.971[Test worker] INFO  [com.example.demo.jpa.JpaTest] Starting JpaTest using Java 11.0.14 on C02G65QMMD6M with PID 18859 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
+2023-01-03 15:07:22.972[Test worker] DEBUG [com.example.demo.jpa.JpaTest] Running with Spring Boot v2.6.6, Spring v5.3.18
+2023-01-03 15:07:22.973[Test worker] INFO  [com.example.demo.jpa.JpaTest] No active profile set, falling back to 1 default profile: "default"
+2023-01-03 15:07:33.817[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
+2023-01-03 15:07:33.828[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
+2023-01-03 15:07:33.849[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
+2023-01-03 15:07:34.988[Test worker] INFO  [com.example.demo.jpa.JpaTest] Started JpaTest in 12.477 seconds (JVM running for 15.214)
+2023-01-03 15:07:46.639[Test worker] INFO  [com.example.demo.jpa.JpaTest] cnt:[]
+2023-01-03 15:08:09.315[Test worker] INFO  [com.example.demo.jpa.JpaTest] cnt:[]
+2023-01-03 15:10:38.985[Test worker] INFO  [com.example.demo.jpa.JpaTest] Starting JpaTest using Java 11.0.14 on C02G65QMMD6M with PID 19147 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
+2023-01-03 15:10:38.987[Test worker] DEBUG [com.example.demo.jpa.JpaTest] Running with Spring Boot v2.6.6, Spring v5.3.18
+2023-01-03 15:10:38.988[Test worker] INFO  [com.example.demo.jpa.JpaTest] No active profile set, falling back to 1 default profile: "default"
+2023-01-03 15:10:50.069[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
+2023-01-03 15:10:50.089[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
+2023-01-03 15:10:50.107[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
+2023-01-03 15:10:51.448[Test worker] INFO  [com.example.demo.jpa.JpaTest] Started JpaTest in 12.842 seconds (JVM running for 15.256)
+2023-01-03 15:11:00.652[Test worker] INFO  [com.example.demo.jpa.JpaTest] cnt:[]
+2023-01-03 15:15:18.550[Test worker] INFO  [com.example.demo.jpa.JpaTest] Starting JpaTest using Java 11.0.14 on C02G65QMMD6M with PID 19461 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
+2023-01-03 15:15:18.551[Test worker] DEBUG [com.example.demo.jpa.JpaTest] Running with Spring Boot v2.6.6, Spring v5.3.18
+2023-01-03 15:15:18.552[Test worker] INFO  [com.example.demo.jpa.JpaTest] No active profile set, falling back to 1 default profile: "default"
+2023-01-03 15:15:30.313[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
+2023-01-03 15:15:30.324[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
+2023-01-03 15:15:30.334[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
+2023-01-03 15:15:31.414[Test worker] INFO  [com.example.demo.jpa.JpaTest] Started JpaTest in 13.319 seconds (JVM running for 15.802)
+2023-01-03 15:15:39.864[Test worker] INFO  [com.example.demo.jpa.JpaTest] cnt:[]
+2023-01-03 15:17:52.139[Test worker] INFO  [com.example.demo.jpa.JpaTest] Starting JpaTest using Java 11.0.14 on C02G65QMMD6M with PID 19670 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
+2023-01-03 15:17:52.139[Test worker] DEBUG [com.example.demo.jpa.JpaTest] Running with Spring Boot v2.6.6, Spring v5.3.18
+2023-01-03 15:17:52.140[Test worker] INFO  [com.example.demo.jpa.JpaTest] No active profile set, falling back to 1 default profile: "default"
+2023-01-03 15:18:02.776[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
+2023-01-03 15:18:02.786[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
+2023-01-03 15:18:02.794[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
+2023-01-03 15:18:03.876[Test worker] INFO  [com.example.demo.jpa.JpaTest] Started JpaTest in 12.136 seconds (JVM running for 14.455)
+2023-01-03 15:18:12.867[Test worker] INFO  [com.example.demo.jpa.JpaTest] cnt:[]
+2023-01-03 15:25:04.441[Test worker] INFO  [com.example.demo.jpa.JpaTest] Starting JpaTest using Java 11.0.14 on C02G65QMMD6M with PID 20412 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
+2023-01-03 15:25:04.442[Test worker] DEBUG [com.example.demo.jpa.JpaTest] Running with Spring Boot v2.6.6, Spring v5.3.18
+2023-01-03 15:25:04.443[Test worker] INFO  [com.example.demo.jpa.JpaTest] No active profile set, falling back to 1 default profile: "default"
+2023-01-03 15:25:18.105[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
+2023-01-03 15:25:18.131[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
+2023-01-03 15:25:18.141[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
+2023-01-03 15:25:19.372[Test worker] INFO  [com.example.demo.jpa.JpaTest] Started JpaTest in 15.377 seconds (JVM running for 18.307)
+2023-01-03 15:25:29.213[Test worker] INFO  [com.example.demo.jpa.JpaTest] cnt:[]
+2023-01-03 15:46:20.889[Test worker] INFO  [com.example.demo.jpa.JpaTest] Starting JpaTest using Java 11.0.14 on C02G65QMMD6M with PID 21967 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
+2023-01-03 15:46:20.890[Test worker] DEBUG [com.example.demo.jpa.JpaTest] Running with Spring Boot v2.6.6, Spring v5.3.18
+2023-01-03 15:46:20.892[Test worker] INFO  [com.example.demo.jpa.JpaTest] No active profile set, falling back to 1 default profile: "default"
+2023-01-03 15:46:33.126[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
+2023-01-03 15:46:33.136[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
+2023-01-03 15:46:33.144[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
+2023-01-03 15:46:34.288[Test worker] INFO  [com.example.demo.jpa.JpaTest] Started JpaTest in 13.818 seconds (JVM running for 16.804)
+2023-01-03 15:46:57.458[Test worker] INFO  [com.example.demo.jpa.JpaTest] cnt:[]
+2023-01-03 15:47:44.466[Test worker] INFO  [com.example.demo.jpa.JpaTest] Starting JpaTest using Java 11.0.14 on C02G65QMMD6M with PID 22096 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
+2023-01-03 15:47:44.467[Test worker] DEBUG [com.example.demo.jpa.JpaTest] Running with Spring Boot v2.6.6, Spring v5.3.18
+2023-01-03 15:47:44.468[Test worker] INFO  [com.example.demo.jpa.JpaTest] No active profile set, falling back to 1 default profile: "default"
+2023-01-03 15:47:55.050[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
+2023-01-03 15:47:55.060[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
+2023-01-03 15:47:55.074[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
+2023-01-03 15:47:56.199[Test worker] INFO  [com.example.demo.jpa.JpaTest] Started JpaTest in 12.17 seconds (JVM running for 14.432)
+2023-01-03 15:48:04.709[Test worker] INFO  [com.example.demo.jpa.JpaTest] cnt:[]
+2023-01-03 15:48:33.300[Test worker] INFO  [com.example.demo.jpa.JpaTest] Starting JpaTest using Java 11.0.14 on C02G65QMMD6M with PID 22180 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
+2023-01-03 15:48:33.300[Test worker] DEBUG [com.example.demo.jpa.JpaTest] Running with Spring Boot v2.6.6, Spring v5.3.18
+2023-01-03 15:48:33.301[Test worker] INFO  [com.example.demo.jpa.JpaTest] No active profile set, falling back to 1 default profile: "default"
+2023-01-03 15:48:43.855[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
+2023-01-03 15:48:43.866[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
+2023-01-03 15:48:43.876[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
+2023-01-03 15:48:44.935[Test worker] INFO  [com.example.demo.jpa.JpaTest] Started JpaTest in 12.047 seconds (JVM running for 14.406)
+2023-01-03 15:48:53.553[Test worker] INFO  [com.example.demo.jpa.JpaTest] cnt:[]
+2023-01-03 15:51:46.089[Test worker] INFO  [com.example.demo.jpa.JpaTest] Starting JpaTest using Java 11.0.14 on C02G65QMMD6M with PID 22440 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
+2023-01-03 15:51:46.090[Test worker] DEBUG [com.example.demo.jpa.JpaTest] Running with Spring Boot v2.6.6, Spring v5.3.18
+2023-01-03 15:51:46.091[Test worker] INFO  [com.example.demo.jpa.JpaTest] No active profile set, falling back to 1 default profile: "default"
+2023-01-03 15:51:58.086[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
+2023-01-03 15:51:58.097[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
+2023-01-03 15:51:58.106[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
+2023-01-03 15:51:59.400[Test worker] INFO  [com.example.demo.jpa.JpaTest] Started JpaTest in 13.758 seconds (JVM running for 16.575)
+2023-01-03 15:53:10.227[Test worker] INFO  [com.example.demo.jpa.JpaTest] Starting JpaTest using Java 11.0.14 on C02G65QMMD6M with PID 22570 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
+2023-01-03 15:53:10.228[Test worker] DEBUG [com.example.demo.jpa.JpaTest] Running with Spring Boot v2.6.6, Spring v5.3.18
+2023-01-03 15:53:10.230[Test worker] INFO  [com.example.demo.jpa.JpaTest] No active profile set, falling back to 1 default profile: "default"
+2023-01-03 15:53:21.736[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
+2023-01-03 15:53:21.748[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
+2023-01-03 15:53:21.756[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
+2023-01-03 15:53:22.948[Test worker] INFO  [com.example.demo.jpa.JpaTest] Started JpaTest in 13.15 seconds (JVM running for 15.804)
+2023-01-03 15:53:33.822[Test worker] INFO  [com.example.demo.jpa.JpaTest] cnt:[]
+2023-01-03 15:56:07.104[Test worker] INFO  [com.example.demo.jpa.JpaTest] Starting JpaTest using Java 11.0.14 on C02G65QMMD6M with PID 22811 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
+2023-01-03 15:56:07.105[Test worker] DEBUG [com.example.demo.jpa.JpaTest] Running with Spring Boot v2.6.6, Spring v5.3.18
+2023-01-03 15:56:07.105[Test worker] INFO  [com.example.demo.jpa.JpaTest] No active profile set, falling back to 1 default profile: "default"
+2023-01-03 15:56:20.476[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
+2023-01-03 15:56:20.488[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
+2023-01-03 15:56:20.497[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
+2023-01-03 15:56:21.639[Test worker] INFO  [com.example.demo.jpa.JpaTest] Started JpaTest in 14.991 seconds (JVM running for 18.094)
+2023-01-03 15:57:27.151[Test worker] INFO  [com.example.demo.jpa.JpaTest] Starting JpaTest using Java 11.0.14 on C02G65QMMD6M with PID 22932 (started by i565244 in /Users/i565244/IdeaProjects/demo/demo-app)
+2023-01-03 15:57:27.152[Test worker] DEBUG [com.example.demo.jpa.JpaTest] Running with Spring Boot v2.6.6, Spring v5.3.18
+2023-01-03 15:57:27.153[Test worker] INFO  [com.example.demo.jpa.JpaTest] No active profile set, falling back to 1 default profile: "default"
+2023-01-03 15:57:38.422[Test worker] INFO  [c.e.demo.config.order.ConfigurationC] ConfigurationC execute...
+2023-01-03 15:57:38.432[Test worker] INFO  [c.e.demo.config.order.ConfigurationB] ConfigurationB execute...
+2023-01-03 15:57:38.441[Test worker] INFO  [c.e.demo.config.order.ConfigurationA] ConfigurationA execute...
+2023-01-03 15:57:39.518[Test worker] INFO  [com.example.demo.jpa.JpaTest] Started JpaTest in 12.803 seconds (JVM running for 15.619)
