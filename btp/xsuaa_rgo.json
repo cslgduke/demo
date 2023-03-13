@@ -1,5 +1,5 @@
 {
-  "xsappname": "RGO",
+  "xsappname": "rgo",
   "scopes": [
     {
       "name": "$XSAPPNAME.view",
@@ -7,8 +7,7 @@
     },
     {
       "name": "$XSAPPNAME.create",
-      "description": "Create data",
-      "granted-apps": ["$XSAPPNAME(application,RGM)"]
+      "description": "Create data"
     }
   ],
   "role-templates": [

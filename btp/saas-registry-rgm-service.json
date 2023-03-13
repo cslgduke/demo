@@ -1,0 +1,10 @@
+{
+  "xsappname": "rgmbroker!b7239|rgm!b7239",
+  "appName": "rgm-service",
+  "appUrls": {
+    "getDependencies": "",
+    "onSubscription": "https://demo-app-quick-kangaroo-fe.cfapps.us21.hana.ondemand.com/tenants/{tenantId}"
+  },
+  "displayName": "rgm-service",
+  "description": "rgm-service"
+}

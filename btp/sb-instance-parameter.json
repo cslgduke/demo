@@ -1,0 +1,25 @@
+{
+  "xs-security": {
+    "xsappname": "xsuaa-broker",
+    "authorities": [
+      "$XSAPPNAME.view",
+      "$XSAPPNAME.create"
+    ],
+    "scopes": [
+      {
+        "name": "$XSAPPNAME.view",
+        "description": "View data"
+      },
+      {
+        "name": "$XSAPPNAME.create",
+        "description": "Create data"
+      }
+    ],
+    "oauth2-configuration": {
+      "credential-types": [
+        "binding-secret",
+        "x509"
+      ]
+    }
+  }
+}

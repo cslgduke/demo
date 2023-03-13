@@ -1,0 +1,9 @@
+{
+  "xsappname": "xsuaa-rgo",
+  "appUrls": {
+    "getDependencies": "https://demo-app-quick-kangaroo-fe.cfapps.us21.hana.ondemand.com/dependency/rgm",
+    "onSubscription": "https://demo-app-quick-kangaroo-fe.cfapps.us21.hana.ondemand.com/tenants/{tenantId}"
+  },
+  "displayName": "Demo App -RGO-RGM",
+  "description": "A demo-app for RGO with RGM"
+}
