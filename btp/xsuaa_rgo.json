@@ -1,9 +1,15 @@
 {
-  "xsappname": "rgo",
+  "xsappname": "xsuaa-rgo",
   "scopes": [
     {
       "name": "$XSAPPNAME.view",
-      "description": "View data"
+      "description": "View data",
+      "grant-as-authority-to-apps": [
+        "rgm!b7239"
+      ],
+      "granted-apps" : [
+        "rgmbroker!b7239|rgm!b7239"
+      ]
     },
     {
       "name": "$XSAPPNAME.create",

@@ -1,0 +1,31 @@
+{
+  "xs-security": {
+    "xsappname": "dpi-enablement-inst",
+    "authorities": [
+      "$ACCEPT_GRANTED_AUTHORITIES"
+    ]
+  },
+  "dppConfig": {
+    "applicationName": "dpi-enablement-skeleton",
+    "information": {
+      "applicationTitle": "DPI Enablement Skeleton Application",
+      "applicationTitleKey": "dpi-enablement-skeleton",
+      "modules": [
+        {
+          "fullyQualifiedModuleName": "dpi-sample-module",
+          "applicationURL": "https://dpi-enablement-skeleton.cfapps.us21.hana.ondemand.com",
+          "endPoints": [
+            {
+              "type": "rest",
+              "serviceName": "EnablementSkeleton",
+              "serviceTitle": "Enablement Skeleton",
+              "serviceTitleKey": "Enablement Skeleton",
+              "serviceURI": "/api/v1",
+              "annotationProviderRestEndPoint": "/api/v1/dpp/metadata"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,18 +1,20 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: dave-test-openapi
+  name: dave-test-broker
 spec:
   hosts:
-    - api.rgp-uat.e4844d9.kyma.ondemand.com
+    - api.rgp-uat.eurekacloud.io
   gateways:
     - kyma-system/kyma-gateway
   http:
     - match:
         - uri:
-            prefix: /openapi-test
+            prefix: "/biz/broker"
+      rewrite:
+        uri: "/broker"
       route:
         - destination:
-            host: rgp-promotion-config
+            host: rgm-service-broker
             port:
               number: 80

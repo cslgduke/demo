@@ -5,6 +5,8 @@
     "getDependencies": "",
     "onSubscription": "https://demo-app-quick-kangaroo-fe.cfapps.us21.hana.ondemand.com/tenants/{tenantId}"
   },
-  "displayName": "rgm-service",
-  "description": "rgm-service"
+  "displayName": "rgm-service displayname",
+  "description": "rgm-service",
+  "onSubscriptionAsync": true,
+  "callbackTimeoutMillis": 300000
 }

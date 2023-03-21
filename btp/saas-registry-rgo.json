@@ -5,5 +5,7 @@
     "onSubscription": "https://demo-app-quick-kangaroo-fe.cfapps.us21.hana.ondemand.com/tenants/{tenantId}"
   },
   "displayName": "Demo App -RGO-RGM",
-  "description": "A demo-app for RGO with RGM"
+  "description": "A demo-app for RGO with RGM",
+  "onSubscriptionAsync": true,
+  "callbackTimeoutMillis": 300000
 }
