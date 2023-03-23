@@ -1,0 +1,57 @@
+apiVersion: btp.eureka.io/v1
+kind: Application
+metadata:
+  name: rgp
+spec:
+  description: SAP Revenue Growth Management Sales Planning for S/4HANA
+  displayName: Revenue Growth Planning
+  services:
+    - rgp-promotion-planning
+    - rgp-promotion-config
+    - user-configuration-plus
+  xsuaa-parameters:
+    role-templates:
+      - name: Key_Account_Manager
+        description: Key Account Manager
+        scope-references:
+          - $XSAPPNAME.MasterData.READ
+          - $XSAPPNAME.PromotionConfig.READ
+          - $XSAPPNAME.AccountPlan.READ
+          - $XSAPPNAME.AccountPlan.WRITE
+          - $XSAPPNAME.Promotion.READ
+          - $XSAPPNAME.Promotion.WRITE
+      - name: Admin
+        description: Admin
+        scope-references:
+          - $XSAPPNAME.MasterData.READ
+          - $XSAPPNAME.MasterData.WRITE
+          - $XSAPPNAME.PromotionConfig.READ
+          - $XSAPPNAME.PromotionConfig.WRITE
+          - $XSAPPNAME.AccountPlan.READ
+          - $XSAPPNAME.AccountPlan.WRITE
+          - $XSAPPNAME.Promotion.READ
+          - $XSAPPNAME.Promotion.WRITE
+    scopes:
+      - name: $XSAPPNAME.PromotionConfig.READ
+      - name: $XSAPPNAME.PromotionConfig.WRITE
+      - name: $XSAPPNAME.AccountPlan.WRITE
+      - name: $XSAPPNAME.AccountPlan.READ
+      - name: $XSAPPNAME.Promotion.READ
+      - name: $XSAPPNAME.Promotion.WRITE
+      - name: $XSAPPNAME.MasterData.READ
+      - name: $XSAPPNAME.MasterData.WRITE
+      - description: UAA
+        name: uaa.user
+      - grant-as-authority-to-apps:
+          - $XSAPPNAME(application,sap-provisioning,tenant-onboarding)
+        name: $XSAPPNAME.Callback
+      - description: application
+        name: $XSAPPNAME.application
+      - description: client
+        name: $XSAPPNAME.client
+    oauth2-configuration:
+      redirect-uris:
+        - https://*.salesplanning.io/**
+        - https://*.eurekacloud.io/**
+        - https://**.kyma.ondemand.com/**
+        - http://localhost:8080/**
