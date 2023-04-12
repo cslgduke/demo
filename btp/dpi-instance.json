@@ -1,6 +1,6 @@
 {
   "xs-security": {
-    "xsappname": "dpi-enablement-inst",
+    "xsappname": "xsuaa-rgm",
     "authorities": [
       "$ACCEPT_GRANTED_AUTHORITIES"
     ]
@@ -10,6 +10,8 @@
     "information": {
       "applicationTitle": "DPI Enablement Skeleton Application",
       "applicationTitleKey": "dpi-enablement-skeleton",
+      "cacheControl": "no-cache",
+      "dataSubjectDeletionUri": "https://dpi-enablement-skeleton.cfapps.us21.hana.ondemand.com/biz/v1/version/echo",
       "modules": [
         {
           "fullyQualifiedModuleName": "dpi-sample-module",
@@ -20,10 +22,30 @@
               "serviceName": "EnablementSkeleton",
               "serviceTitle": "Enablement Skeleton",
               "serviceTitleKey": "Enablement Skeleton",
-              "serviceURI": "/api/v1",
-              "annotationProviderRestEndPoint": "/api/v1/dpp/metadata"
+              "serviceURI": "/pdm",
+              "annotationProviderRestEndPoint": "/dpp/metadata"
             }
           ]
+        }
+      ]
+    },
+    "deletion": {
+      "applicationGroupDescription": "SAP CIC RGP",
+      "applicationGroupBaseURL": "https://dpi-enablement-skeleton.cfapps.us21.hana.ondemand.com",
+      "dataSubjects": [
+        {
+          "dataSubjectRole": "WorkforcePerson",
+          "dataSubjectDescription": "WorkforcePerson",
+          "dataSubjectBaseURL": "https://dpi-enablement-skeleton.cfapps.us21.hana.ondemand.com",
+          "dataSubjectDeletionEndPoint": "/drm/dataSubjectDeletion",
+          "legalEntity": {
+            "legalEntity": "Tenant",
+            "legalEntityDescription": "SaaS Tenant",
+            "legalEntityKey": "Tenant",
+            "legalEntityValueHelpEndPoint": "/drm/legalEntityValueHelp"
+          },
+          "legalGroundDiscovery": true,
+          "legalGroundDiscoveryEndPoint": "/drm/legalGroundDiscovery"
         }
       ]
     }
