@@ -12,7 +12,7 @@ import java.util.Objects;
 /**
  * @author i565244
  */
-@Service
+//@Service
 @Slf4j
 public class CacheService {
     @Autowired

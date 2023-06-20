@@ -1,20 +1,12 @@
 package com.cslgduke.demo.core.test.encryption;
 
 import cn.hutool.core.util.RandomUtil;
-import com.cslgduke.demo.core.utils.StringUtils;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
+import org.springframework.util.Base64Utils;
 
-import javax.crypto.KeyGenerator;
-import javax.crypto.SecretKey;
 import java.security.NoSuchAlgorithmException;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.util.Arrays;
+import java.util.Base64;
 
 /**
  * @author i565244
@@ -29,4 +21,18 @@ public class EncryptionTest {
         }
 
     }
+
+    @Test
+    public void test_base64()  {
+        Base64.Encoder baseEncoder = Base64.getEncoder();
+        var originStr = "abc";
+        var encryptStr =  Base64Utils.encodeToString(originStr.getBytes());
+        var decryptStr = String.valueOf(Base64Utils.decodeFromString(encryptStr));
+
+        log.info("originStr:{},encryptStr:{},decryptStr:{},test success:{}",originStr,encryptStr,decryptStr,originStr.equals(decryptStr));
+
+    }
+
+
+
 }

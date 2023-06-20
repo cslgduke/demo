@@ -18,4 +18,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query("update User t set t.no = function('nextval','user_no_seq') where t.no is null")
     void refreshUserNo();
 
+    @Modifying
+    @Transactional
+    @Query("delete from  User t where t.age < ?1")
+    int deleteByAge(int age);
 }

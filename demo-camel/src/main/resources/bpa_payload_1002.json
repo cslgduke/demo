@@ -1,0 +1,13 @@
+{
+    "activity_id_1002": "002cfb81822f44e3a9f3b5eef05b4b07",
+    "act_name_1002": "Costco",
+    "act_year": 2023,
+    "start_date": "2023-01-01T00:00:00Z",
+    "total_Revenue": 1000000.85,
+    "involve_products": [
+        {
+            "product_name": "productName",
+            "product_id": "productUid"
+        }
+    ]
+}

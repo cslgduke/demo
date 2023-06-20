@@ -1,7 +1,7 @@
 apiVersion: services.cloud.sap.com/v1alpha1
 kind: ServiceInstance
 metadata:
-  name: rgm-test-dpi
+  name: rgm-sit-dpi
 spec:
   serviceOfferingName: data-privacy-integration-service
   servicePlanName: application
@@ -15,7 +15,7 @@ spec:
           - x509
           - binding-secret
     dppConfig:
-      applicationName: rgp-dpi-rgm-test
+      applicationName: rgp-dpi-rgm-sit
       information:
         fullyQualifiedApplicationName: rgp-dpi-app
         applicationTitle: SAP Revenue Growth Planning
@@ -31,15 +31,15 @@ spec:
                 serviceURI: "/api/v1"
                 annotationProviderRestEndPoint: "/api/v1/dpp/metadata"
       deletion:
-        applicationGroupName: rgp-dpi-rgm-test
+        applicationGroupName: rgp-dpi-rgm-sit
         applicationGroupDescription: Revenue Growth Planning
         applicationGroupDescriptionKey: RGP
-        applicationGroupBaseURL: https://api.{{ .Values.nsDomain }}
+        applicationGroupBaseURL: https://api.rgp-uat.e4844d9.kyma.ondemand.com
         dataSubjects:
           - dataSubjectRole: Supplier
             dataSubjectDescription: Supplier
             dataSubjectDescriptionKey: SUPPLIER
-            dataSubjectBaseURL: https://api.{{ .Values.nsDomain }}
+            dataSubjectBaseURL: https://api.rgp-uat.e4844d9.kyma.ondemand.com
             dataSubjectInformationEndPoint: "/dpp/drm/manage-order-proposal/v1/dataSubjectInformation"
             dataSubjectDeletionEndPoint: "/dpp/drm/manage-order-proposal/v1/dataSubjectDeletion"
             dataSubjectsDestroyingEndPoint: "/dpp/drm/manage-order-proposal/v1/dataSubjectDestroying"

@@ -1,0 +1,24 @@
+version: '2.3'
+services:
+  #activemq容器
+  activemq:
+    #使用的镜像
+    image: webcenter/activemq
+    restart: always
+    #容器的映射端口
+    ports:
+      - 61613:61613
+      - 61616:61616
+      - 8161:8161
+    #定义挂载点
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ~/mnt/data/data/activemq:/data/activemq
+      - ~/mnt/data/var/log/activemq:/var/log/activemq
+    #环境变量
+    environment:
+      - ACTIVEMQ_ADMIN_LOGIN=
+      - ACTIVEMQ_ADMIN_PASSWORD=
+      - ACTIVEMQ_CONFIG_MINMEMORY=512
+      - ACTIVEMQ_CONFIG_MAXMEMORY=2048
+      - TZ=Asia/Shanghai

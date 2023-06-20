@@ -6,14 +6,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.junit.platform.commons.util.StringUtils;
 
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.nio.charset.Charset;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Arrays;
-import java.util.EnumMap;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author i565244
@@ -24,6 +24,7 @@ public class CommonTest {
     @Test
     public void test_localDateTime() {
         var str = "2022-05-03T20:00:00.000000";
+
         var ldt = LocalDateTime.parse((String) str);
     }
 
@@ -80,8 +81,12 @@ public class CommonTest {
 
 
     @Test
-    public void test_Map() {
+    public void test_Arrays() {
+        var strs = new String[]{"111"};
 
+        var parentStrs = new String[]{"222"};
+        var list = Arrays.stream(parentStrs).map(str -> str).collect(Collectors.toList());
+//        list.addAll(List.of(strs));
     }
 
     public enum TeamMemberFunctionEnum {
@@ -153,6 +158,18 @@ public class CommonTest {
 
     public static void main(String[] args) {
         System.out.println(registerServiceBody);
+    }
+
+
+
+    @Test
+    public void test_urlEncode() {
+        var rawStr = "hello world";
+        var encodeStr = URLEncoder.encode(rawStr, Charset.forName("utf-8"));
+        var decodeStr = URLDecoder.decode(encodeStr);
+        log.info("encodeStr:{}",encodeStr);
+        log.info("decodeStr:{}",decodeStr);
+
     }
 
 }

@@ -10,9 +10,11 @@ services:
     secrets:
       - r_pwd
       - t_pwd
+    ports:
+      - 3306:3306
 secrets:
   r_pwd:
-    file: ./password_test
+    file: ./password_root
   t_pwd:
     file: ./password_test
 

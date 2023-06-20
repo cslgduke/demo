@@ -10,6 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/demo-app" />
+            <option value="$PROJECT_DIR$/demo-camel" />
             <option value="$PROJECT_DIR$/demo-core" />
             <option value="$PROJECT_DIR$/demo-cucumber" />
             <option value="$PROJECT_DIR$/demo-k8s" />

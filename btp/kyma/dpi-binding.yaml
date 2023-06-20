@@ -1,0 +1,7 @@
+apiVersion: services.cloud.sap.com/v1
+kind: ServiceBinding
+metadata:
+  name: {{ .Release.Namespace }}-dpi
+spec:
+  serviceInstanceName: {{ .Release.Namespace }}-dpi
+  secretName: {{ .Release.Namespace }}-dpi

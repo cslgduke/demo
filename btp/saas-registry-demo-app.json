@@ -1,0 +1,12 @@
+{
+  "xsappname": "xsuaa-rgm",
+  "appUrls": {
+    "getDependencies": "https://demo-app-quick-kangaroo-fe.cfapps.us21.hana.ondemand.com/dependency/dpi2",
+    "onSubscription": "https://demo-app-quick-kangaroo-fe.cfapps.us21.hana.ondemand.com/tenants/{tenantId}",
+    "onSubscriptionAsync": true,
+    "onUnSubscriptionAsync": true,
+    "callbackTimeoutMillis": 300000
+  },
+  "displayName": "Demo App Dave",
+  "description": "A demo-app dave"
+}

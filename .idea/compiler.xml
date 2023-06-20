@@ -9,9 +9,11 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.22/lombok-1.18.22.jar" />
         </processorPath>
         <module name="demo.demo-app.main" />
+        <module name="demo.demo-camel.test" />
         <module name="demo.demo-k8s.main" />
         <module name="demo.demo-cucumber.test" />
         <module name="demo.demo-core.main" />
+        <module name="demo.demo-camel.main" />
         <module name="demo.demo-cucumber.main" />
         <module name="demo.demo-app.test" />
         <module name="demo.demo-core.test" />

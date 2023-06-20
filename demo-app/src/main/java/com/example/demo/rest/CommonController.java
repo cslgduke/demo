@@ -12,6 +12,7 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import vo.Response;
 
 import javax.annotation.Resource;
+import javax.persistence.EntityManager;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -50,7 +52,10 @@ public class CommonController {
     private RedisTemplate redisTemplate;
 
     @Autowired
-    private CacheService cacheService;
+    private EntityManager entityManager;
+
+//    @Autowired
+//    private CacheService cacheService;
 
     @PostMapping("/uuid")
     public String generateUUid() {
@@ -73,6 +78,21 @@ public class CommonController {
         return "success";
     }
 
+    @PostMapping("/userTest")
+    @Transactional
+    public String userTest() {
+        var sql = "select t from User t where t.id = 8";
+        var query = entityManager.createQuery(sql,User.class);
+        var user = query.getSingleResult();
+        user.setName("Dave100");
+//        user.setId(null);
+        var query2  = entityManager.createQuery(sql,User.class);
+        var user2 = query2.getSingleResult();
+        entityManager.refresh(user);
+
+        return "success";
+    }
+
 
     @PostMapping("/userSave")
     public String userSave() {
@@ -85,7 +105,7 @@ public class CommonController {
     @PostMapping("/userDel/{id}")
     public String userDel(@PathVariable Long id) {
         userRepository.deleteById(id);
-        cacheService.batchDeleteCache("userCache",Arrays.asList(String.valueOf(id)));
+//        cacheService.batchDeleteCache("userCache",Arrays.asList(String.valueOf(id)));
         return "success";
     }
 

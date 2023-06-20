@@ -1,14 +1,20 @@
 {
   "xs-security": {
-    "xsappname": "xsuaa-rgm",
+    "xsappname": "provider-xsuaa-broker",
     "authorities": [
       "$ACCEPT_GRANTED_AUTHORITIES"
-    ]
+    ],
+    "oauth2-configuration": {
+      "credential-types": [
+        "x509",
+        "binding-secret"
+      ]
+    }
   },
   "dppConfig": {
-    "applicationName": "dpi-enablement-skeleton",
+    "applicationName": "dpi-enablement-skeleton-2",
     "information": {
-      "applicationTitle": "DPI Enablement Skeleton Application",
+      "applicationTitle": "DPI Enablement Skeleton Application-2",
       "applicationTitleKey": "dpi-enablement-skeleton",
       "cacheControl": "no-cache",
       "dataSubjectDeletionUri": "https://dpi-enablement-skeleton.cfapps.us21.hana.ondemand.com/biz/v1/version/echo",
@@ -30,7 +36,7 @@
       ]
     },
     "deletion": {
-      "applicationGroupDescription": "SAP CIC RGP",
+      "applicationGroupDescription": "SAP CIC RGP-2",
       "applicationGroupBaseURL": "https://dpi-enablement-skeleton.cfapps.us21.hana.ondemand.com",
       "dataSubjects": [
         {

@@ -1,7 +1,7 @@
 apiVersion: services.cloud.sap.com/v1alpha1
 kind: ServiceBinding
 metadata:
-  name: rgm-test-dpi
+  name: rgm-sit-dpi
 spec:
-  serviceInstanceName: rgm-test-dpi
-  secretName: rgm-test-dpi
+  serviceInstanceName: rgm-sit-dpi
+  secretName: rgm-sit-dpi

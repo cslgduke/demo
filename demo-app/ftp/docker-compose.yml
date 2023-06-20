@@ -1,0 +1,13 @@
+version: '3'
+services:
+  ftp:
+    image: stilliard/pure-ftpd
+    container_name: ftpd
+    volumes:
+      - ~/mnt/disk1:/home/ftpusers/www
+      - ~/mnt/disk1/etc:/etc/pure-ftpd/passwd
+    ports:
+      - "20-21:20-21"
+      - "30000-30009:30000-30009"
+    command:
+      /bin/sh -c "/run.sh -c 100 -C 100 -l puredb:/etc/pure-ftpd/pureftpd.pdb -E -j -R -P 10.0.2.23  -p 30000:30009"

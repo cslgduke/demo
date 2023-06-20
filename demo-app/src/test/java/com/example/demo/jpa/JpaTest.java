@@ -142,6 +142,20 @@ public class JpaTest {
     }
 
     @Test
+//    @Transactional
+    public void testJPA_cache() {
+
+        var sql = "select t from User t where t.id = 8";
+        var query = entityManager.createQuery(sql,User.class);
+        var user =  query.getSingleResult();
+        log.info("db user info:{}",JSON.toJSONString(user));
+        user.setName("Dave100");
+        entityManager.persist(user);
+        entityManager.flush();
+        log.info("user info query by JPA:{}",JSON.toJSONString(entityManager.createQuery(sql,User.class).getResultList()));
+    }
+
+    @Test
     public void testPageQuery() {
         Pageable pageable = PageRequest.of(0,10);
         System.out.println("***pageable******：" + JSON.toJSONString(pageable));
@@ -165,6 +179,13 @@ public class JpaTest {
         log.info("rst:{}",rst);
         var ctTime = (Timestamp)rst[0];
 
+    }
+
+    @Test
+    public void test_deleteByAge() {
+        var age = 45;
+        var cnt = userRepository.deleteByAge(age);
+        log.info("delete records which age smaller than {}, records cnt:{}",age,cnt);
     }
 
 }

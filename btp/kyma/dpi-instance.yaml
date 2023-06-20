@@ -1,0 +1,53 @@
+apiVersion: services.cloud.sap.com/v1
+kind: ServiceInstance
+metadata:
+  name: {{ .Release.Namespace }}-dpi
+spec:
+  serviceOfferingName: data-privacy-integration-service
+  servicePlanName: application
+  parameters:
+    xs-security:
+      xsappname: {{ .Release.Namespace }}-rgp
+      authorities:
+        - "$ACCEPT_GRANTED_AUTHORITIES"
+      oauth2-configuration:
+        credential-types:
+          - x509
+          - binding-secret
+    dppConfig:
+      applicationName: rgm-dpi-{{ .Release.Namespace }}
+      information:
+        fullyQualifiedApplicationName: rgp-dpi-proxy
+        applicationTitle: SAP Revenue Growth Planning
+        applicationTitleKey: rgp-dpi-proxy
+        cacheControl: "no-cache"
+        dataSubjectDeletionUri: https://api-{{ .Values.nsDomain }}/biz/v1/version/echo
+        modules:
+          - fullyQualifiedModuleName: rgp-dpi-proxy
+            applicationURL: https://api-{{ .Values.nsDomain }}
+            endPoints:
+              - type: odataV4
+                serviceName: rgp-dpp-proxy
+                serviceTitle: rgp-dpp-proxy
+                serviceTitleKey: rgp-dpp-proxy
+                serviceURI: "/biz/v1/pdm/odata"
+                hasGdprV4Annotations: true
+      deletion:
+        applicationGroupName: rgm-dpi-{{ .Release.Namespace }}
+        applicationGroupDescription: Revenue Growth Planning
+        applicationGroupDescriptionKey: RGP
+        applicationGroupBaseURL: https://api-{{ .Values.nsDomain }}
+        dataSubjects:
+          - dataSubjectRole: WorkforcePerson
+            dataSubjectDescription: WorkforcePerson
+            dataSubjectDescriptionKey: WorkforcePerson
+            dataSubjectBaseURL: https://api-{{ .Values.nsDomain }}
+            dataSubjectDeletionEndPoint: "/drm/dataSubjectDeletion"
+            dataSubjectsDestroyingEndPoint: "/drm/dataSubjectsDestroying"
+            legalEntity:
+              legalEntity: RGP_Tenant
+              legalEntityDescription: Revenue Growth Planning
+              legalEntityDescriptionKey: RGP_Tenant
+              legalEntityValueHelpEndPoint: "/drm/legalEntityValueHelp"
+            legalGroundDiscovery: true
+            legalGroundDiscoveryEndPoint: "/drm/legalGroundDiscovery"
