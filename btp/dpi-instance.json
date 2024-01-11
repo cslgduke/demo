@@ -1,6 +1,6 @@
 {
   "xs-security": {
-    "xsappname": "provider-xsuaa-broker",
+    "xsappname": "xsuaa-rgm-2",
     "authorities": [
       "$ACCEPT_GRANTED_AUTHORITIES"
     ],

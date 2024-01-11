@@ -11,7 +11,7 @@ subprojects{
 
     jacocoTestReport {
         reports {
-            xml.enabled true
+//            xml.enabled true
         }
         afterEvaluate {
             classDirectories.setFrom(files(classDirectories.files.collect {
@@ -48,10 +48,10 @@ subprojects{
         testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
         testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 
-        compileOnly  'org.projectlombok:lombok:1.18.22'
-        annotationProcessor 'org.projectlombok:lombok:1.18.22'
-        testCompileOnly 'org.projectlombok:lombok:1.18.22'
-        testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
+        compileOnly  'org.projectlombok:lombok:1.18.30'
+        annotationProcessor 'org.projectlombok:lombok:1.18.30'
+        testCompileOnly 'org.projectlombok:lombok:1.18.30'
+        testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
 
         testImplementation 'org.mockito:mockito-core:4.4.0'
         testImplementation 'org.mockito:mockito-junit-jupiter:4.4.0'
@@ -63,6 +63,7 @@ subprojects{
         implementation 'org.hibernate:hibernate-entitymanager:5.4.0.Final'
         implementation 'mysql:mysql-connector-java:8.0.11'
         implementation 'org.apache.commons:commons-lang3:3.12.0'
+        implementation 'com.jayway.jsonpath:json-path:2.8.0'
     }
     test {
         useJUnitPlatform()
@@ -80,3 +81,5 @@ subprojects{
 }
 
 
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17

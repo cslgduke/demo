@@ -1,7 +1,10 @@
 package com.example.demo.service;
 
+import cn.hutool.core.util.RandomUtil;
+import com.example.demo.annotation.EntityHandlePoint;
 import com.example.demo.bo.User;
 import com.example.demo.repo.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CacheEvict;
@@ -14,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author i565244
  */
 @Component
+@Slf4j
 public class Userservice {
 
     @Autowired
@@ -37,4 +41,13 @@ public class Userservice {
     public User update(User user){
         return userRepository.save(user);
     }
+
+
+    @EntityHandlePoint
+    public String randomString(Integer len){
+        var str = RandomUtil.randomString(10);
+        log.info("return randomString {}",str);
+        return str;
+    }
+
 }

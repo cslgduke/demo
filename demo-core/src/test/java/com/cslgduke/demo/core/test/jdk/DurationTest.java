@@ -6,9 +6,6 @@ import org.junit.jupiter.api.Test;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Period;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
 import java.util.HashSet;
 
 /**
@@ -18,29 +15,39 @@ public class DurationTest {
 
     @Test
     public void testApi() {
-        var start = LocalDateTime.of(2021, 1, 1, 0, 0);
-        var duration = Duration.between(start, LocalDateTime.now());
-        System.out.println(duration.get(ChronoUnit.DAYS));
-        System.out.println("day of year :" + LocalDate.now().getDayOfYear());
+        var start = "2023-11-14";
+        var end = "2023-11-15";
+        var startDate = LocalDate.parse(start);
+        var endDate = LocalDate.parse(end);
+        var currDate = LocalDate.now();
+        var curr = String.valueOf(currDate);
+        System.out.println((currDate.isAfter(startDate) && currDate.isBefore(endDate)) || currDate.isEqual(startDate) || currDate.isEqual(endDate)) ;
 
-        LocalDate startDate = LocalDate.of(2021, 1, 1);
-        Period period = Period.between(startDate, LocalDate.now());
+        var start2 = LocalDateTime.of(2021, 1, 1, 0, 0);
+        var duration = Duration.between(start2, LocalDateTime.now());
 
-
-        var seconds = ChronoUnit.SECONDS.between(start, LocalDateTime.now());
-        System.out.println("duration seconds:" + seconds);
-
-        var minutes = ChronoUnit.MINUTES.between(start, LocalDateTime.now());
-        System.out.println("duration minutes:" + minutes);
-
-        var hours = ChronoUnit.HOURS.between(start, LocalDateTime.now());
-        System.out.println("duration hours:" + hours);
-
-        var days = ChronoUnit.DAYS.between(startDate, LocalDate.now());
-        System.out.println("duration days:" + days);
-
-        var weeks = ChronoUnit.WEEKS.between(startDate, LocalDate.now());
-        System.out.println("duration weeks:" + weeks);
+        System.out.println(LocalDate.now().plusDays(2));
+//        System.out.println(duration.get(ChronoUnit.DAYS));
+//        System.out.println("day of year :" + LocalDate.now().getDayOfYear());
+//
+//        LocalDate startDate = LocalDate.of(2021, 1, 1);
+//        Period period = Period.between(startDate, LocalDate.now());
+//
+//
+//        var seconds = ChronoUnit.SECONDS.between(start, LocalDateTime.now());
+//        System.out.println("duration seconds:" + seconds);
+//
+//        var minutes = ChronoUnit.MINUTES.between(start, LocalDateTime.now());
+//        System.out.println("duration minutes:" + minutes);
+//
+//        var hours = ChronoUnit.HOURS.between(start, LocalDateTime.now());
+//        System.out.println("duration hours:" + hours);
+//
+//        var days = ChronoUnit.DAYS.between(startDate, LocalDate.now());
+//        System.out.println("duration days:" + days);
+//
+//        var weeks = ChronoUnit.WEEKS.between(startDate, LocalDate.now());
+//        System.out.println("duration weeks:" + weeks);
 
         var sets = new HashSet<String>();
         var dupCount = 0;

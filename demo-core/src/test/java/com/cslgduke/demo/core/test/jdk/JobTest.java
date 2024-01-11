@@ -1,6 +1,8 @@
 package com.cslgduke.demo.core.test.jdk;
 
 
+import lombok.Builder;
+
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -38,4 +40,5 @@ public class JobTest {
         sortedDataFilter.forEach( dataItem -> rstList.add(dataItem.getKey()));
         return rstList;
     }
+
 }

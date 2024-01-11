@@ -84,12 +84,15 @@ public class CommonController {
         var sql = "select t from User t where t.id = 8";
         var query = entityManager.createQuery(sql,User.class);
         var user = query.getSingleResult();
-        user.setName("Dave100");
+        user.setName("Dave" + RandomUtil.randomInt());
 //        user.setId(null);
         var query2  = entityManager.createQuery(sql,User.class);
         var user2 = query2.getSingleResult();
-        entityManager.refresh(user);
+        user2.setName("Dave" + RandomUtil.randomInt());
+//        entityManager.refresh(user2);
 
+        entityManager.persist(user2);
+        entityManager.flush();
         return "success";
     }
 
