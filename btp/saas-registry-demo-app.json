@@ -1,12 +1,12 @@
 {
   "xsappname": "xsuaa-rgm",
   "appUrls": {
-    "getDependencies": "https://demo-app-quick-kangaroo-fe.cfapps.us21.hana.ondemand.com/dependency/dpi2",
+    "getDependencies": "https://demo-app-quick-kangaroo-fe.cfapps.us21.hana.ondemand.com/dependency/dpi-next-gen",
     "onSubscription": "https://demo-app-quick-kangaroo-fe.cfapps.us21.hana.ondemand.com/tenants/{tenantId}",
-    "onSubscriptionAsync": true,
-    "onUnSubscriptionAsync": true,
+    "onSubscriptionAsync": false,
+    "onUnSubscriptionAsync": false,
     "callbackTimeoutMillis": 300000
   },
-  "displayName": "Demo App Dave",
+  "displayName": "Demo App Dave(dpi-nextgen)",
   "description": "A demo-app dave"
 }

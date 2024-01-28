@@ -1,9 +1,6 @@
 package com.example.demo.utils;
 
 
-import cn.amorou.uid.worker.SimpleWorkerIdAssigner;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author i565244

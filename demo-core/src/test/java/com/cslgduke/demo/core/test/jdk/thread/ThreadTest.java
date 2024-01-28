@@ -18,6 +18,21 @@ import java.util.stream.Collectors;
 public class ThreadTest {
 
     @Test
+    public void test_callable() throws Exception {
+
+        var ft = new FutureTask<String>(() ->{
+            var str = RandomUtil.randomString(10);
+            log.info("generate random String:{}",str);
+            return  str;
+        });
+        Thread t1 = new Thread(ft,"thread-callable-test");
+        t1.start();
+        log.info("start");
+        log.info("finish ,result:{}",ft.get());
+    }
+
+
+    @Test
     public void test_completable() {
         log.info("start");
         CompletableFuture.supplyAsync(()->{
@@ -34,7 +49,7 @@ public class ThreadTest {
 //        var prices = list.parallelStream().map(this::priceCalculate).collect(Collectors.toList());
 
 
-        var executor = Executors.newFixedThreadPool(2);
+        var executor = Executors.newFixedThreadPool(3);
         executor.execute( () -> {
             list.parallelStream().map(this::priceCalculate).collect(Collectors.toList());
         });
@@ -56,6 +71,7 @@ public class ThreadTest {
 
     @Test
     public void test_completable_future() throws ExecutionException, InterruptedException {
+
         var executor = Executors.newFixedThreadPool(100);
 
 
@@ -67,7 +83,7 @@ public class ThreadTest {
             }
             //is daemon true
             log.info("CompletableFuture async isDaemon:{}",Thread.currentThread().isDaemon());
-            int a = 1/0;
+//            int a = 1/0;
             return "result";
         },executor);
         // use main thread
@@ -90,8 +106,15 @@ public class ThreadTest {
             log.error("whenCompleteAsync async execute,use specific thread, error ",e);
         },executor);*/
 
-        log.info("result:{}",future.getNow("now"));
-        log.info("result:{}",future.get());
+//        log.info("result:{}",future.getNow("now"));
+        //throw checked exception, need to throw
+//        log.info("result:{}",future.get());
+        //join throw unchecked exception,don't fore code throw
+//        log.info("result:{}",future.join());
+
+        while(true){
+
+        }
     }
 
     @Test
@@ -215,4 +238,7 @@ public class ThreadTest {
             log.info("********");
         });
     }
+
+
+
 }

@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  grafana:
+    image: grafana/grafana-enterprise
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    volumes:
+      - grafana-storage:/var/lib/grafana
+  postgres:
+    image: postgres:12-alpine
+    environment:
+      - POSTGRES_PASSWORD=Initial0
+    volumes:
+      - mypg1:/var/lib/postgresql/data
+    ports:
+      - 5433:5432
+volumes:
+  grafana-storage: {}
+  mypg1: {}

@@ -1,6 +1,6 @@
 {
   "xs-security": {
-    "xsappname": "dpi-nextgen",
+    "xsappname": "xsuaa-rgm-ng-information",
     "authorities": [
       "$ACCEPT_GRANTED_AUTHORITIES"
     ],
@@ -14,31 +14,26 @@
   "dataPrivacyConfiguration": {
     "configType": "information",
     "applicationConfiguration": {
-      "applicationName": "dpi-nextgen",
-      "applicationDescription": "dpi-nextgen",
-      "applicationTitle": "dpi-nextgen"
+      "applicationName": "dpi-enablement-skeleton-information",
+      "applicationTitle": "DPI Enablement Skeleton Application"
     },
     "informationConfiguration": {
       "applicationConfiguration": {
-        "disableDataSubjectDeletion": "true",
-        "dataSubjectDeletionAgent": "manual",
-        "disableCsrfCallForDataSubjectDeletion" : "true",
-        "disableDataSubjectCorrection": "true",
-        "dataSubjectCorrectionAgent": "manual",
-        "cacheControl": "no-cache"
+	      "disableDataSubjectDeletion": false, 
+	      "dataSubjectDeletionAgent": "application",
+    	  "dataSubjectDeletionBaseURL": "https://dpi-enablement-skeleton.cfapps.us21.hana.ondemand.com",
+      	"dataSubjectDeletionEndPoint": "/biz/v1/version/echo"
       },
       "components": [
         {
-          "componentName": "dpi-nextgen-sample-module",
+          "componentName": "dpi-sample-module",
           "componentBaseURL": "https://dpi-enablement-skeleton.cfapps.us21.hana.ondemand.com",
           "serviceEndPoints": [
             {
               "serviceName": "EnablementSkeleton",
               "serviceFormat": "rest",
-              "annotationFormat": "v2",
               "serviceEndPoint": "/pdm",
-              "annotationProviderEndPoint": "/dpp/metadata",
-              "cacheControl": "no-cache"
+              "annotationProviderEndPoint": "/dpp/metadata"
             }
           ]
         }
