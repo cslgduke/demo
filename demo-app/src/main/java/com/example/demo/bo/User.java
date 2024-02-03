@@ -3,7 +3,10 @@ package com.example.demo.bo;
 
 import com.example.demo.constants.MultiTenantProperties;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.eclipse.persistence.annotations.AdditionalCriteria;
 import org.eclipse.persistence.annotations.TenantDiscriminatorColumn;
 
@@ -18,6 +21,9 @@ import java.time.LocalDateTime;
 @AdditionalCriteria("this.tenant_Id=:" + "tenant_id")
 @TenantDiscriminatorColumn(name = "TENANT_ID", contextProperty = MultiTenantProperties.MULTITENANT_CONTEXT_PROPERTY, discriminatorType = DiscriminatorType.STRING, columnDefinition = "BIGINT")
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
 
     @Id	//主键id

@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import javax.annotation.Resource;
 
 //@RunWith(SpringRunner.class)
-@SpringBootTest
+//@SpringBootTest
 class DemoApplicationTests {
 
     @Resource

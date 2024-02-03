@@ -4,6 +4,7 @@ import cn.amorou.uid.UidGenerator;
 import cn.hutool.core.util.RandomUtil;
 import com.example.demo.bo.User;
 import com.example.demo.cache.CacheService;
+import com.example.demo.core.CustomThreadFactory;
 import com.example.demo.msg.KafkaProducer;
 import com.example.demo.repo.UserRepository;
 import com.example.demo.service.Userservice;
@@ -23,6 +24,9 @@ import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 /**
@@ -66,7 +70,7 @@ public class CommonController {
     @PostMapping("/userAdd")
     public String userAdd() {
         List<User> users = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 100; i++) {
             User user = new User();
             user.setName(RandomUtil.randomString(10));
             user.setAge(RandomUtil.randomInt(20, 50));
@@ -214,5 +218,47 @@ public class CommonController {
     public Object redisSet(@PathVariable String key) {
         redisTemplate.opsForValue().set(key,RandomUtil.randomString(10));
         return "success";
+    }
+
+
+
+    @PostMapping("/fullGc")
+    public Object fullGc() {
+        testFgc();
+        return "success";
+    }
+
+
+    int corePoolSize = 100;
+    ThreadPoolExecutor executor = new ThreadPoolExecutor(10,
+            corePoolSize,
+            0L, TimeUnit.MILLISECONDS,
+            new LinkedBlockingQueue<Runnable>(),
+            new CustomThreadFactory(),
+            new ThreadPoolExecutor.AbortPolicy());
+
+    private void  testFgc(){
+        for (int i = 0; i < corePoolSize; i++) {
+            var persons = new ArrayList<User>();
+            executor.execute(() ->{
+//                while (true){
+                    persons.add(getInstance());
+                    log.info("The size of persons:{}",persons.size());
+                    try {
+                        Thread.sleep(1);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+//                }
+            });
+        }
+    }
+
+    public User getInstance(){
+        return User.builder()
+                .id(Long.parseLong(RandomUtil.randomNumbers(18)))
+                .name(RandomUtil.randomString(100))
+                .age(RandomUtil.randomInt(0,100))
+                .address(RandomUtil.randomString("ShangHai ",100)).build();
     }
 }
