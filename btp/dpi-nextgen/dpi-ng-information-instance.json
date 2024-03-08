@@ -19,10 +19,7 @@
     },
     "informationConfiguration": {
       "applicationConfiguration": {
-	      "disableDataSubjectDeletion": false, 
-	      "dataSubjectDeletionAgent": "application",
-    	  "dataSubjectDeletionBaseURL": "https://dpi-enablement-skeleton.cfapps.us21.hana.ondemand.com",
-      	"dataSubjectDeletionEndPoint": "/biz/v1/version/echo"
+	      "disableDataSubjectDeletion": true
       },
       "components": [
         {
@@ -31,9 +28,9 @@
           "serviceEndPoints": [
             {
               "serviceName": "EnablementSkeleton",
-              "serviceFormat": "rest",
-              "serviceEndPoint": "/pdm",
-              "annotationProviderEndPoint": "/dpp/metadata"
+              "serviceFormat": "odata-v4",
+              "annotationFormat": "v4",
+              "serviceEndPoint": "/dpp"
             }
           ]
         }

@@ -28,7 +28,8 @@
           "dataSubjectRoleName": "WorkforcePerson",
           "dataSubjectDescription": "WorkforcePerson",
           "dataSubjectBaseURL": "https://dpi-enablement-skeleton.cfapps.us21.hana.ondemand.com",
-          "dataSubjectBlockingEndPoint": "/drm-next-gen/dataSubjectDeletion"
+          "dataSubjectBlockingEndPoint": "/drm-next-gen/dataSubjectDeletion",
+          "dataSubjectInformationEndPoint": "/drm-next-gen/dataSubjectInformation"
         }
       ],
       "organizationAttributes": [

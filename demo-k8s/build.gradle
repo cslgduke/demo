@@ -6,7 +6,7 @@ plugins {
 
 group = 'com.cslgduke.demo'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '17'
 
 configurations {
 	compileOnly {
@@ -19,13 +19,10 @@ repositories {
 }
 
 dependencies {
-//	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-//	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	api 'io.fabric8:kubernetes-client:5.11.2'
 }
 
 tasks.named('test') {

@@ -7,9 +7,7 @@ import org.springframework.transaction.TransactionException;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 
-/**
- * @author i565244
- */
+
 @Slf4j
 public class DemoTransactionManager implements PlatformTransactionManager {
 

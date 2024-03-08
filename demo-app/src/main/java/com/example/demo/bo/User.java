@@ -11,6 +11,7 @@ import org.eclipse.persistence.annotations.AdditionalCriteria;
 import org.eclipse.persistence.annotations.TenantDiscriminatorColumn;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
@@ -24,7 +25,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class User implements Serializable {
 
     @Id	//主键id
     @GeneratedValue(strategy=GenerationType.IDENTITY)//主键生成策略

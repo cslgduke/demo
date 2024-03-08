@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo-app
+  labels:
+    app: demo-app
+spec:
+  containers:
+    - name: demo-app
+      image: demo-k8s:17-jre-headless-ubuntu
+      ports:
+        - containerPort: 8080
+#      resources:
+#        requests:
+#          cpu: '2'
+#        limits:
+#          cpu: '4'
+#          memory: 6Gi

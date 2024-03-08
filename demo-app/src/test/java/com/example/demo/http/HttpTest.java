@@ -1,11 +1,7 @@
 package com.example.demo.http;
 
-import cn.hutool.core.util.RandomUtil;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
-import com.example.demo.bo.User;
-import com.example.demo.repo.UserRepository;
-import liquibase.pro.packaged.T;
 import lombok.Builder;
 import lombok.Data;
 import lombok.SneakyThrows;
@@ -13,30 +9,19 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.util.EntityUtils;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.test.annotation.Rollback;
-import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-import java.sql.Timestamp;
 import java.text.MessageFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.Executors;
 
 /**
  * @author i565244
  */
-@SpringBootTest
+//@SpringBootTest
 @Slf4j
 public class HttpTest {
 
@@ -82,6 +67,35 @@ public class HttpTest {
     static public class Response<R>{
         private String code;
         private R data;
+    }
+
+
+    @Test
+    @SneakyThrows
+    public void test_2() {
+
+        var executorService = Executors.newFixedThreadPool(50);
+        for (int i = 0; i < 50; i++) {
+            executorService.execute(() ->{
+                while(true){
+                    try{
+                        var url = "http://localhost:30418/common/user";
+                        var httpGet = new HttpGet(url);
+                        var response = HttpConnectionManager.getHttpClient().execute(httpGet);
+                        var returnJson = EntityUtils.toString(response.getEntity());
+                        var result = JSON.parseObject(returnJson, new TypeReference<>(){});
+                        log.info("Http call response status: {}, response body: {}.", response.getStatusLine().getStatusCode(), returnJson);
+
+                    }catch (Exception e){
+                        log.error("occur exception",e);
+                    }
+                }
+            });
+        }
+        while(true){
+            log.info(">>>>>>>>>>>>>>>>>>>>");
+            Thread.sleep(1 * 1000);
+        }
     }
 
 }

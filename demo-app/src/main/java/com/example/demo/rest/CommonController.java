@@ -2,8 +2,8 @@ package com.example.demo.rest;
 
 import cn.amorou.uid.UidGenerator;
 import cn.hutool.core.util.RandomUtil;
+import com.example.demo.bo.Result;
 import com.example.demo.bo.User;
-import com.example.demo.cache.CacheService;
 import com.example.demo.core.CustomThreadFactory;
 import com.example.demo.msg.KafkaProducer;
 import com.example.demo.repo.UserRepository;
@@ -12,12 +12,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.util.ObjectUtils;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 import vo.Response;
 
 import javax.annotation.Resource;
@@ -32,6 +31,8 @@ import java.util.stream.Collectors;
 /**
  * @author i565244
  */
+@RequestMapping(value = {"/common"})
+@Validated
 @RestController
 @Slf4j
 public class CommonController {
@@ -52,8 +53,6 @@ public class CommonController {
     @Autowired
     private CacheManager cacheManager;
 
-    @Autowired
-    private RedisTemplate redisTemplate;
 
     @Autowired
     private EntityManager entityManager;
@@ -88,15 +87,27 @@ public class CommonController {
         var sql = "select t from User t where t.id = 8";
         var query = entityManager.createQuery(sql,User.class);
         var user = query.getSingleResult();
-        user.setName("Dave" + RandomUtil.randomInt());
+        user.setName("Dave - 1");
 //        user.setId(null);
         var query2  = entityManager.createQuery(sql,User.class);
         var user2 = query2.getSingleResult();
-        user2.setName("Dave" + RandomUtil.randomInt());
-//        entityManager.refresh(user2);
+        user2.setName("Dave -2 ");
+//        entityManager.refresh(user2);//No EntityManager with actual transaction available for current thread - cannot reliably process 'refresh' call
 
-        entityManager.persist(user2);
-        entityManager.flush();
+
+        //if want to read the db data must open a new seesion
+        var newEm = this.entityManager.getEntityManagerFactory().createEntityManager();
+        var newQuery = newEm.createQuery(sql,User.class);
+        var userFromDb = newQuery.getSingleResult();
+
+        //entityManager.persist(user2);
+        // entityManager.flush();
+        /**
+         * if remove @Transactional when invoke persist or flush will get follow exception
+            No EntityManager with actual transaction available for current thread - cannot reliably process 'persist' call
+            No EntityManager with actual transaction available for current thread - cannot reliably process 'flush' call
+         */
+        userRepository.save(user2);
         return "success";
     }
 
@@ -205,23 +216,6 @@ public class CommonController {
     }
 
 
-    @PostMapping("/redisGet/{key}")
-    public Object redisGet(@PathVariable String key) {
-        var value = "";
-        if(redisTemplate.hasKey(key)){
-           value  = (String) redisTemplate.opsForValue().get(key);
-        }
-        return value;
-    }
-
-    @PostMapping("/redisSet/{key}")
-    public Object redisSet(@PathVariable String key) {
-        redisTemplate.opsForValue().set(key,RandomUtil.randomString(10));
-        return "success";
-    }
-
-
-
     @PostMapping("/fullGc")
     public Object fullGc() {
         testFgc();
@@ -260,5 +254,11 @@ public class CommonController {
                 .name(RandomUtil.randomString(100))
                 .age(RandomUtil.randomInt(0,100))
                 .address(RandomUtil.randomString("ShangHai ",100)).build();
+    }
+
+    @GetMapping("/dpp/Users/{uuid}")
+    public Result getUserByUuid(@PathVariable String uuid) {
+
+        return Result.Ok(HttpStatus.OK.value(), "success", null);
     }
 }

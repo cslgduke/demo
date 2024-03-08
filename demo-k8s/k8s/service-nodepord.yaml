@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-service
+  labels:
+    app: demo-service
+    version: v3
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      name: app
+      targetPort: 8080
+  type: NodePort
+  sessionAffinity: ClientIP
+  selector:
+    app: demo-app

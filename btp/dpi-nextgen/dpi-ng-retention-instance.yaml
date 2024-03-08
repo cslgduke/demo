@@ -1,0 +1,57 @@
+apiVersion: services.cloud.sap.com/v1
+kind: ServiceInstance
+metadata:
+  name: rgm-dev-dpi-ng-retention
+spec:
+  serviceOfferingName: data-privacy-integration-service
+  servicePlanName: data-privacy-internal
+  parameters:
+    xs-security:
+      xsappname: rgm-dev-dpi-ng-retention
+      authorities:
+        - "$ACCEPT_GRANTED_AUTHORITIES"
+      oauth2-configuration:
+        credential-types:
+          - x509
+          - binding-secret
+    dataPrivacyConfiguration:
+      configType: retention
+      applicationConfiguration:
+        applicationName: sap-cic-rgp
+        applicationDescription: SAP CIC RGP
+      retentionConfiguration:
+        applicationConfiguration:
+          applicationType: TransactionMaster
+          simulationSupportedForArchiving: true
+          simulationSupportedForDestruction: true
+        dataSubjectRoles:
+          - dataSubjectRoleName: WorkforcePerson
+            dataSubjectDescription: WorkforcePerson
+            dataSubjectBaseURL: https://dpi-enablement-skeleton.cfapps.us21.hana.ondemand.com
+            dataSubjectBlockingEndPoint: "/drm-next-gen/dataSubjectDeletion"
+        organizationAttributes:
+          - organizationAttributeName: RGP
+            organizationAttributeDescription: Sap RGP
+            organizationAttributeBaseURL: https://dpi-enablement-skeleton.cfapps.us21.hana.ondemand.com
+            organizationAttributeValueHelpEndPoint: "/drm-next-gen/legalEntityValueHelp"
+        iLMObjects:
+          - iLMObjectName: WorkforcePerson
+            iLMObjectType: Transaction
+            iLMObjectDescription: WorkforcePerson
+            iLMObjectBaseURL: https://dpi-enablement-skeleton.cfapps.us21.hana.ondemand.com
+            organizationAttributeName: RGP
+            referenceDates:
+              - referenceDateName: create_time
+                referenceDateDescription: create_time
+              - referenceDateName: update_time
+                referenceDateDescription: update_time
+            dataSubjectBlockingConfiguration:
+              dataSubjectEndOfBusinessEndPoint: "/drm-next-gen/dataSubjectEndOfBusiness"
+              dataSubjectOrganizationAttributesEndPoint: "/drm-next-gen/dataSubjectLegalEntities"
+              dataSubjectLastRetentionStartDatesEndPoint: "/drm-next-gen/dataSubjectLastRetentionStartDates"
+              dataSubjectsEndOfResidenceEndPoint: "/drm-next-gen/dataSubjectsEndOfResidence"
+              dataSubjectsEndOfResidenceConfirmationEndPoint: ''
+              dataSubjectILMObjectBlockingEndPoint: "/drm-next-gen/dataSubjectLegalGroundDeletion"
+              dataSubjectsILMObjectDestroyingEndPoint: "/drm-next-gen/dataSubjectsLegalGroundDestroying"
+            dataSubjectRoles:
+              - dataSubjectRoleName: WorkforcePerson

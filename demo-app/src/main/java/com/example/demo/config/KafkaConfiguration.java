@@ -3,12 +3,14 @@ package com.example.demo.config;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.kafka.annotation.EnableKafka;
-import org.springframework.kafka.core.DefaultKafkaProducerFactory;
-import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.kafka.core.ProducerFactory;
+import org.springframework.kafka.core.*;
+import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,8 +18,8 @@ import java.util.Map;
 /**
  * @author i565244
  */
-@Configuration
-@EnableKafka
+//@Configuration
+//@EnableKafka
 public class KafkaConfiguration {
 
     @Value("${spring.kafka.bootstrap-servers}")
@@ -31,8 +33,15 @@ public class KafkaConfiguration {
     @Value("${spring.kafka.producer.buffer-memory}")
     private int bufferMemory;
 
+    @Primary
+    @ConfigurationProperties(prefix = "spring.kafka")
+    @Bean
+    public KafkaProperties firstKafkaProperties() {
+        return new KafkaProperties();
+    }
+
     //注释部分为需要账户认证代码
-    public Map<String, Object> producerConfigs() {
+    public Map<String, Object> kafkaConfigs() {
         System.setProperty("java.security.auth.login.config", "kafka_client_jaas.conf"); //配置文件路径
         Map<String, Object> props = new HashMap<>();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, servers);
@@ -56,12 +65,20 @@ public class KafkaConfiguration {
     }
 
     public ProducerFactory<String, String> producerFactory() {
-        return new DefaultKafkaProducerFactory<>(producerConfigs());
+        return new DefaultKafkaProducerFactory<>(kafkaConfigs());
     }
 
     @Bean
     public KafkaTemplate<String, String> kafkaTemplate() {
         return new KafkaTemplate<String, String>(producerFactory());
+    }
+
+
+
+    public DefaultKafkaConsumerFactory<String,String> consumerFactory() {
+        var consumerFactory = new DefaultKafkaConsumerFactory(kafkaConfigs());
+        var concurrentMessageListenerContainer = new ConcurrentMessageListenerContainer(consumerFactory,null);
+        return null;
     }
 
 }

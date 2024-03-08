@@ -1,0 +1,40 @@
+apiVersion: services.cloud.sap.com/v1
+kind: ServiceInstance
+metadata:
+  name: rgm-dev-dpi-ng-information
+spec:
+  serviceOfferingName: data-privacy-integration-service
+  servicePlanName: data-privacy-internal
+  parameters:
+    xs-security:
+      xsappname: rgm-dev-dpi-ng-information
+      authorities:
+        - "$ACCEPT_GRANTED_AUTHORITIES"
+      oauth2-configuration:
+        credential-types:
+          - x509
+          - binding-secret
+    dataPrivacyConfiguration:
+      configType: information
+      applicationConfiguration:
+        applicationName: SAP RGM
+        applicationTitle: SAP Revenue Growth Management
+      informationConfiguration:
+        applicationConfiguration:
+          disableDataSubjectDeletion: true
+        components:
+          - componentName: rgp-dpp-proxy
+            componentBaseURL: https://api.rgm-dev.rgm-cic-rgm-dev-us21.eurekacloud.io
+            serviceEndPoints:
+              - serviceName: rgp-dpp-proxy
+                serviceFormat: odata-v4
+                annotationFormat: v4
+                serviceEndPoint: "/biz/v1/pdm/odata"
+---
+apiVersion: services.cloud.sap.com/v1
+kind: ServiceBinding
+metadata:
+  name: rgm-dev-dpi-ng-information
+spec:
+  serviceInstanceName: rgm-dev-dpi-ng-information
+  secretName: rgm-dev-dpi-ng-information
