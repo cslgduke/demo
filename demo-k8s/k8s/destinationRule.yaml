@@ -1,0 +1,14 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: demo-app-common-user-roundrobin
+spec:
+  host: "*"
+#  trafficPolicy:
+#    loadBalancer:
+#      simple: ROUND_ROBIN
+#      simple: LEAST_CONN
+#      simple: RANDOM
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL

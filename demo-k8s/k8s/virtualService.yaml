@@ -1,0 +1,22 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: demo-app-common-user
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - bookinfo-gateway
+  http:
+    - match:
+        - uri:
+            exact: /common/user
+      route:
+        - destination:
+            host: demo-service
+            port:
+              number: 80
+      retries:
+        attempts: 3
+        perTryTimeout: 5s
+        retryOn: "5xx"

@@ -46,6 +46,7 @@ dependencies {
 	api 'io.fabric8:kubernetes-client:5.11.2'
 	api 'org.eclipse.persistence:eclipselink:2.7.5'
 	api 'org.reflections:reflections:0.9.9'
+	api 'com.sap.cloud.db.jdbc:ngdbc:2.15.10'
 
 
 

@@ -1,5 +1,11 @@
 {
-  "xsappname": "xsuaa-rgm",
+  "xsappname": "xsuaa-rgm-2",
+  "oauth2-configuration": {
+  "token-validity": 43200,
+  "redirect-uris": [
+    "http://localhost:8080/**",
+    "https://dpi-enablement-skeleton.cfapps.us21.hana.ondemand.com/**"]
+},
   "scopes": [
     {
       "name": "$XSAPPNAME.view",

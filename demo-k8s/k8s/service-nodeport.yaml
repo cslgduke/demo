@@ -12,6 +12,5 @@ spec:
       name: app
       targetPort: 8080
   type: NodePort
-  sessionAffinity: ClientIP
   selector:
     app: demo-app

@@ -188,4 +188,31 @@ public class JpaTest {
         log.info("delete records which age smaller than {}, records cnt:{}",age,cnt);
     }
 
+
+    @Test
+    @Transactional
+    @Rollback(value = false)
+    public void test_hana() {
+        int sum = 50;
+        long begin = System.currentTimeMillis();
+        for (int i = 0; i < sum; i++) {
+            long start = System.currentTimeMillis();
+            var querySql ="SELECT * FROM DISAG_BASE_ITEM_TEST WHERE CUSTOMER_UUID = '82b31e84abb6da21d102eabee3df6b34' LIMIT 10";
+            var count = entityManager.createNativeQuery(querySql).getResultList();
+            log.info("finish query data from partition ,cost:{}ms",System.currentTimeMillis() - start);
+        }
+        log.info("finish all queries from partition ,cost:{}ms",System.currentTimeMillis() - begin);
+
+
+        long begin2 = System.currentTimeMillis();
+        for (int i = 0; i < sum; i++) {
+            long start = System.currentTimeMillis();
+            var querySql ="SELECT * FROM DISAG_BASE_ITEM WHERE CUSTOMER_UUID = '82b31e84abb6da21d102eabee3df6b34' LIMIT 10";
+            var count = entityManager.createNativeQuery(querySql).getResultList();
+            log.info("finish query data from table ,cost:{}ms",System.currentTimeMillis() - start);
+        }
+        log.info("finish all queries from table ,cost:{}ms",System.currentTimeMillis() - begin2);
+
+    }
+
 }
