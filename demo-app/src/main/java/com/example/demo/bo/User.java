@@ -28,11 +28,12 @@ import java.time.LocalDateTime;
 public class User implements Serializable {
 
     @Id	//主键id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)//主键生成策略
+//    @GeneratedValue(strategy=GenerationType.IDENTITY)//主键生成策略
+    @GeneratedValue
     @Column(name="id")//数据库字段名
     private Long id;
 
-    @Column(name="no",insertable=false,updatable = false)
+    @Column(name="user_no",insertable=false,updatable = false)
     private String no;
 
     @Column(name="name")
@@ -53,5 +54,5 @@ public class User implements Serializable {
     private LocalDateTime createTime;
 
     @Column(name="updateTime")
-    private String updateTime;
+    private LocalDateTime updateTime;
 }

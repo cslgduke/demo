@@ -1,6 +1,7 @@
 package com.example.demo.rest;
 
 import cn.amorou.uid.UidGenerator;
+import cn.hutool.core.thread.ThreadFactoryBuilder;
 import cn.hutool.core.util.RandomUtil;
 import com.example.demo.bo.Result;
 import com.example.demo.bo.User;
@@ -11,18 +12,17 @@ import com.example.demo.service.Userservice;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.CacheManager;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.ObjectUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import vo.Response;
+import com.example.demo.vo.Response;
 
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -49,16 +49,9 @@ public class CommonController {
     @Autowired
     private KafkaProducer kafkaProducer;
 
-
-    @Autowired
-    private CacheManager cacheManager;
-
-
     @Autowired
     private EntityManager entityManager;
 
-//    @Autowired
-//    private CacheService cacheService;
 
     @PostMapping("/uuid")
     public String generateUUid() {
@@ -66,18 +59,30 @@ public class CommonController {
         return String.valueOf(uuid);
     }
 
+    int  concurrency = 1;
     @PostMapping("/userAdd")
     public String userAdd() {
-        List<User> users = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            User user = new User();
-            user.setName(RandomUtil.randomString(10));
-            user.setAge(RandomUtil.randomInt(20, 50));
-            user.setCreateTime(LocalDateTime.now().minusMinutes(RandomUtil.randomInt(10,20)));
-            user.setUpdateTime(LocalDateTime.now().minusMinutes(RandomUtil.randomInt(10,20)).toString());
-            users.add(user);
+        var executor = new ThreadPoolExecutor(concurrency, concurrency, 10, TimeUnit.MICROSECONDS,
+                new ArrayBlockingQueue<>(1000),
+                new ThreadFactoryBuilder().setNamePrefix("hana-query-test").build(),
+                new ThreadPoolExecutor.AbortPolicy());
+        int batchCount = 1000;
+        for (int i = 0; i < 10000; i++) {
+            executor.execute(()->{
+                var start = System.currentTimeMillis();
+                List<User> users = new ArrayList<>();
+                for (int j = 0; j < batchCount; j++) {
+                    User user = new User();
+                    user.setName(RandomUtil.randomString(10));
+                    user.setAge(RandomUtil.randomInt(20, 50));
+                    user.setCreateTime(LocalDateTime.now().minusDays(RandomUtil.randomInt(365)));
+                    user.setUpdateTime(user.getCreateTime());
+                    users.add(user);
+                }
+                userRepository.saveAll(users);
+                log.info("insert {} records,cost:{}ms",batchCount,System.currentTimeMillis() - start);
+            });
         }
-        userRepository.saveAll(users);
         return "success";
     }
 

@@ -1,5 +1,6 @@
 package com.example.demo.jpa;
 
+import cn.hutool.core.thread.ThreadFactoryBuilder;
 import cn.hutool.core.util.RandomUtil;
 import com.alibaba.fastjson.JSON;
 import com.example.demo.bo.User;
@@ -19,6 +20,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author i565244
@@ -193,26 +197,114 @@ public class JpaTest {
     @Transactional
     @Rollback(value = false)
     public void test_hana() {
-        int sum = 50;
-        long begin = System.currentTimeMillis();
-        for (int i = 0; i < sum; i++) {
-            long start = System.currentTimeMillis();
-            var querySql ="SELECT * FROM DISAG_BASE_ITEM_TEST WHERE CUSTOMER_UUID = '82b31e84abb6da21d102eabee3df6b34' LIMIT 10";
-            var count = entityManager.createNativeQuery(querySql).getResultList();
-            log.info("finish query data from partition ,cost:{}ms",System.currentTimeMillis() - start);
-        }
-        log.info("finish all queries from partition ,cost:{}ms",System.currentTimeMillis() - begin);
+
+        int concurrency = 100;
+        var executor = new ThreadPoolExecutor(concurrency, concurrency, 10, TimeUnit.MICROSECONDS,
+                new ArrayBlockingQueue<>(100),
+                new ThreadFactoryBuilder().setNamePrefix("hana-query-test").build(),
+                new ThreadPoolExecutor.AbortPolicy());
 
 
         long begin2 = System.currentTimeMillis();
-        for (int i = 0; i < sum; i++) {
-            long start = System.currentTimeMillis();
-            var querySql ="SELECT * FROM DISAG_BASE_ITEM WHERE CUSTOMER_UUID = '82b31e84abb6da21d102eabee3df6b34' LIMIT 10";
-            var count = entityManager.createNativeQuery(querySql).getResultList();
-            log.info("finish query data from table ,cost:{}ms",System.currentTimeMillis() - start);
+        long max2 = 0;
+        long min2 = Long.MAX_VALUE;
+        for (int i = 0; i < concurrency; i++) {
+            executor.execute(() -> {
+                while(true){
+//                    queryFromTable();
+                    queryFromPartition();
+                }
+            });
         }
-        log.info("finish all queries from table ,cost:{}ms",System.currentTimeMillis() - begin2);
+//        log.info("finish all queries from table ,cost:{}ms,max:{}ms,min:{}ms",System.currentTimeMillis() - begin2,max2,min2);
 
+
+//        long begin = System.currentTimeMillis();
+//        long max = 0;
+//        long min = Long.MAX_VALUE;
+//        for (int i = 0; i < concurrency; i++ ) {
+//            executor.execute(() -> {
+//                while (true) {
+//                    queryFromPartition();
+//                }
+//            });
+//        }
+//        log.info("finish all queries from partition ,cost:{}ms,max:{}ms,min:{}ms",System.currentTimeMillis() - begin,max,min);
+
+
+
+
+        while (true){
+            try {
+                Thread.sleep(1 * 1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+//            log.info("****************");
+        }
+
+    }
+
+    private void queryFromTable(){
+        long start = System.currentTimeMillis();
+        var querySql = "SELECT KPI_LIST_PRICE,\n" +
+                "        KPI_PROMOTED_PRICE,\n" +
+                "        DATE_CODE,\n" +
+                "        PRODUCT_UUID\n" +
+                "FROM \n" +
+                "    (SELECT KPI_LIST_PRICE,\n" +
+                "        KPI_PROMOTED_PRICE,\n" +
+                "        DATE_CODE,\n" +
+                "        PRODUCT_UUID\n" +
+                "    FROM \n" +
+                "        (SELECT DATE_CODE,\n" +
+                "         PRODUCT_UUID,\n" +
+                "         AVG(KPI_LIST_PRICE) AS KPI_LIST_PRICE,\n" +
+                "         AVG(KPI_PROMOTED_PRICE) AS KPI_PROMOTED_PRICE\n" +
+                "        FROM \"KPI_ALL_CV\"\n" +
+                "        WHERE VERSION_UUID = '9b6888a3a4124b9480e2605c53b1dc4e'\n" +
+                "        GROUP BY  DATE_CODE,PRODUCT_UUID ) )\n" +
+                "    WHERE 1=1\n" +
+                "ORDER BY  PRODUCT_UUID ASC,DATE_CODE ASC";
+        var count = entityManager.createNativeQuery(querySql).getResultList();
+        var cost = System.currentTimeMillis() - start;
+        log.info("finish query data from table ,cost:{}ms",cost);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void queryFromPartition(){
+        long start = System.currentTimeMillis();
+        var querySql = "SELECT KPI_LIST_PRICE,\n" +
+                "        KPI_PROMOTED_PRICE,\n" +
+                "        DATE_CODE,\n" +
+                "        PRODUCT_UUID\n" +
+                "FROM \n" +
+                "    (SELECT KPI_LIST_PRICE,\n" +
+                "        KPI_PROMOTED_PRICE,\n" +
+                "        DATE_CODE,\n" +
+                "        PRODUCT_UUID\n" +
+                "    FROM \n" +
+                "        (SELECT DATE_CODE,\n" +
+                "         PRODUCT_UUID,\n" +
+                "         AVG(KPI_LIST_PRICE) AS KPI_LIST_PRICE,\n" +
+                "         AVG(KPI_PROMOTED_PRICE) AS KPI_PROMOTED_PRICE\n" +
+                "        FROM \"KPI_ALL_CV_2\"\n" +
+                "        WHERE VERSION_UUID = '9b6888a3a4124b9480e2605c53b1dc4e'\n" +
+                "        GROUP BY  DATE_CODE,PRODUCT_UUID ) )\n" +
+                "    WHERE 1=1\n" +
+                "ORDER BY  PRODUCT_UUID ASC,DATE_CODE ASC";
+        var count = entityManager.createNativeQuery(querySql).getResultList();
+        var cost = System.currentTimeMillis() - start;
+        log.info("finish query data from partition ,cost:{}ms",cost);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }
