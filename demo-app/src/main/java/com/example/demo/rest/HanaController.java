@@ -26,7 +26,6 @@ public class HanaController {
 
     int concurrency = 1;
 
-
     @PostMapping("/queryFromCV")
     public Object queryFromCV() {
         var executor = new ThreadPoolExecutor(concurrency, concurrency, 10, TimeUnit.MICROSECONDS,
@@ -67,9 +66,9 @@ public class HanaController {
                 new ThreadPoolExecutor.AbortPolicy());
         for (int i = 0; i < concurrency; i++) {
             executor.execute(() -> {
-                while(true){
+//                while(true){
                     fromTable(concurrency);
-                }
+//                }
             });
         }
         return "success";
@@ -155,28 +154,36 @@ public class HanaController {
 
     public void fromTable(int concurrency){
         long start = System.currentTimeMillis();
-        var querySql = "select sum(LIST_PRICE), ACCOUNT_PLAN_UUID from DISAG_BASE_ITEM  WHERE ACCOUNT_PLAN_UUID  = '021548ce0a9c4cb1b92d9ac35033fc26'  group by ACCOUNT_PLAN_UUID";
+
+//        var querySql = "select DATE_CODE ,PRODUCT_UUID,SUM(LIST_PRICE),SUM(BASELINE_VOLUME)  from DISAG_BASE_ITEM_TEST2 group by DATE_CODE ,PRODUCT_UUID";
+//        var querySql = "select C_P_D,SUM(LIST_PRICE) from DISAG_BASE_ITEM_TEST2  group by C_P_D";
+        var querySql = "select C_P_D,SUM(LIST_PRICE) from DISAG_BASE_ITEM_TEST2  group by C_P_D LIMIT 20";
+//        var querySql = "select C_P_D,SUM(LIST_PRICE),SUM(BASELINE_VOLUME) from DISAG_BASE_ITEM_TEST2  group by C_P_D";
+
+
+//        var querySql = "select DATE_CODE ,PRODUCT_UUID,SUM(LIST_PRICE),SUM(BASELINE_VOLUME)  from DISAG_BASE_ITEM  WHERE ACCOUNT_PLAN_UUID = '0e402f4d311a4891ad8a902f7d5ac3f5'  group by DATE_CODE ,PRODUCT_UUID";
+//        var querySql = "select ACCOUNT_PLAN_UUID,SUM(LIST_PRICE)  from DISAG_BASE_ITEM  group by ACCOUNT_PLAN_UUID";
+
+
+//        var querySql = "select  PRODUCT_UUID,SUM(LIST_PRICE) from DISAG_BASE_ITEM group by PRODUCT_UUID";
+//        var querySql = "select DATE_CODE ,PRODUCT_UUID,SUM(LIST_PRICE),SUM(BASELINE_VOLUME) from DISAG_BASE_ITEM_TEST2 group by DATE_CODE ,PRODUCT_UUID";
         var count = entityManager.createNativeQuery(querySql).getResultList();
         var cost = System.currentTimeMillis() - start;
-        log.info("finish query data from DISAG_BASE_ITEM,concurrency:{} cost :{}ms",concurrency,cost);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        log.info("finish execute:[{}],concurrency:{} cost: {}ms",querySql,concurrency,cost);
     }
+
 
     public void fromPartition(int concurrency){
         long start = System.currentTimeMillis();
 //        var querySql = "select sum(LIST_PRICE), ACCOUNT_PLAN_UUID from DISAG_BASE_ITEM_TEST  WHERE ACCOUNT_PLAN_UUID  = '021548ce0a9c4cb1b92d9ac35033fc26'  group by ACCOUNT_PLAN_UUID";
-        var querySql = "SELECT  * FROM DISAG_BASE_ITEM  LIMIT 1";
+        var querySql = "select ACCOUNT_PLAN_UUID,SUM(LIST_PRICE)  from DISAG_BASE_ITEM_TEST  WHERE DISAG_VERSION_UUID = 'DEFAULT_VERSION'  group by ACCOUNT_PLAN_UUID";
         var count = entityManager.createNativeQuery(querySql).getResultList();
         var cost = System.currentTimeMillis() - start;
-        log.info("finish query data from DISAG_BASE_ITEM_TEST,concurrency:{} cost :{}ms",concurrency,cost);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        log.info("finish execute:[{}],concurrency:{} cost :{}ms",querySql,concurrency,cost);
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
     }
 }

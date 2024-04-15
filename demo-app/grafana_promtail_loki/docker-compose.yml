@@ -4,9 +4,9 @@ networks:
 
 services:
   loki:
-    image: grafana/loki:2.4.0
+    image: grafana/loki
     volumes:
-      - loki:/etc/loki
+      - ./loki:/etc/loki
     ports:
       - '3100:3100'
     restart: unless-stopped
@@ -15,10 +15,10 @@ services:
       - loki
 
   promtail:
-    image: grafana/promtail:2.4.0
+    image: grafana/promtail
     volumes:
-      - /var/log:/var/log
-      - promtail:/etc/promtail
+      - ../logs:/var/logs
+      - ./promtail:/etc/promtail
     restart: unless-stopped
     command: -config.file=/etc/promtail/promtail-config.yml
     networks:
@@ -26,7 +26,7 @@ services:
 
 
   grafana:
-    image: grafana/grafana-enterprise
+    image: grafana/grafana
     container_name: grafana
     restart: unless-stopped
     ports:
@@ -36,7 +36,4 @@ services:
     networks:
       - loki
 volumes:
-  loki: {}
-  promtail: {}
   grafana-storage: {}
-  mypg1: {}

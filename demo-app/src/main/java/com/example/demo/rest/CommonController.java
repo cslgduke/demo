@@ -59,30 +59,46 @@ public class CommonController {
         return String.valueOf(uuid);
     }
 
-    int  concurrency = 1;
+    int concurrency = 1;
+
     @PostMapping("/userAdd")
     public String userAdd() {
-        var executor = new ThreadPoolExecutor(concurrency, concurrency, 10, TimeUnit.MICROSECONDS,
-                new ArrayBlockingQueue<>(1000),
-                new ThreadFactoryBuilder().setNamePrefix("hana-query-test").build(),
-                new ThreadPoolExecutor.AbortPolicy());
-        int batchCount = 1000;
-        for (int i = 0; i < 10000; i++) {
-            executor.execute(()->{
-                var start = System.currentTimeMillis();
-                List<User> users = new ArrayList<>();
-                for (int j = 0; j < batchCount; j++) {
-                    User user = new User();
-                    user.setName(RandomUtil.randomString(10));
-                    user.setAge(RandomUtil.randomInt(20, 50));
-                    user.setCreateTime(LocalDateTime.now().minusDays(RandomUtil.randomInt(365)));
-                    user.setUpdateTime(user.getCreateTime());
-                    users.add(user);
-                }
-                userRepository.saveAll(users);
-                log.info("insert {} records,cost:{}ms",batchCount,System.currentTimeMillis() - start);
-            });
+//        var executor = new ThreadPoolExecutor(concurrency, concurrency, 10, TimeUnit.MICROSECONDS,
+//                new ArrayBlockingQueue<>(1000),
+//                new ThreadFactoryBuilder().setNamePrefix("hana-query-test").build(),
+//                new ThreadPoolExecutor.AbortPolicy());
+//        int batchCount = 1000;
+//        for (int i = 0; i < 10000; i++) {
+//            executor.execute(()->{
+//                var start = System.currentTimeMillis();
+//                List<User> users = new ArrayList<>();
+//                for (int j = 0; j < batchCount; j++) {
+//                    User user = new User();
+//                    user.setName(RandomUtil.randomString(10));
+//                    user.setAge(RandomUtil.randomInt(20, 50));
+//                    user.setCreateTime(LocalDateTime.now().minusDays(RandomUtil.randomInt(365)));
+//                    user.setUpdateTime(user.getCreateTime());
+//                    users.add(user);
+//                }
+//                userRepository.saveAll(users);
+//                log.info("insert {} records,cost:{}ms",batchCount,System.currentTimeMillis() - start);
+//            });
+//        }
+        int batchCount = 100;
+        List<User> users = new ArrayList<>();
+        for (int j = 0; j < batchCount; j++) {
+            User user = new User();
+            user.setName(RandomUtil.randomString(10));
+//            user.setAge(RandomUtil.randomInt(20, 50));
+            user.setAge(60);
+            user.setCreateTime(LocalDateTime.now().minusDays(RandomUtil.randomInt(365)));
+            user.setUpdateTime(user.getCreateTime());
+            users.add(user);
         }
+        long start = System.currentTimeMillis();
+        userRepository.saveAll(users);
+        log.info("insert {} records,cost:{}ms",batchCount,System.currentTimeMillis() - start);
+
         return "success";
     }
 
@@ -90,11 +106,11 @@ public class CommonController {
     @Transactional
     public String userTest() {
         var sql = "select t from User t where t.id = 8";
-        var query = entityManager.createQuery(sql,User.class);
+        var query = entityManager.createQuery(sql, User.class);
         var user = query.getSingleResult();
         user.setName("Dave - 1");
 //        user.setId(null);
-        var query2  = entityManager.createQuery(sql,User.class);
+        var query2 = entityManager.createQuery(sql, User.class);
         var user2 = query2.getSingleResult();
         user2.setName("Dave -2 ");
 //        entityManager.refresh(user2);//No EntityManager with actual transaction available for current thread - cannot reliably process 'refresh' call
@@ -102,15 +118,15 @@ public class CommonController {
 
         //if want to read the db data must open a new seesion
         var newEm = this.entityManager.getEntityManagerFactory().createEntityManager();
-        var newQuery = newEm.createQuery(sql,User.class);
+        var newQuery = newEm.createQuery(sql, User.class);
         var userFromDb = newQuery.getSingleResult();
 
         //entityManager.persist(user2);
         // entityManager.flush();
         /**
          * if remove @Transactional when invoke persist or flush will get follow exception
-            No EntityManager with actual transaction available for current thread - cannot reliably process 'persist' call
-            No EntityManager with actual transaction available for current thread - cannot reliably process 'flush' call
+         No EntityManager with actual transaction available for current thread - cannot reliably process 'persist' call
+         No EntityManager with actual transaction available for current thread - cannot reliably process 'flush' call
          */
         userRepository.save(user2);
         return "success";
@@ -169,7 +185,7 @@ public class CommonController {
     public Object delAccount(@PathVariable String tenantId) {
         var topic = "CommonSearchDataDeletion";
 //        var tenantId = "433746360799232"; // 1384207532298240
-        var accountIds = Arrays.asList("ACT0101","ACT0102","ACT0103","ACT0104","ACT0105","ACT01","ACT0201","ACT0202","ACT0203","ACT0204","ACT0205","ACT02");
+        var accountIds = Arrays.asList("ACT0101", "ACT0102", "ACT0103", "ACT0104", "ACT0105", "ACT01", "ACT0201", "ACT0202", "ACT0203", "ACT0204", "ACT0205", "ACT02");
         accountIds.forEach(actId -> {
             var value = "{\"type\": \"account\",\"isDelete\":true,\"source\": {\"accountId\":" +
                     "\"" +
@@ -179,10 +195,10 @@ public class CommonController {
                     "\",\"fieldInfoList\": [{\"columnName\": \"accountId\",\"fieldType\": \"VARCHAR\",\"fieldName\": \"accountId\",\"nullable\": false,\"primaryKey\": true,\"childColumn\": true,\"parentColumn\": false,\"longIdColumn\": true,\"buildPathColumn\": false,\"searchable\": true,\"length\": 32,\"unique\": false}]}";
 
             var key = generateUUID();
-            var headers = new HashMap<String,String>();
-            headers.put("X-Tenant-ID",tenantId);
-            headers.put("X-Message-ID",key);
-            kafkaProducer.sendMsg(topic,key,value,headers);
+            var headers = new HashMap<String, String>();
+            headers.put("X-Tenant-ID", tenantId);
+            headers.put("X-Message-ID", key);
+            kafkaProducer.sendMsg(topic, key, value, headers);
         });
         return "success";
     }
@@ -191,7 +207,7 @@ public class CommonController {
     public Object delST(@PathVariable String tenantId) {
         var topic = "CommonSearchDataDeletion";
 //        var tenantId = "433746360799232"; //1384207532298240
-        var stIds = Arrays.asList("ST01","ST0101","ST0102","ST0103","ST0104","ST0105","ST02","ST0201","ST0202","S01010","S01011","S01021","S01020","S01030","S01031","S01032","S01033");
+        var stIds = Arrays.asList("ST01", "ST0101", "ST0102", "ST0103", "ST0104", "ST0105", "ST02", "ST0201", "ST0202", "S01010", "S01011", "S01021", "S01020", "S01030", "S01031", "S01032", "S01033");
         stIds.forEach(stId -> {
             var value = "{\"type\": \"salesTerritory\",\"isDelete\":true,\"source\": {\"territoryId\":" +
                     "\"" +
@@ -201,13 +217,14 @@ public class CommonController {
                     "\",\"fieldInfoList\": [{\"columnName\": \"territoryId\",\"fieldType\": \"VARCHAR\",\"fieldName\": \"territoryId\",\"nullable\": false,\"primaryKey\": true,\"childColumn\": true,\"parentColumn\": false,\"longIdColumn\": true,\"buildPathColumn\": false,\"searchable\": true,\"length\": 32,\"unique\": false}]}";
 
             var key = generateUUID();
-            var headers = new HashMap<String,String>();
-            headers.put("X-Tenant-ID",tenantId);
-            headers.put("X-Message-ID",key);
-            kafkaProducer.sendMsg(topic,key,value,headers);
+            var headers = new HashMap<String, String>();
+            headers.put("X-Tenant-ID", tenantId);
+            headers.put("X-Message-ID", key);
+            kafkaProducer.sendMsg(topic, key, value, headers);
         });
         return "success";
     }
+
     public String generateUUID() {
         return StringUtils.upperCase(StringUtils.replace(UUID.randomUUID().toString(), "-", ""));
     }
@@ -217,7 +234,7 @@ public class CommonController {
     public Response<Boolean> visit(@PathVariable String apId) {
 //        log.info("receive param:{}", JSON.toJSONString(request));
         log.info("receive param:{}", apId);
-        return  Response.<Boolean>builder().code(apId).data(true).build();
+        return Response.<Boolean>builder().code(apId).data(true).build();
     }
 
 
@@ -236,29 +253,29 @@ public class CommonController {
             new CustomThreadFactory(),
             new ThreadPoolExecutor.AbortPolicy());
 
-    private void  testFgc(){
+    private void testFgc() {
         for (int i = 0; i < corePoolSize; i++) {
             var persons = new ArrayList<User>();
-            executor.execute(() ->{
+            executor.execute(() -> {
 //                while (true){
-                    persons.add(getInstance());
-                    log.info("The size of persons:{}",persons.size());
-                    try {
-                        Thread.sleep(1);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                persons.add(getInstance());
+                log.info("The size of persons:{}", persons.size());
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 //                }
             });
         }
     }
 
-    public User getInstance(){
+    public User getInstance() {
         return User.builder()
                 .id(Long.parseLong(RandomUtil.randomNumbers(18)))
                 .name(RandomUtil.randomString(100))
-                .age(RandomUtil.randomInt(0,100))
-                .address(RandomUtil.randomString("ShangHai ",100)).build();
+                .age(RandomUtil.randomInt(0, 100))
+                .address(RandomUtil.randomString("ShangHai ", 100)).build();
     }
 
     @GetMapping("/dpp/Users/{uuid}")

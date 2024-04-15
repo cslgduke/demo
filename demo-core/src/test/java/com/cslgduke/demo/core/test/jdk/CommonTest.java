@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.math.BigDecimal;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
@@ -235,6 +236,12 @@ public class CommonTest {
         var output = Pattern.compile("^.").matcher(input).replaceFirst(s -> s.group().toUpperCase());
         log.info("input:{},output:{}",input,output);
 
+    }
+
+    @Test
+    public void test_numberadd(){
+        BigDecimal a = new BigDecimal(1000);
+        log.info("a:{}",a);
     }
 
 }
