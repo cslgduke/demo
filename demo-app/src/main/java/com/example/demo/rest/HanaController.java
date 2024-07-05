@@ -24,7 +24,7 @@ public class HanaController {
     @Autowired
     private EntityManager entityManager;
 
-    int concurrency = 1;
+    int concurrency = 50;
 
     @PostMapping("/queryFromCV")
     public Object queryFromCV() {
@@ -66,9 +66,9 @@ public class HanaController {
                 new ThreadPoolExecutor.AbortPolicy());
         for (int i = 0; i < concurrency; i++) {
             executor.execute(() -> {
-//                while(true){
+                while(true){
                     fromTable(concurrency);
-//                }
+                }
             });
         }
         return "success";
@@ -157,7 +157,7 @@ public class HanaController {
 
 //        var querySql = "select DATE_CODE ,PRODUCT_UUID,SUM(LIST_PRICE),SUM(BASELINE_VOLUME)  from DISAG_BASE_ITEM_TEST2 group by DATE_CODE ,PRODUCT_UUID";
 //        var querySql = "select C_P_D,SUM(LIST_PRICE) from DISAG_BASE_ITEM_TEST2  group by C_P_D";
-        var querySql = "select C_P_D,SUM(LIST_PRICE) from DISAG_BASE_ITEM_TEST2  group by C_P_D LIMIT 20";
+//        var querySql = "select sum(LIST_PRICE), ACCOUNT_PLAN_UUID from SAP_CIC_RGP_DISAG_BASE_SIMULATE_2  WHERE ACCOUNT_PLAN_UUID  = '1b98cddc5d08427da784e154f70d5444'  group by ACCOUNT_PLAN_UUID";
 //        var querySql = "select C_P_D,SUM(LIST_PRICE),SUM(BASELINE_VOLUME) from DISAG_BASE_ITEM_TEST2  group by C_P_D";
 
 
@@ -166,7 +166,7 @@ public class HanaController {
 
 
 //        var querySql = "select  PRODUCT_UUID,SUM(LIST_PRICE) from DISAG_BASE_ITEM group by PRODUCT_UUID";
-//        var querySql = "select DATE_CODE ,PRODUCT_UUID,SUM(LIST_PRICE),SUM(BASELINE_VOLUME) from DISAG_BASE_ITEM_TEST2 group by DATE_CODE ,PRODUCT_UUID";
+        var querySql = "select sum(BASELINE_VOLUME), PRODUCT_UUID ,EDLP_PROMOTION_UUID from DISAG_BASE_ITEM  WHERE ACCOUNT_PLAN_UUID  = '4acab2776b524ab4897f7f6d682f51b6'  group by PRODUCT_UUID ,EDLP_PROMOTION_UUID ";
         var count = entityManager.createNativeQuery(querySql).getResultList();
         var cost = System.currentTimeMillis() - start;
         log.info("finish execute:[{}],concurrency:{} cost: {}ms",querySql,concurrency,cost);
@@ -175,8 +175,7 @@ public class HanaController {
 
     public void fromPartition(int concurrency){
         long start = System.currentTimeMillis();
-//        var querySql = "select sum(LIST_PRICE), ACCOUNT_PLAN_UUID from DISAG_BASE_ITEM_TEST  WHERE ACCOUNT_PLAN_UUID  = '021548ce0a9c4cb1b92d9ac35033fc26'  group by ACCOUNT_PLAN_UUID";
-        var querySql = "select ACCOUNT_PLAN_UUID,SUM(LIST_PRICE)  from DISAG_BASE_ITEM_TEST  WHERE DISAG_VERSION_UUID = 'DEFAULT_VERSION'  group by ACCOUNT_PLAN_UUID";
+        var querySql = "select sum(BASELINE_VOLUME), PRODUCT_UUID ,EDLP_PROMOTION_UUID from DISAG_BASE_ITEM_TEST  WHERE ACCOUNT_PLAN_UUID  = '4acab2776b524ab4897f7f6d682f51b6'  group by PRODUCT_UUID ,EDLP_PROMOTION_UUID ;\n";
         var count = entityManager.createNativeQuery(querySql).getResultList();
         var cost = System.currentTimeMillis() - start;
         log.info("finish execute:[{}],concurrency:{} cost :{}ms",querySql,concurrency,cost);

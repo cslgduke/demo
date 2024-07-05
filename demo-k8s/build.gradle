@@ -23,6 +23,8 @@ dependencies {
 	implementation 'de.codecentric:spring-boot-admin-starter-server:2.6.6'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'de.codecentric:spring-boot-admin-starter-client:2.6.6'
+	implementation 'io.micrometer:micrometer-registry-prometheus'
+	implementation 'io.micrometer:micrometer-core'
 
 }
 

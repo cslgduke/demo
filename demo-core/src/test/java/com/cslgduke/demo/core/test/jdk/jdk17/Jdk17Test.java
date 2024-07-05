@@ -1,13 +1,21 @@
 package com.cslgduke.demo.core.test.jdk.jdk17;
 
+import cn.hutool.core.util.HashUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
+
+import java.util.*;
 
 /**
  * @author i565244
  */
 @Slf4j
 public class Jdk17Test {
+
+    public static void main(String[] args) {
+        int a = (int)(Math.random() *20 + 20);
+        System.out.println(a);
+    }
 
     @Test
     public void test_textBlock() {
@@ -23,6 +31,47 @@ public class Jdk17Test {
                 How I wonder what you are!
             """;
         log.info("text block poem \n:{}",poem);
+    }
+
+    @Test
+    public void test_map() {
+        List<Map<String,Object>> ms = List.of(Map.of("k1","k1","k2","k2"),Map.of("k1","k1k1","k2","k2k2"));
+        var cnt = ms.stream().filter(t -> t.get("k1").equals("k1")).count();
+        log.info("count is :{}",cnt);
+    }
+
+
+    @Test
+    public void test_UUIDHash() {
+        var maps = new HashMap<Integer,Integer>();
+        var total = 1000000;
+        var sets = new HashSet<Integer>();
+        for (int i = 0; i < total; i++) {
+            var uuid = UUID.randomUUID().toString().replace("-", "");
+//            var hashInt = HashUtil.bkdrHash(uuid);
+            var hashInt = HashUtil.murmur32(uuid.getBytes());
+            sets.add(hashInt);
+//            log.info("uuid:{} ,hashInt:{}",uuid,hashInt);
+            var index = hashInt % 100;
+            Integer count =  maps.computeIfAbsent(index,key-> 0);
+            maps.put(index,count + 1);
+        }
+        log.info("algorithm:{},total:{},hashCount:{},collision-rate:{}","murmur32",total,sets.size(),(total - sets.size()) / total);
+        log.info("uuid distribution {}",maps);
+
+        var maps2 = new HashMap<Integer,Integer>();
+        var sets2 = new HashSet<Integer>();
+        for (int i = 0; i < total; i++) {
+            var uuid = UUID.randomUUID().toString().replace("-", "");
+            var hashInt = HashUtil.bkdrHash(uuid);
+            sets2.add(hashInt);
+//            log.info("uuid:{} ,hashInt:{}",uuid,hashInt);
+            var index = hashInt % 100;
+            Integer count =  maps2.computeIfAbsent(index,key-> 0);
+            maps2.put(index,count + 1);
+        }
+        log.info("algorithm:{},total:{},hashCount:{},collision-rate:{}","bkdrHash",total,sets.size(),(total - sets.size()) / total);
+        log.info("uuid distribution {}",maps2);
     }
 
 }

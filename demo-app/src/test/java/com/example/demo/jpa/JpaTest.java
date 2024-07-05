@@ -58,7 +58,7 @@ public class JpaTest {
         user.setName(RandomUtil.randomString(10));
         user.setAge(RandomUtil.randomInt(20, 50));
         user.setCreateTime(LocalDateTime.now().minusMinutes(RandomUtil.randomInt(10,20)));
-        user.setUpdateTime(LocalDateTime.now().minusMinutes(RandomUtil.randomInt(10,20)).toString());
+        user.setUpdateTime(LocalDateTime.now().minusMinutes(RandomUtil.randomInt(10,20)));
         return user;
     }
 

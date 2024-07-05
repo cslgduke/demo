@@ -23,7 +23,7 @@ inhibit_rules:
 receivers:
   - name: 'default'
     email_configs:
-      - to: 'cslgduke@163.com'
+      - to: 'dave.du@sap.com'
         send_resolved: true
 #    webhook_configs:
 #      - url: 'http://dingtalk:8060/dingtalk/webhook/send'

@@ -10,6 +10,7 @@ spec:
       protocol: TCP
       name: app
       targetPort: 8080
+# default: none
 #  sessionAffinity: ClientIP
   selector:
     app: demo-app

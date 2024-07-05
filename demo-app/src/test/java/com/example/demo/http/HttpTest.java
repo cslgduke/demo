@@ -69,32 +69,54 @@ public class HttpTest {
         private R data;
     }
 
-
     @Test
     @SneakyThrows
-    public void test_2() {
+    public void test_rateLimit() {
 
         var executorService = Executors.newFixedThreadPool(50);
-        for (int i = 0; i < 50; i++) {
+        var url1 = "http://localhost/common/user";
+        for (int i = 0; i < 10; i++) {
             executorService.execute(() ->{
                 while(true){
-                    try{
-                        var url = "http://localhost:30418/common/user";
-                        var httpGet = new HttpGet(url);
-                        var response = HttpConnectionManager.getHttpClient().execute(httpGet);
-                        var returnJson = EntityUtils.toString(response.getEntity());
-                        var result = JSON.parseObject(returnJson, new TypeReference<>(){});
-                        log.info("Http call response status: {}, response body: {}.", response.getStatusLine().getStatusCode(), returnJson);
-
-                    }catch (Exception e){
-                        log.error("occur exception",e);
-                    }
+                    callAPi(url1);
                 }
             });
         }
         while(true){
             log.info(">>>>>>>>>>>>>>>>>>>>");
             Thread.sleep(1 * 1000);
+        }
+    }
+
+    @Test
+    @SneakyThrows
+    public void test_promotion_apis() {
+
+        var executorService = Executors.newFixedThreadPool(50);
+        var url1 = "http://localhost:8080/log/createPromotion";
+        var url2 = "http://localhost:8080/log/promotionList";
+        for (int i = 0; i < 50; i++) {
+            executorService.execute(() ->{
+                while(true){
+                    callAPi(url1);
+                    callAPi(url2);
+                }
+            });
+        }
+        while(true){
+            log.info(">>>>>>>>>>>>>>>>>>>>");
+            Thread.sleep(1 * 1000);
+        }
+    }
+
+    private void callAPi(String url){
+        try{
+            var httpGet = new HttpGet(url);
+            var response = HttpConnectionManager.getHttpClient().execute(httpGet);
+            var resp = EntityUtils.toString(response.getEntity());
+            log.info("Http call response status: {}, response body: {}.", response.getStatusLine().getStatusCode(), resp);
+        }catch (Exception e){
+            log.error("occur exception",e);
         }
     }
 

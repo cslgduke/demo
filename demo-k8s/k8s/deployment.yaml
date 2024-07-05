@@ -15,6 +15,7 @@ spec:
         app: demo-app
         role: web
     spec:
+      serviceAccountName: prometheus
       containers:
         - name: demo-app
           image: demo-k8s:17-jre-headless-ubuntu
