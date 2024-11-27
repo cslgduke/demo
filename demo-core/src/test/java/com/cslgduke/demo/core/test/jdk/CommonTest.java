@@ -29,6 +29,8 @@ public class CommonTest {
         var str = "2022-05-03T20:00:00.000000";
 
         var ldt = LocalDateTime.parse((String) str);
+
+        System.out.println(false || !false);
     }
 
     @Test

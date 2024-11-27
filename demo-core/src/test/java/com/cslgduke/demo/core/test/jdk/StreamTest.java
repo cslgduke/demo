@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
@@ -34,9 +35,11 @@ public class StreamTest {
             log.info("key:{},value:{}",k,v);
         });
 
-        users.forEach(u -> u.setAge(100));
-        System.out.println(users);
+//        users.forEach(u -> u.setAge(100));
+//        System.out.println(users);
 
+        var sum = users.stream().map(u -> u.getAge()).reduce((a,b) -> a + b).orElse(0);
+        System.out.println(sum);
     }
 
 

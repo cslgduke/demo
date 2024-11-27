@@ -22,15 +22,29 @@ public class KafkaProducer {
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
-
-    public void sendMsg(String topic,String key,String value, Map<String,String> headers){
+    public void sendMsg(String topic,Integer partition,String key,String value, Map<String,String> headers){
         var recordHeaders = new ArrayList<>();
         headers.keySet().stream().forEach(t -> {
             recordHeaders.add(new RecordHeader(t,String.valueOf(headers.get(t)).getBytes(StandardCharsets.UTF_8)));
         });
-        var pRecord = new ProducerRecord(topic,0,key,value,recordHeaders);
+        var pt = Integer.valueOf(partition);
+        var pRecord = new ProducerRecord(topic,pt,key,value,recordHeaders);
         kafkaTemplate.send(pRecord);
         log.info("message send successful：topic:[{}] key:[{}]", topic,key);
+    }
+
+
+    public void sendMsg(String topic,String key,String value){
+        var recordHeaders = new ArrayList<>();
+        var pRecord = new ProducerRecord(topic,key,value);
+        kafkaTemplate.send(pRecord);
+        log.info("message send successful：topic:[{}] key:[{}]", topic,key);
+    }
+
+    public void sendMsg(String topic,String value){
+        var pRecord = new ProducerRecord(topic,value);
+        kafkaTemplate.send(pRecord);
+        log.info("message send successful：topic:[{}]", topic);
     }
 
 

@@ -181,55 +181,6 @@ public class CommonController {
         return "success";
     }
 
-    @PostMapping("/delAccount/{tenantId}")
-    public Object delAccount(@PathVariable String tenantId) {
-        var topic = "CommonSearchDataDeletion";
-//        var tenantId = "433746360799232"; // 1384207532298240
-        var accountIds = Arrays.asList("ACT0101", "ACT0102", "ACT0103", "ACT0104", "ACT0105", "ACT01", "ACT0201", "ACT0202", "ACT0203", "ACT0204", "ACT0205", "ACT02");
-        accountIds.forEach(actId -> {
-            var value = "{\"type\": \"account\",\"isDelete\":true,\"source\": {\"accountId\":" +
-                    "\"" +
-                    actId +
-                    "\"},\"tenantId\":\"" +
-                    tenantId +
-                    "\",\"fieldInfoList\": [{\"columnName\": \"accountId\",\"fieldType\": \"VARCHAR\",\"fieldName\": \"accountId\",\"nullable\": false,\"primaryKey\": true,\"childColumn\": true,\"parentColumn\": false,\"longIdColumn\": true,\"buildPathColumn\": false,\"searchable\": true,\"length\": 32,\"unique\": false}]}";
-
-            var key = generateUUID();
-            var headers = new HashMap<String, String>();
-            headers.put("X-Tenant-ID", tenantId);
-            headers.put("X-Message-ID", key);
-            kafkaProducer.sendMsg(topic, key, value, headers);
-        });
-        return "success";
-    }
-
-    @PostMapping("/delST/{tenantId}")
-    public Object delST(@PathVariable String tenantId) {
-        var topic = "CommonSearchDataDeletion";
-//        var tenantId = "433746360799232"; //1384207532298240
-        var stIds = Arrays.asList("ST01", "ST0101", "ST0102", "ST0103", "ST0104", "ST0105", "ST02", "ST0201", "ST0202", "S01010", "S01011", "S01021", "S01020", "S01030", "S01031", "S01032", "S01033");
-        stIds.forEach(stId -> {
-            var value = "{\"type\": \"salesTerritory\",\"isDelete\":true,\"source\": {\"territoryId\":" +
-                    "\"" +
-                    stId +
-                    "\"},\"tenantId\":\"" +
-                    tenantId +
-                    "\",\"fieldInfoList\": [{\"columnName\": \"territoryId\",\"fieldType\": \"VARCHAR\",\"fieldName\": \"territoryId\",\"nullable\": false,\"primaryKey\": true,\"childColumn\": true,\"parentColumn\": false,\"longIdColumn\": true,\"buildPathColumn\": false,\"searchable\": true,\"length\": 32,\"unique\": false}]}";
-
-            var key = generateUUID();
-            var headers = new HashMap<String, String>();
-            headers.put("X-Tenant-ID", tenantId);
-            headers.put("X-Message-ID", key);
-            kafkaProducer.sendMsg(topic, key, value, headers);
-        });
-        return "success";
-    }
-
-    public String generateUUID() {
-        return StringUtils.upperCase(StringUtils.replace(UUID.randomUUID().toString(), "-", ""));
-    }
-
-
     @GetMapping("/visit/{apId}")
     public Response<Boolean> visit(@PathVariable String apId) {
 //        log.info("receive param:{}", JSON.toJSONString(request));
@@ -255,9 +206,10 @@ public class CommonController {
 
     private void testFgc() {
         for (int i = 0; i < corePoolSize; i++) {
-            var persons = new ArrayList<User>();
+
             executor.execute(() -> {
-//                while (true){
+                while (true){
+                var persons = new ArrayList<User>();
                 persons.add(getInstance());
                 log.info("The size of persons:{}", persons.size());
                 try {
@@ -265,7 +217,7 @@ public class CommonController {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-//                }
+                }
             });
         }
     }
@@ -273,9 +225,9 @@ public class CommonController {
     public User getInstance() {
         return User.builder()
                 .id(Long.parseLong(RandomUtil.randomNumbers(18)))
-                .name(RandomUtil.randomString(100))
+                .name(RandomUtil.randomString(10000))
                 .age(RandomUtil.randomInt(0, 100))
-                .address(RandomUtil.randomString("ShangHai ", 100)).build();
+                .address(RandomUtil.randomString("ShangHai ", 10000)).build();
     }
 
     @GetMapping("/dpp/Users/{uuid}")

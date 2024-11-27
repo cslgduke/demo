@@ -15,6 +15,10 @@ public class Jdk17Test {
     public static void main(String[] args) {
         int a = (int)(Math.random() *20 + 20);
         System.out.println(a);
+
+
+        Integer b = 1;
+        System.out.println(b == 1);
     }
 
     @Test
