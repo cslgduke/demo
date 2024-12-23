@@ -1,6 +1,5 @@
 package com.example.demo.rest;
 
-import cn.hutool.core.util.RandomUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
@@ -9,8 +8,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author i565244
@@ -30,9 +27,9 @@ public class RedisController {
     @PostMapping("/redisGet/{key}")
     public Object redisGet(@PathVariable String key) {
         var value = "";
-        if(redisTemplate.hasKey(key)){
-           value  = (String) redisTemplate.opsForValue().get(key);
-        }
+//        if(redisTemplate.hasKey(key)){
+//           value  = (String) redisTemplate.opsForValue().get(key);
+//        }
         return value;
     }
 

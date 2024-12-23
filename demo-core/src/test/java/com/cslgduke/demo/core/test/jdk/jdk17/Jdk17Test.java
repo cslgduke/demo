@@ -1,9 +1,11 @@
 package com.cslgduke.demo.core.test.jdk.jdk17;
 
+import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.HashUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.util.*;
 
 /**
@@ -76,6 +78,36 @@ public class Jdk17Test {
         }
         log.info("algorithm:{},total:{},hashCount:{},collision-rate:{}","bkdrHash",total,sets.size(),(total - sets.size()) / total);
         log.info("uuid distribution {}",maps2);
+    }
+
+    @Test
+    public void test_ListAdd() {
+        List<String> listA = null;
+        List<String> listB = List.of();
+        List<String> listC = List.of("c-001","c-002");
+        List<String> listD = List.of("d-001","d-002");
+
+        var finalList = new ArrayList<String>();
+        if(CollectionUtil.isNotEmpty(listA)){
+            finalList.addAll(listA);
+        }
+        if(CollectionUtil.isNotEmpty(listB)){
+            finalList.addAll(listB);
+        }
+        if(CollectionUtil.isNotEmpty(listC)){
+            finalList.addAll(listC);
+        }
+        if(CollectionUtil.isNotEmpty(listD)){
+            finalList.addAll(listD);
+        }
+        log.info("the final list is:{}",finalList);
+    }
+
+    @Test
+    public void test_file() {
+        File defaultEnvFile = new File("/Users/i565244/serviceBindings");
+        log.info("is Directory:{}" + defaultEnvFile.isDirectory());
+        log.info("is exist:{}" + defaultEnvFile.exists());
     }
 
 }

@@ -1,0 +1,32 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: dpi-open-api
+spec:
+  hosts:
+    - api.rgm-dev.rgm-kyma-dev-live.rgm.eurekacloud.io
+  gateways:
+    - istio-system/api-rgm-dev-rgm-rgm-kyma-dev-live-mtls-ugw
+  http:
+    - match:
+        - uri:
+            prefix: /dpi/pdm
+          method:
+            regex: GET
+      rewrite:
+        uri: /pdm
+      route:
+        - destination:
+            host: rgp-dpp-proxy-cap
+            port:
+              number: 80
+    - match:
+        - uri:
+            prefix: /dpi/drm-ng
+      rewrite:
+        uri: /drm-ng
+      route:
+        - destination:
+            host: rgp-dpp-proxy-cap
+            port:
+              number: 80

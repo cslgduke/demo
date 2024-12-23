@@ -24,6 +24,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 	implementation 'org.springframework.boot:spring-boot-starter-jersey'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'cn.amorou.uid:uid-generator-spring-boot-starter:1.0.2'
 //	implementation 'io.micrometer:micrometer-registry-prometheus:1.8.4'
 //	implementation 'io.micrometer:micrometer-core:1.8.4'
