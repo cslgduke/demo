@@ -10,8 +10,8 @@ import org.springframework.security.web.SecurityFilterChain;
  * @author i565244
  */
 
-@Configuration
-@EnableWebSecurity
+//@Configuration
+//@EnableWebSecurity
 public class SecurityConfig {
 //    @Bean
 //    protected UserDetailsService userDetailsService() {

@@ -24,7 +24,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 	implementation 'org.springframework.boot:spring-boot-starter-jersey'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
+//	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'cn.amorou.uid:uid-generator-spring-boot-starter:1.0.2'
 //	implementation 'io.micrometer:micrometer-registry-prometheus:1.8.4'
 //	implementation 'io.micrometer:micrometer-core:1.8.4'
@@ -32,6 +32,9 @@ dependencies {
 	implementation 'io.micrometer:micrometer-core'
 	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.8.1'
 
+
+	implementation 'org.springframework:spring-context-support'
+	implementation 'org.quartz-scheduler:quartz'
 	//	implementation 'com.alibaba:druid-spring-boot-starter:1.2.8'
 //	implementation 'io.micrometer:micrometer-registry-dynatrace:1.8.4'
 //	implementation 'io.dropwizard.metrics:metrics-core:4.2.25'
