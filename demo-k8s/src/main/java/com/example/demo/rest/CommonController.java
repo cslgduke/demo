@@ -33,4 +33,5 @@ public class CommonController {
         log.info("user info:{}", JSON.toJSONString(user));
         return user;
     }
+
 }

@@ -235,4 +235,19 @@ public class CommonController {
 
         return Result.Ok(HttpStatus.OK.value(), "success", null);
     }
+
+
+    @RequestMapping("/newTrhread")
+    public boolean newThread() {
+        var thread = new Thread(() -> {
+            try {
+                Thread.sleep(2 * 1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            log.info("new thread run");
+        });
+        thread.start();
+        return true;
+    }
 }

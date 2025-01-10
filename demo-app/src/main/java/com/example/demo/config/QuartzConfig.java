@@ -2,10 +2,9 @@ package com.example.demo.config;
 
 import com.example.demo.job.DemoQuartzJob;
 import org.quartz.*;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.quartz.spi.JobFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
 import static com.alibaba.compileflow.engine.process.preruntime.generator.bean.SpringApplicationContextProvider.applicationContext;
@@ -16,24 +15,29 @@ import static com.alibaba.compileflow.engine.process.preruntime.generator.bean.S
 
 @Configuration
 public class QuartzConfig {
+
+
     @Bean
-    public Scheduler scheduler(SchedulerFactoryBean schedulerFactoryBean) throws SchedulerException, ClassNotFoundException {
+    public JobFactory jobFactory() {
+        return new CustomizeSpringBeanJobFactory();
+    }
+
+
+    @Bean
+    public Scheduler scheduler(SchedulerFactoryBean schedulerFactoryBean,JobFactory jobFactory) throws SchedulerException, ClassNotFoundException {
+        schedulerFactoryBean.setJobFactory(jobFactory);
         Scheduler scheduler = schedulerFactoryBean.getScheduler();
+        scheduler.setJobFactory(jobFactory);
 
         Class<? extends Job> clazz = DemoQuartzJob.class;
         JobDetail jobDetail = JobBuilder.newJob(clazz).withIdentity("DemoQuartzJob", "demo-job").build();
         jobDetail.getJobDataMap().put("applicationContextKey", applicationContext);
-        CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule("0/10 * * * * ?");
+        CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule("0/1 * * * * ?");
         CronTrigger cronTrigger = TriggerBuilder.newTrigger().withIdentity("DemoQuartzJob" + "_trigger",
-                "demo-job" + "_trigger_group").withSchedule(scheduleBuilder).build();
+                "demo-job" + "_trigger_group").withSchedule(scheduleBuilder)
+                .build();
         scheduler.scheduleJob(jobDetail, cronTrigger);
         return scheduler;
-    }
-
-    @Bean
-    @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
-    public DemoQuartzJob DemoQuartzJob() {
-        return new DemoQuartzJob();
     }
 
 

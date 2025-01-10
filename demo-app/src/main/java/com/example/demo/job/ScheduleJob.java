@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ScheduleJob {
 
-    @Scheduled(cron = "${job.cron}")
+//    @Scheduled(cron = "${job.cron}")
     public void task(){
         log.info("ScheduleJob is running,hashCode is:{} ",this.hashCode());
     }
