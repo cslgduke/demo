@@ -1,6 +1,7 @@
 package com.example.demo.rest;
 
 import cn.amorou.uid.UidGenerator;
+import cn.hutool.core.thread.ThreadFactoryBuilder;
 import cn.hutool.core.util.RandomUtil;
 import com.example.demo.bo.Result;
 import com.example.demo.bo.User;
@@ -21,6 +22,7 @@ import javax.persistence.EntityManager;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -50,10 +52,22 @@ public class CommonController {
     @Autowired
     private EntityManager entityManager;
 
+    public static ThreadPoolExecutor commonExecutor = new ThreadPoolExecutor(10, 20, 10, TimeUnit.MICROSECONDS, new ArrayBlockingQueue<>(100), new ThreadFactoryBuilder().setNamePrefix("demo-app-commonPL-").build(), new ThreadPoolExecutor.AbortPolicy());
 
     @PostMapping("/uuid")
     public String generateUUid() {
         var uuid = uidGenerator.getUID();
+        commonExecutor.execute(() ->{
+
+                try {
+                    Thread.sleep(20 * 1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                log.info("getUUid task finished ,uuid:{}",uuid);
+
+        });
+
         return String.valueOf(uuid);
     }
 
