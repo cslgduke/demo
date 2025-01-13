@@ -36,11 +36,12 @@ class DemoApplicationTests {
     public void test_distributionLock() {
         var executor = new ThreadPoolExecutor(20, 20, 10, TimeUnit.MICROSECONDS,
                 new ArrayBlockingQueue<>(100),
-                new ThreadFactoryBuilder().setNamePrefix("mytest").build(),
+                new ThreadFactoryBuilder().setNamePrefix("pod-").build(),
                 new ThreadPoolExecutor.AbortPolicy());
 
         for (int i = 0; i < 10; i++) {
             executor.execute(() -> {
+                log.info("try to acquired lock, begin to run");
                 redissonClient.getSpinLock("test_lock").lock();
                 log.info("acquired lock, begin to run");
                 try {
@@ -53,22 +54,6 @@ class DemoApplicationTests {
             });
         }
 
-
-        for (int i = 0; i < 10; i++) {
-            executor.execute(() -> {
-                var lock =  redissonClient.getSpinLock("test_try_lock");
-                if(lock.tryLock()){
-                    log.info("trylock successful, begin to run");
-                    try {
-                        Thread.sleep(2 * 1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    log.info("trylock task finish, lease lock");
-                    lock.unlock();
-                }
-            });
-        }
 
         while (true){
             try {

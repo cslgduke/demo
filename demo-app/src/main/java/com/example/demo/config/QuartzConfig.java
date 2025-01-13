@@ -13,7 +13,7 @@ import static com.alibaba.compileflow.engine.process.preruntime.generator.bean.S
  * @author i565244
  */
 
-@Configuration
+//@Configuration
 public class QuartzConfig {
 
 

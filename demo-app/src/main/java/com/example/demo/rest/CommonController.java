@@ -1,7 +1,6 @@
 package com.example.demo.rest;
 
 import cn.amorou.uid.UidGenerator;
-import cn.hutool.core.thread.ThreadFactoryBuilder;
 import cn.hutool.core.util.RandomUtil;
 import com.example.demo.bo.Result;
 import com.example.demo.bo.User;
@@ -9,20 +8,19 @@ import com.example.demo.core.CustomThreadFactory;
 import com.example.demo.msg.KafkaProducer;
 import com.example.demo.repo.UserRepository;
 import com.example.demo.service.Userservice;
+import com.example.demo.vo.Response;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import com.example.demo.vo.Response;
 
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import java.time.LocalDateTime;
-import java.util.*;
-import java.util.concurrent.ArrayBlockingQueue;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -97,7 +95,7 @@ public class CommonController {
         }
         long start = System.currentTimeMillis();
         userRepository.saveAll(users);
-        log.info("insert {} records,cost:{}ms",batchCount,System.currentTimeMillis() - start);
+        log.info("insert {} records,cost:{}ms", batchCount, System.currentTimeMillis() - start);
 
         return "success";
     }
@@ -208,15 +206,15 @@ public class CommonController {
         for (int i = 0; i < corePoolSize; i++) {
 
             executor.execute(() -> {
-                while (true){
-                var persons = new ArrayList<User>();
-                persons.add(getInstance());
-                log.info("The size of persons:{}", persons.size());
-                try {
-                    Thread.sleep(1);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                while (true) {
+                    var persons = new ArrayList<User>();
+                    persons.add(getInstance());
+                    log.info("The size of persons:{}", persons.size());
+                    try {
+                        Thread.sleep(1);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             });
         }
