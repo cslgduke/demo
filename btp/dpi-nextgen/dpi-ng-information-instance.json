@@ -30,7 +30,8 @@
               "serviceName": "EnablementSkeleton",
               "serviceFormat": "odata-v4",
               "annotationFormat": "v4",
-              "serviceEndPoint": "/dpp"
+              "serviceEndPoint": "/dpp",
+              "appPaginationEnabled": false
             }
           ]
         }

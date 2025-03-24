@@ -1,7 +1,7 @@
 apiVersion: services.cloud.sap.com/v1
 kind: ServiceInstance
 metadata:
-  name: rgm-dev-dpi-ng-information
+  name: rgm-int-dpi-ng-information
   labels:
     cci.sap.com/managed-by: mmp-management-biz
 spec:
@@ -9,7 +9,7 @@ spec:
   servicePlanName: data-privacy-internal
   parameters:
     xs-security:
-      xsappname: rgm-dev-dpi-ng-information
+      xsappname: rgm-int-dpi-ng-information
       authorities:
         - "$ACCEPT_GRANTED_AUTHORITIES"
       oauth2-configuration:
@@ -19,26 +19,27 @@ spec:
     dataPrivacyConfiguration:
       configType: information
       applicationConfiguration:
-        applicationName: SAP_RGM_rgm-dev-kyma
+        applicationName: SAP_RGM_rgm-int-kyma
         applicationTitle: SAP Revenue Growth Management
       informationConfiguration:
         applicationConfiguration:
           disableDataSubjectDeletion: true
         components:
           - componentName: rgp-dpp-proxy
-            componentBaseURL: https://api.rgm-dev.rgm-kyma-dev-live.rgm.eurekacloud.io
+            componentBaseURL: https://api.na.int.rgm.cloud.sap
             serviceEndPoints:
               - serviceName: rgp-dpp-proxy
                 serviceFormat: rest
                 serviceEndPoint: "/dpi/pdm"
                 annotationProviderEndPoint: "/dpi/pdm/metadata"
+                appPaginationEnabled: false
 ---
 apiVersion: services.cloud.sap.com/v1
 kind: ServiceBinding
 metadata:
-  name: rgm-dev-dpi-ng-information
+  name: rgm-int-dpi-ng-information
   labels:
     cci.sap.com/managed-by: mmp-management-biz
 spec:
-  serviceInstanceName: rgm-dev-dpi-ng-information
-  secretName: rgm-dev-dpi-ng-information
+  serviceInstanceName: rgm-int-dpi-ng-information
+  secretName: rgm-int-dpi-ng-information

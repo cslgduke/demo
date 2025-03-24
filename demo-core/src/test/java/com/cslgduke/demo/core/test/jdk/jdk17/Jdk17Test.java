@@ -110,4 +110,10 @@ public class Jdk17Test {
         log.info("is exist:{}" + defaultEnvFile.exists());
     }
 
+
+    @Test
+    public void test_slash() {
+        var str = "with promotions as (\\n    select\\n    \tDISTINCT  pr.UUID ,customer_hier_node_uuid,pr.sell_in_start_date,pr.sell_out_end_date,pr.PROMOTION_TYPE_UUID,pr.INTERNALCREATIONTIME\\n    from sap_cic_rgp_promotion as pr\\n    LEFT JOIN SAP_CIC_RGP_PROMOTION_PRODUCT pp\\n        ON pr.UUID = pp.PROMOTION_UUID\\n    LEFT JOIN SAP_CIC_RGP_PROMOTION_TRADE_SPEND scrpts\\n        ON pr.UUID = scrpts.PROMOTION_UUID\\n    WHERE pr.SOURCE_ACCOUNT_PLAN_UUID = 'b74445c147784a16985a1df38a9e6bf7'\\n    AND pr.SELL_IN_START_DATE  <= '2026-06-30T00:00:00Z' AND pr.SELL_OUT_END_DATE >= '2026-04-01T00:00:00Z'\\n     AND pp.PRODUCT_TREE_NODE_UUID IN ('1023b0ae8de6e45bdeacf757421255a6')  \\nORDER BY PROMOTION_TYPE_UUID,INTERNALCREATIONTIME,UUID \\n) \\nselect count(*) from promotions";
+        log.info("\n" + str.replaceAll("\\\\n","\n"   ));
+    }
 }

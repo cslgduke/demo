@@ -3,6 +3,7 @@ package com.cslgduke.demo.core.test.jackson;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.PropertyFilter;
 import com.fasterxml.jackson.annotation.JsonFilter;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.json.JsonReadFeature;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -18,9 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author i565244
@@ -84,7 +83,7 @@ public class JacksonTest {
     @JsonFilter("non-password")
     public static class User{
         String username;
-//        @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)//Jackson
+        @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)//Jackson
 //        @JSONField(serialize = false)//fastjson
         String password;
         Integer age;

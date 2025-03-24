@@ -30,7 +30,8 @@
               "serviceName": "EnablementSkeleton",
               "serviceFormat": "rest",
               "serviceEndPoint": "/pdm",
-              "annotationProviderEndPoint": "/dpp/metadata"
+              "annotationProviderEndPoint": "/dpp/metadata",
+              "appPaginationEnabled": false
             }
           ]
         }

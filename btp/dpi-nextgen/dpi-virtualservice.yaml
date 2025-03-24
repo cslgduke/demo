@@ -17,7 +17,7 @@ spec:
         uri: /pdm
       route:
         - destination:
-            host: rgp-dpp-proxy-cap
+            host: rgp-dpp-proxy
             port:
               number: 80
     - match:
@@ -27,6 +27,6 @@ spec:
         uri: /drm-ng
       route:
         - destination:
-            host: rgp-dpp-proxy-cap
+            host: rgp-dpp-proxy
             port:
               number: 80
