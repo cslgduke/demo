@@ -1,0 +1,58 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: rgm-user-management-ingress
+spec:
+  podSelector:
+    matchLabels:
+      app: rgm-user-management
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: istio-system
+          podSelector:
+            matchLabels:
+              app: istio-ingressgateway
+        - podSelector:
+            matchLabels:
+              app: assortment
+        - podSelector:
+            matchLabels:
+              app: common-workflow-ng
+        - podSelector:
+            matchLabels:
+              app: rgm-demo-service
+        - podSelector:
+            matchLabels:
+              app: rgp-shell-ui
+        - podSelector:
+            matchLabels:
+              app: rgm-funds-management
+        - podSelector:
+            matchLabels:
+              app: rgp-change-handling-cap
+        - podSelector:
+            matchLabels:
+              app: rgp-dpp-proxy
+        - podSelector:
+            matchLabels:
+              app: rgp-dpp-proxy-cap
+        - podSelector:
+            matchLabels:
+              app: rgp-notification-push
+  policyTypes:
+    - Ingress
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: rgm-user-management-egress
+spec:
+  podSelector:
+    matchLabels:
+      app: rgm-user-management
+  egress:
+    - {}
+  policyTypes:
+    - Egress

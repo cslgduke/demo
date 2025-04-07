@@ -1,0 +1,123 @@
+global:
+  scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  # scrape_timeout is set to the global default (10s).
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: ['alertmanager:9093']
+          # - alertmanager:9093
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+  - "alert_rules.yml"
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  - job_name: 'prometheus'
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+    metrics_path: "/metrics"
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'node'
+    static_configs:
+      - targets: [ 'node-exporter:9100' ]
+
+  - job_name: 'alertmanager'
+    static_configs:
+      - targets: [ 'alertmanager:9093' ]
+
+  - job_name: 'PromotionPlanning'
+    scrape_interval: 5s
+    scrape_timeout: 5s
+    metrics_path: "/actuator/prometheus"
+    static_configs:
+      - targets: ['host.docker.internal:8080']
+        labels:
+          instance: demo-app
+
+  - job_name: 'kubernetes-nodes'
+    scrape_interval: 5s
+    scrape_timeout: 5s
+    metrics_path: "/actuator/prometheus"
+    kubernetes_sd_configs:
+      - role: endpoints
+        api_server: 'https://api.c-8bf3199.kyma.ondemand.com'  # Replace with your Kubernetes API server URL
+        tls_config:
+          insecure_skip_verify: true  # Set to true to skip TLS verification (not recommended)
+        bearer_token: 'eyJhbGciOiJSUzI1NiIsImtpZCI6IjJzUEJCY21TUkF4eGtucUZtYlJ5ZUJZNEsyRjZSVWU2c01UdkJQRGNhWkkifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhcmdvY2QtbWFuYWdlci10b2tlbi1kZnd0NSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJhcmdvY2QtbWFuYWdlciIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImE4YmM2OTFmLTE4ODAtNDM2Yy05OTgzLTBmOGE0NDZhYjhkYSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTphcmdvY2QtbWFuYWdlciJ9.U88ZW16TB7bQY6PeWVkqIZ_HuqNDxM0RLSQN0sanN9z9X3gNGFQNqOdlGOsqEimmLjXImilCNw6ezIC6-3mm8F6RdkQCmE1OD8UFr3inunoW8-TaI4kDxEX7VIkgleo7anHJ0U-rN5L05K7FPXQxYVPkqbvVGFkqFZRlii5eCaLmc0BvHEySnbnGgFpHndwgurHwKa_C5yp_KkxGtbLsTwhj9q7Tfpo_Zeuh1DVs2VWbeOGGza5kJXv7RljYl5BTJR7jMPpJJNsXgQzpk0ZcQVP8hxnT0D8BPVd-KmMOPvotjxVLrtiUPt4SUUs_n5mnczMUugUniOGlq40NHo8WldjagY3zzPK0gUiU-S3wO18z2m685skSk2qmUKwClH5o8IcvBOGwcZGscyMlveB1zbuKKIMckT0FcIdNQqlJLmiG7ZNfQPDIpRe1OR1vDe9SWhhZaNXMKPkgdwDDlXmIulRF-tE7BZpQkxcYs6-nU6mdCXqeC2zvP0Avh_sxfVkBhrek8B8fJ1HvWO4H5iuCHIZhKOwD69ExQz4fJD4wI9OnXskAeWS3kXKtf5Zg-nt78146pKLB6WGu-i0QX27nYDORRFuel_GWlifYY0YN50usCOZ7qxNDI-mjaXBIPjEQGoElkJz28tfxoq307e3l_MLJovBCryBLFR1gkK0cbFs'  # Replace with your actual bearer token
+
+    relabel_configs:
+      - source_labels: [__meta_kubernetes_namespace,__meta_kubernetes_service_name]
+        action: keep
+        regex: rgm-int;rgp-promotion-planning
+
+#      - source_labels: [__meta_kubernetes_node_label_environment]
+#        action: keep
+#        regex: production
+#
+#      - target_label: job
+#        replacement: node
+#
+#      - source_labels: [__meta_kubernetes_node_label_kubernetes_io_hostname]
+#        target_label: __address__
+#        replacement: \$1:9100  # Assuming node exporter is running on port 9100
+#
+#      - target_label: __address__
+#        regex: ''
+#        action: drop
+
+#  - job_name: 'kubernetes-nodes'
+#    shceme: https
+#    kubernetes_sd_configs:
+#      - role: node
+#        api_server: 'https://api.c-8bf3199.kyma.ondemand.com'
+#        bearer_token: 'eyJhbGciOiJSUzI1NiIsImtpZCI6IjJzUEJCY21TUkF4eGtucUZtYlJ5ZUJZNEsyRjZSVWU2c01UdkJQRGNhWkkifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhcmdvY2QtbWFuYWdlci10b2tlbi1kZnd0NSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJhcmdvY2QtbWFuYWdlciIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImE4YmM2OTFmLTE4ODAtNDM2Yy05OTgzLTBmOGE0NDZhYjhkYSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTphcmdvY2QtbWFuYWdlciJ9.U88ZW16TB7bQY6PeWVkqIZ_HuqNDxM0RLSQN0sanN9z9X3gNGFQNqOdlGOsqEimmLjXImilCNw6ezIC6-3mm8F6RdkQCmE1OD8UFr3inunoW8-TaI4kDxEX7VIkgleo7anHJ0U-rN5L05K7FPXQxYVPkqbvVGFkqFZRlii5eCaLmc0BvHEySnbnGgFpHndwgurHwKa_C5yp_KkxGtbLsTwhj9q7Tfpo_Zeuh1DVs2VWbeOGGza5kJXv7RljYl5BTJR7jMPpJJNsXgQzpk0ZcQVP8hxnT0D8BPVd-KmMOPvotjxVLrtiUPt4SUUs_n5mnczMUugUniOGlq40NHo8WldjagY3zzPK0gUiU-S3wO18z2m685skSk2qmUKwClH5o8IcvBOGwcZGscyMlveB1zbuKKIMckT0FcIdNQqlJLmiG7ZNfQPDIpRe1OR1vDe9SWhhZaNXMKPkgdwDDlXmIulRF-tE7BZpQkxcYs6-nU6mdCXqeC2zvP0Avh_sxfVkBhrek8B8fJ1HvWO4H5iuCHIZhKOwD69ExQz4fJD4wI9OnXskAeWS3kXKtf5Zg-nt78146pKLB6WGu-i0QX27nYDORRFuel_GWlifYY0YN50usCOZ7qxNDI-mjaXBIPjEQGoElkJz28tfxoq307e3l_MLJovBCryBLFR1gkK0cbFs'
+#        tls_config:
+#          insecure_skip_verify: true
+#    relabel_configs:
+#      - action: labelmap
+#        regex: __meta_kubernetes_node_label_(.*)
+#      - action: replace
+#        regex: (.*)
+#        source_labels: [ __address__ ]
+#        target_label: __address__
+#        replacement: https://api.c-8bf3199.kyma.ondemand.com
+#
+#      - action: replace
+#        regex: (.*)
+#        source_labels: [ __meta_kubernetes_node_name ]
+#        target_label: __metrics_path_
+#        replacement: /api/v1/nodes/${1}/proxy/metrics
+
+#  - job_name: 'kubernetes-apiservers'
+#    scrape_interval: 5s
+#    scrape_timeout: 5s
+#    metrics_path: "/actuator/prometheus"
+#    kubernetes_sd_configs:
+#      - api_server: https://api.c-8bf3199.kyma.ondemand.com
+##      - api_server: https://kubernetes.docker.internal:6443
+##        bearer_token: eyJhbGciOiJSUzI1NiIsImtpZCI6IlBmZExvdFlleTZwZ2VscXAyRWxaQzZCNkRGT2RrS2RVb1F6b0ppQ3N0bU0ifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJkZWZhdWx0Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6InByb21ldGhldXMiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoicHJvbWV0aGV1cyIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6Ijk2NjllOGUyLTk0YTktNDZjNi1hODVhLWUwZDczNjFjZDg0NiIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OnByb21ldGhldXMifQ.X785U79XIy43e1bg9bBsFOchPjftzdAOB4fWs4FGFdEFg17IY-yQa3wMcQM310EXoTZajmmW2MOn7wtHwTWurle1lAoq4jVxktblNl9TAk2wpmophYCjfIjtbe-QQbVaGjh-5XPR8sdazF1NjbREP4btlC7E1ni7XykCxEIY3XTnC_womsMhBQKtv0jcmWOOrHPwFtqU481aX3BPdjJgmeVh49G-Vf8l8UdsAtsklczDtdWnpzADjTtoNHzQJ2hvs_1z4l93MOrsh0AJA2H9XX_ucp4sxywYv2-4IY-UTFwa1OVpK4pAW7ziv0d1LMYPpBvXo4oV8pn7PEeI6dRxRg
+#        bearer_token: eyJhbGciOiJSUzI1NiIsImtpZCI6IjJzUEJCY21TUkF4eGtucUZtYlJ5ZUJZNEsyRjZSVWU2c01UdkJQRGNhWkkifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhcmdvY2QtbWFuYWdlci10b2tlbi1kZnd0NSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJhcmdvY2QtbWFuYWdlciIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImE4YmM2OTFmLTE4ODAtNDM2Yy05OTgzLTBmOGE0NDZhYjhkYSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTphcmdvY2QtbWFuYWdlciJ9.U88ZW16TB7bQY6PeWVkqIZ_HuqNDxM0RLSQN0sanN9z9X3gNGFQNqOdlGOsqEimmLjXImilCNw6ezIC6-3mm8F6RdkQCmE1OD8UFr3inunoW8-TaI4kDxEX7VIkgleo7anHJ0U-rN5L05K7FPXQxYVPkqbvVGFkqFZRlii5eCaLmc0BvHEySnbnGgFpHndwgurHwKa_C5yp_KkxGtbLsTwhj9q7Tfpo_Zeuh1DVs2VWbeOGGza5kJXv7RljYl5BTJR7jMPpJJNsXgQzpk0ZcQVP8hxnT0D8BPVd-KmMOPvotjxVLrtiUPt4SUUs_n5mnczMUugUniOGlq40NHo8WldjagY3zzPK0gUiU-S3wO18z2m685skSk2qmUKwClH5o8IcvBOGwcZGscyMlveB1zbuKKIMckT0FcIdNQqlJLmiG7ZNfQPDIpRe1OR1vDe9SWhhZaNXMKPkgdwDDlXmIulRF-tE7BZpQkxcYs6-nU6mdCXqeC2zvP0Avh_sxfVkBhrek8B8fJ1HvWO4H5iuCHIZhKOwD69ExQz4fJD4wI9OnXskAeWS3kXKtf5Zg-nt78146pKLB6WGu-i0QX27nYDORRFuel_GWlifYY0YN50usCOZ7qxNDI-mjaXBIPjEQGoElkJz28tfxoq307e3l_MLJovBCryBLFR1gkK0cbFs
+#        role: endpoints
+#        namespaces:
+#          names:
+#            - rgm-dev
+#        tls_config:
+#          insecure_skip_verify: true
+#    tls_config:
+#      insecure_skip_verify: true
+#    relabel_configs:
+#      - source_labels: [__meta_kubernetes_namespace,__meta_kubernetes_service_name]
+#        action: keep
+#        regex: rgm-dev;rgp-promotion-planning
+
+

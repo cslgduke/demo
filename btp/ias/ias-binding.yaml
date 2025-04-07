@@ -1,0 +1,17 @@
+apiVersion: services.cloud.sap.com/v1
+kind: ServiceBinding
+metadata:
+  name: ias-rgm-rgm-dev
+
+spec:
+  serviceInstanceName: ias-rgm-rgm-dev
+  credentialsRotationPolicy:
+    enabled: true
+    rotatedBindingTTL: 48h
+    rotationFrequency: 1800h
+  parameters:
+    credential-type: X509_GENERATED
+    key-length: 2048
+    validity: 90
+    validity-type: DAYS
+    app-identifier: my-application

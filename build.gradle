@@ -11,7 +11,7 @@ subprojects{
 
     jacocoTestReport {
         reports {
-            xml.enabled true
+//            xml.enabled true
         }
         afterEvaluate {
             classDirectories.setFrom(files(classDirectories.files.collect {
@@ -40,19 +40,32 @@ subprojects{
     }
     dependencies {
         implementation 'cn.hutool:hutool-all:5.3.6'
+        implementation 'com.fasterxml.jackson.core:jackson-core:2.13.2'
+        implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.2.2'
+        implementation 'org.springframework.kafka:spring-kafka:2.8.5'
+        implementation 'org.apache.httpcomponents:httpclient:4.5.13'
+        implementation 'net.java.dev.jna:jna:5.13.0'
+
+
         testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
         testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 
-        compileOnly  'org.projectlombok:lombok:1.18.22'
-        annotationProcessor 'org.projectlombok:lombok:1.18.22'
-        testCompileOnly 'org.projectlombok:lombok:1.18.22'
-        testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
+        compileOnly  'org.projectlombok:lombok:1.18.30'
+        annotationProcessor 'org.projectlombok:lombok:1.18.30'
+        testCompileOnly 'org.projectlombok:lombok:1.18.30'
+        testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
 
         testImplementation 'org.mockito:mockito-core:4.4.0'
         testImplementation 'org.mockito:mockito-junit-jupiter:4.4.0'
         testImplementation 'org.mockito:mockito-inline:4.4.0'
 
         implementation 'com.alibaba:fastjson:1.2.68'
+        api 'org.javassist:javassist:3.25.0-GA'
+        api 'org.modelmapper:modelmapper:2.4.3'
+        implementation 'org.hibernate:hibernate-entitymanager:5.4.0.Final'
+        implementation 'mysql:mysql-connector-java:8.0.11'
+        implementation 'org.apache.commons:commons-lang3:3.12.0'
+        implementation 'com.jayway.jsonpath:json-path:2.8.0'
     }
     test {
         useJUnitPlatform()
@@ -70,3 +83,5 @@ subprojects{
 }
 
 
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17

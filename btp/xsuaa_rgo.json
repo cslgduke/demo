@@ -1,0 +1,36 @@
+{
+  "xsappname": "xsuaa-rgo",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.view",
+      "description": "View data",
+      "grant-as-authority-to-apps": [
+        "rgm!b7239"
+      ],
+      "granted-apps" : [
+        "rgmbroker!b7239|rgm!b7239"
+      ]
+    },
+    {
+      "name": "$XSAPPNAME.create",
+      "description": "Create data"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "rgoView",
+      "description": "Role for viewing data",
+      "scope-references": [
+        "$XSAPPNAME.view"
+      ]
+    },
+    {
+      "name": "rgoCreate",
+      "description": "Role for creating data",
+      "scope-references": [
+        "$XSAPPNAME.create",
+        "$XSAPPNAME.view"
+      ]
+    }
+  ]
+}

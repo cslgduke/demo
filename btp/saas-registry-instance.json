@@ -1,0 +1,9 @@
+{
+  "xsappname": "xsuaa-rgm-broker-dpi",
+  "appUrls": {
+    "getDependencies": "https://demo-app-quick-kangaroo-fe.cfapps.us21.hana.ondemand.com/dependency",
+    "onSubscription": "https://demo-app-quick-kangaroo-fe.cfapps.us21.hana.ondemand.com/tenants/{tenantId}"
+  },
+  "displayName": "Demo app RGO-dpi",
+  "description": "A demo-app with dpi dependencies"
+}

@@ -1,0 +1,27 @@
+groups:
+  - name: businessAlert
+    rules:
+      - alert: InstanceDown
+        expr: up{job="PromotionPlanning"} == 0
+#        for: 1m
+        for: 10s
+        labels:
+          severity: critical
+          instance: "{{ $labels.instance }}"
+          owner: kungfuPanda
+        annotations:
+          summary: "Instance {{ $labels.instance }} down"
+          description: "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 1 minutes."
+
+      - alert: balanceAlert
+        expr: balanceGauge < 500
+        #        for: 1m
+        for: 20s
+        labels:
+          severity: page
+          team: kungfuPanda
+          instance: "{{ $labels.instance }}"
+          owner: test
+        annotations:
+          summary: "{{ $labels.currency }} balance is insufficient "
+          description: "{{ $labels.instance }} {{ $labels.currency }} balance:{{ $value }} "

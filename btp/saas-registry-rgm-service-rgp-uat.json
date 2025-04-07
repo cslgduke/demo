@@ -1,0 +1,12 @@
+{
+  "xsappname": "rgmbroker!b6726|rgp-uat--rgp!b5173",
+  "appName": "rgm-service-rgp-uat",
+  "appUrls": {
+    "getDependencies": "",
+    "onSubscription": "https://tenant-operator.kyma-live.bom-prod.eurekacloud.io/subscription/rgp-staging/rgp-uat/rgp/{tenantId}"
+  },
+  "displayName": "rgm-service displayname",
+  "description": "rgm-service-rgp-uat",
+  "onSubscriptionAsync": true,
+  "callbackTimeoutMillis": 300000
+}

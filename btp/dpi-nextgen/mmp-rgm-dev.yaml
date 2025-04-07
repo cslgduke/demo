@@ -1,0 +1,78 @@
+apiVersion: cic.sap.com/v1
+kind: MMP
+metadata:
+  name: rgp-mmp-meta
+spec:
+  displayName: Revenue Growth Management(rgm-cic-rgm-dev-us21-rgm-dev)
+  description: SAP Revenue Growth Management
+  applicationURL: https://rgp.rgm-dev.rgm-cic-rgm-dev-us21.eurekacloud.io
+  callbackTimeoutMillis: 30000
+  openapiEndpoint: https://api.rgm-dev.rgm-cic-rgm-dev-us21.eurekacloud.io
+  serviceName: rgp
+  plan: application
+  appName:
+  appPlans:
+    - name: application
+      description: Revenue Growth Management Application Plan
+  dependencies:
+    - name: auditlog
+      category: external
+      bindingSecretName: btp-auditlog
+      appName: auditlog
+      planName: oauth2
+      entitlement:
+        isShared: false
+        subaccountAssignment: 1
+    - name: auditlog-viewer
+      category: external
+      appName: auditlog-viewer
+      planName: free
+      entitlement:
+        isShared: true
+        subaccountAssignment: -1
+    - name: auditlog-std
+      category: external
+      appName: auditlog
+      planName: standard
+      entitlement:
+        isShared: false
+        subaccountAssignment: 1
+    - name: malware-scanner
+      category: external
+      appName: malware-scanner
+      planName: clamav
+      entitlement:
+        isShared: true
+        subaccountAssignment: -1
+    - name: destination
+      category: external
+      appName: destination
+      planName: lite
+      bindingSecretName: rgm-dev-destination
+    - name: dpi-ng-information
+      category: external
+      appName: data-privacy-integration-service
+      planName: data-privacy-internal
+      bindingSecretName: rgm-dev-dpi-ng-information
+    - name: dpi-ng-retention
+      category: external
+      appName: data-privacy-integration-service
+      planName: data-privacy-internal
+      bindingSecretName: rgm-dev-dpi-ng-retention
+    - name: credstore
+      category: external
+      appName: credstore
+      planName: large
+      entitlement:
+        isShared: false
+        subaccountAssignment: 1
+    - name: central-integration-conf-service
+      category: internal
+
+  xsuaaConfig:
+    xsappname: provider-xsuaa-broker
+    oauth2-configuration:
+      redirect-uris:
+        - https://*.salesplanning.io/**
+        - https://*.eurekacloud.io/**
+        - http://localhost:8080/**

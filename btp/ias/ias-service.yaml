@@ -1,0 +1,17 @@
+apiVersion: services.cloud.sap.com/v1
+kind: ServiceInstance
+metadata:
+  name: ias-rgm-rgm-dev
+spec:
+  serviceOfferingName: identity
+  servicePlanName: application
+  parameters:
+    multi-tenant: true
+    authorization:
+      enabled: true
+    oauth2-configuration:
+      post-logout-redirect-uris:
+        - https://*.rgm-dev.rgm-kyma-dev-live.rgm.eurekacloud.io/**
+      redirect-uris:
+        - https://*.rgm-dev.rgm-kyma-dev-live.rgm.eurekacloud.io/**
+    display-name: Revenue Growth Management(rgm-rgm-kyma-dev-live-rgm-dev)

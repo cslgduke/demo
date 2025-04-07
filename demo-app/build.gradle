@@ -22,14 +22,54 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	implementation 'org.springframework.boot:spring-boot-starter-jersey'
+//	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'cn.amorou.uid:uid-generator-spring-boot-starter:1.0.2'
+//	implementation 'io.micrometer:micrometer-registry-prometheus:1.8.4'
+//	implementation 'io.micrometer:micrometer-core:1.8.4'
+	implementation 'io.micrometer:micrometer-registry-prometheus'
+	implementation 'io.micrometer:micrometer-core'
+	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.8.1'
+
+
+	implementation 'org.springframework:spring-context-support'
+	implementation 'org.quartz-scheduler:quartz'
+	//	implementation 'com.alibaba:druid-spring-boot-starter:1.2.8'
+//	implementation 'io.micrometer:micrometer-registry-dynatrace:1.8.4'
+//	implementation 'io.dropwizard.metrics:metrics-core:4.2.25'
+//	implementation 'de.codecentric:spring-boot-admin-starter-client:2.6.6'
+
 
 	runtimeOnly 'org.postgresql:postgresql'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.liquibase:liquibase-core'
 	implementation 'cn.amorou.uid:uid-generator-spring-boot-starter:1.0.2'
-//	implementation 'io.micrometer:micrometer-registry-prometheus:1.8.4'
-	implementation 'io.micrometer:micrometer-registry-prometheus'
+	api 'org.springframework.boot:spring-boot-starter-cache:2.6.7'
+	api 'com.github.ben-manes.caffeine:caffeine:2.9.0'
+	implementation 'org.redisson:redisson-spring-boot-starter:3.37.0'
 
+
+	implementation 'com.azure:azure-storage-blob:12.10.2'
+	implementation 'com.azure:azure-core-http-okhttp:1.7.1'
+
+	implementation 'com.azure:azure-security-keyvault-keys:4.2.3'
+	implementation 'com.azure:azure-identity:1.2.0'
+
+	implementation 'com.alibaba.compileflow:compileflow:1.0.0-RC2'
+	api 'io.fabric8:kubernetes-client:5.11.2'
+	api 'org.eclipse.persistence:eclipselink:2.7.5'
+	api 'org.reflections:reflections:0.9.9'
+	api 'com.sap.cloud.db.jdbc:ngdbc:2.15.10'
+	api 'mysql:mysql-connector-java'
+//	api 'com.ullink.slack:hikaricp-admin-servlet'
+
+
+
+
+//	implementation 'org.apache.olingo:olingo-odata2-core:2.0.12'
+//	implementation 'org.apache.olingo:olingo-odata2-jpa-processor-core:2.0.12'
+//	implementation 'org.apache.olingo:olingo-odata2-jpa-processor-ref:2.0.12'
 
 }
 

@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web-app
+spec:
+  containers:
+    - image: nginx
+      name: main-container
+      ports:
+        - containerPort: 80
+
+      # 和 SideCar 通过 磁盘卷共享要发布的文件目录
+      volumeMounts:
+        - name: var-logs
+          mountPath: /usr/share/nginx/html
+
+    # SideCar 容器
+    - image: busybox
+      command: ["/bin/sh"]
+      args: ["-c", "while true; do echo $(date -u) 'Hi I am from Sidecar container' > /var/log/index.html; sleep 5;done"]
+      name: sidecar-container
+      volumeMounts:
+        - name: var-logs
+          mountPath: /var/log
+
+  # Pod 中全部容器共享磁盘卷
+  volumes:
+    - name: var-logs
+      emptyDir: {}

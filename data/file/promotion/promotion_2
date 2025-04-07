@@ -1,0 +1,13 @@
+{
+    "uuid": "uuid_2",
+    "accountPlanName": "Costco",
+    "yearCodeUuid": 2023,
+    "yearCodeStartDate": "2023-01-01T00:00:00Z",
+	"totalRevenue": 1000000.85,
+    "products": [
+        {
+            "productTreeNodeName": "productName",
+            "productTreeNodeUuid": "productUid"
+        }
+    ]
+}

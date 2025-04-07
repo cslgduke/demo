@@ -1,9 +1,17 @@
 package com.example.demo.bo;
 
 
+import com.example.demo.constants.MultiTenantProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.eclipse.persistence.annotations.AdditionalCriteria;
+import org.eclipse.persistence.annotations.TenantDiscriminatorColumn;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
@@ -11,15 +19,21 @@ import java.time.LocalDateTime;
  */
 @Entity
 @Table(name="tl_user")
+@AdditionalCriteria("this.tenant_Id=:" + "tenant_id")
+@TenantDiscriminatorColumn(name = "TENANT_ID", contextProperty = MultiTenantProperties.MULTITENANT_CONTEXT_PROPERTY, discriminatorType = DiscriminatorType.STRING, columnDefinition = "BIGINT")
 @Data
-public class User {
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class User implements Serializable {
 
     @Id	//主键id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)//主键生成策略
+//    @GeneratedValue(strategy=GenerationType.IDENTITY)//主键生成策略
+    @GeneratedValue
     @Column(name="id")//数据库字段名
-    private Integer id;
+    private Long id;
 
-    @Column(name="no",insertable=false,updatable = false)
+    @Column(name="user_no",insertable=false,updatable = false)
     private String no;
 
     @Column(name="name")
@@ -31,6 +45,14 @@ public class User {
     @Column(name="address")
     private String address;
 
+
+    @Column(name = "TENANT_ID", nullable = true, insertable = false, updatable = false)
+    @JsonIgnore
+    private Long tenant_Id;
+
     @Column(name="createTime")
     private LocalDateTime createTime;
+
+    @Column(name="updateTime")
+    private LocalDateTime updateTime;
 }

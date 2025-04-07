@@ -1,0 +1,22 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: dave-test
+spec:
+  hosts:
+    - api.rgm-dev.rgm-cic-rgm-dev-us21.eurekacloud.io
+  gateways:
+    - istio-ingress/api-rgm-dev-rgm-cic-rgm-dev-us21
+  http:
+    - match:
+        - uri:
+            prefix: /act
+          method:
+            regex: GET
+      rewrite:
+        uri: /actuator
+      route:
+        - destination:
+            host: rgp-promotion-planning
+            port:
+              number: 80

@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  nginx:
+    image: nginx
+    container_name: nginx
+    ports:
+      - '9998:443'
+    volumes:
+      - ./data:/data/cert
+      - ./conf:/etc/nginx/conf.d

@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-app
+  labels:
+    app: demo-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-app
+  template:
+    metadata:
+      labels:
+        app: demo-app
+        role: web
+    spec:
+      serviceAccountName: prometheus
+      containers:
+        - name: demo-app
+          image: demo-k8s:17-jre-headless-ubuntu
+          ports:
+            - containerPort: 8080
+          env:
+            - name: "eureka.framework.setup.migration.enable"
+              value: "true"
+            - name: "JAVA_TOOL_OPTIONS"
+              value: "-Xmx1g -Xms1g"
+          resources:
+            requests:
+              cpu: "2"
+#              memory: "2Gi" // same with limit value
+            limits:
+              cpu: "2"
+              memory: "1Gi"

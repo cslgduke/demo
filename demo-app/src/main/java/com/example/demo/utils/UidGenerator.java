@@ -2,13 +2,13 @@ package com.example.demo.utils;
 
 import cn.amorou.uid.BitsAllocator;
 import cn.amorou.uid.exception.UidGenerateException;
-import cn.amorou.uid.impl.DefaultUidGenerator;
 import cn.amorou.uid.utils.DateUtils;
 import cn.amorou.uid.worker.WorkerIdAssigner;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
+
 /**
  * @author i565244
  */

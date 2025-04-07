@@ -1,0 +1,71 @@
+apiVersion: services.cloud.sap.com/v1
+kind: ServiceInstance
+metadata:
+  name: rgm-dev-dpi-ng-retention
+  labels:
+    cci.sap.com/managed-by: mmp-management-biz
+spec:
+  serviceOfferingName: data-privacy-integration-service
+  servicePlanName: data-privacy-internal
+  parameters:
+    xs-security:
+      xsappname: rgm-dev-dpi-ng-retention
+      authorities:
+        - "$ACCEPT_GRANTED_AUTHORITIES"
+      oauth2-configuration:
+        credential-types:
+          - x509
+          - binding-secret
+    dataPrivacyConfiguration:
+      configType: retention
+      applicationConfiguration:
+        applicationName: SAP-RGM(rgm-dev)-kyma
+        applicationDescription: SAP Revenue Growth Management
+      retentionConfiguration:
+        applicationConfiguration:
+          applicationType: TransactionMaster
+          simulationSupportedForArchiving: true
+          simulationSupportedForDestruction: true
+        dataSubjectRoles:
+          - dataSubjectRoleName: RgmUser
+            dataSubjectDescription: RgmUser
+            dataSubjectBaseURL: https://api.rgm-dev.rgm-kyma-dev-live.rgm.eurekacloud.io
+            dataSubjectInformationEndPoint: "/dpi/drm-ng/dataSubjectInformation"
+            dataSubjectBlockingEndPoint: "/dpi/drm-ng/dataSubjectBlocking"
+        organizationAttributes:
+          - organizationAttributeName: RGM
+            organizationAttributeDescription: Revenue Growth Management
+            organizationAttributeBaseURL: https://api.rgm-dev.rgm-kyma-dev-live.rgm.eurekacloud.io
+            organizationAttributeValueHelpEndPoint: "/dpi/drm-ng/organizationAttributeValueHelp"
+        iLMObjects:
+          - iLMObjectName: RgmUser
+            iLMObjectType: Transaction
+            iLMObjectDescription: RgmUser
+            iLMObjectBaseURL: https://api.rgm-dev.rgm-kyma-dev-live.rgm.eurekacloud.io
+            organizationAttributeName: RGM
+            referenceDates:
+              - referenceDateName: create_time
+                referenceDateDescription: create_time
+              - referenceDateName: update_time
+                referenceDateDescription: update_time
+            dataSubjectBlockingConfiguration:
+              dataSubjectEndOfBusinessEndPoint: "/dpi/drm-ng/dataSubjectEndOfBusiness"
+              dataSubjectOrganizationAttributesEndPoint: "/dpi/drm-ng/dataSubjectOrganizationAttributes"
+              dataSubjectLastRetentionStartDatesEndPoint: "/dpi/drm-ng/dataSubjectLastRetentionStartDates"
+              dataSubjectsEndOfResidenceEndPoint: "/dpi/drm-ng/dataSubjectsEndOfResidence"
+              dataSubjectsEndOfResidenceConfirmationEndPoint: ''
+              dataSubjectILMObjectBlockingEndPoint: "/dpi/drm-ng/dataSubjectILMObjectBlocking"
+              dataSubjectsILMObjectDestroyingEndPoint: "/dpi/drm-ng/dataSubjectsILMObjectDestroying"
+            dataSubjectRoles:
+              - dataSubjectRoleName: RgmUser
+
+---
+apiVersion: services.cloud.sap.com/v1
+kind: ServiceBinding
+metadata:
+  name: rgm-dev-dpi-ng-retention
+  labels:
+    cci.sap.com/managed-by: mmp-management-biz
+spec:
+  serviceInstanceName: rgm-dev-dpi-ng-retention
+  secretName: rgm-dev-dpi-ng-retention
