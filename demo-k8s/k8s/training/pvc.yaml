@@ -1,0 +1,11 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: nginx-pvc
+spec:
+  storageClassName: default
+  accessModes:
+    - ReadWriteOncePod
+  resources:
+    requests:
+      storage: 1Gi
