@@ -423,7 +423,7 @@ spec:
     app.kubernetes.io/instance: kiali
 ...
 ---
-# Source: kiali-server/templates/deployment.yaml
+# Source: kiali-server/templates/05c_deployment_with_pvc.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:

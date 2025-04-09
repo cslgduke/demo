@@ -6,9 +6,9 @@ metadata:
     tier: networking
 spec:
   ports:
-    - port: 80
-      protocol: TCP
-      targetPort: 80
+  - port: 80
+    protocol: TCP
+    targetPort: 80
   selector:
     run: nginx
   type: LoadBalancer

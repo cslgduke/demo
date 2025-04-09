@@ -101,7 +101,7 @@ spec:
     app.kubernetes.io/name: grafana
     app.kubernetes.io/instance: grafana
 ---
-# Source: grafana/templates/deployment.yaml
+# Source: grafana/templates/05c_deployment_with_pvc.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
