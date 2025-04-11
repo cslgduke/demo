@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dockerfile-storage
+data:
+  dockerfile: |
+    FROM alpine:latest
+    RUN echo "this is a customized dockerfile"
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: alpine-test
+spec:
+  volumes:
+    - name: dockerfile-storage
+      configMap:
+        name: dockerfile-storage
+  containers:
+    - name: alpine-test
+      image: alpine:latest
+#      command: [ "/bin/sh", "-c", "cat /workspace/dockerfile", "env" ]
+      command:
+        - /bin/sh
+        - -c
+        - |
+          echo "this is a customized dockerfile"
+          cat /workspace/dockerfile
+          echo "this is the third command"
+      volumeMounts:
+        - name: dockerfile-storage
+          mountPath: /workspace
+  restartPolicy: Never
