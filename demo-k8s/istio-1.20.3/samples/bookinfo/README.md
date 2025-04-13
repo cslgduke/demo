@@ -42,7 +42,7 @@ $ BOOKINFO_TAG=test1.0 BOOKINFO_HUB=docker.io/user1  src/build-services.sh
 + env TAG=test1.0 HUB=docker.io/user1 docker buildx bake -f samples/bookinfo/src/docker-bake.hcl --set '*.platform=linux/amd64'
 [+] Building 1.9s (123/133)
  => [examples-bookinfo-ratings-v-faulty internal] load build definition from Dockerfile                                                                                                               0.0s
- => => transferring dockerfile: 1.05kB                                                                                                                                                                0.0s
+ => => transferring Dockerfile: 1.05kB                                                                                                                                                                0.0s
 ...
  => CACHED [examples-bookinfo-ratings-v-faulty 4/6] COPY ratings.js /opt/microservices/                                                                                                               0.0s
  => CACHED [examples-bookinfo-ratings-v-faulty 5/6] WORKDIR /opt/microservices                                                                                                                        0.0s

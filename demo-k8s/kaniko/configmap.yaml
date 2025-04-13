@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: dockerfile-storage
+  name: Dockerfile-storage
 data:
   dockerfile: |
     FROM alpine:latest

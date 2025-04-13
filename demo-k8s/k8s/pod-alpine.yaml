@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: dockerfile-storage
+  name: Dockerfile-storage
 data:
   dockerfile: |
     FROM alpine:latest
@@ -13,13 +13,13 @@ metadata:
   name: alpine-test
 spec:
   volumes:
-    - name: dockerfile-storage
+    - name: Dockerfile-storage
       configMap:
-        name: dockerfile-storage
+        name: Dockerfile-storage
   containers:
     - name: alpine-test
       image: alpine:latest
-#      command: [ "/bin/sh", "-c", "cat /workspace/dockerfile", "env" ]
+#      command: [ "/bin/sh", "-c", "cat /workspace/Dockerfile", "env" ]
       command:
         - /bin/sh
         - -c
@@ -28,6 +28,6 @@ spec:
           cat /workspace/dockerfile
           echo "this is the third command"
       volumeMounts:
-        - name: dockerfile-storage
+        - name: Dockerfile-storage
           mountPath: /workspace
   restartPolicy: Never
